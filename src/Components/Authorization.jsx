@@ -132,7 +132,7 @@ export class Register extends Component {
                 <input 
                     className="reenterPassword"
                     placeholder="ReEnter Password"
-                    type="reenterPassword"
+                    type="password"
                     name="reenterPassword"
                     value={this.state.reenterPassword}
                     onChange={this.updateReenterPassword}

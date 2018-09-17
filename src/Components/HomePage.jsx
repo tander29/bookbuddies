@@ -1,11 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Login, Register } from "./Authorization"
+import SearchBar from "./SearchBar"
 
 
 class HomePage extends React.Component {
     render() {
         return (
-            <div>Hi Everyone</div>
+            <React.Fragment>
+                <div>Hi Everyone</div>
+                <Login />
+                <Register />
+                <SearchBar />
+            </React.Fragment>
         );
     }
 }
