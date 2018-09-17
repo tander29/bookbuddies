@@ -1,3 +1,4 @@
+// when making a new component, every component needs to import react and connect, to properly make component and connect to redux store
 import React from "react";
 import { connect } from "react-redux";
 
@@ -10,12 +11,17 @@ import SearchBar from "./SearchBar"
 
 
 
+import BookShelf from './BookShelf.jsx'
+
+
 class HomePage extends React.Component {
     render() {
         return (
+
  <React.Fragment>
         <Container>
             <Header></Header>
+          <BookShelf></BookShelf>
               <Login />
                 <Register />
                 <SearchBar />
@@ -23,9 +29,10 @@ class HomePage extends React.Component {
          </Container>
 
            
-                <div>Hi Everyone</div>
+                
                 
             </React.Fragment>
+
 
         );
     }
