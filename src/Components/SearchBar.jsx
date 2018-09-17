@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Search } from "semantic-ui-react";
+
 import "../App.css";
 
 export class SearchBar extends Component {
@@ -10,6 +10,10 @@ export class SearchBar extends Component {
     handleSubmit = (event) => {
         if (event.key === 'Enter') {
             console.log("Hey, you hit the Enter key!")
+            console.log(this.state.search)
+            this.setState({
+                search: ""
+            })
         }
     }
 
@@ -21,11 +25,16 @@ export class SearchBar extends Component {
 
     render() {
         return(
-            <Search
+            <input
                 className="Search"
+                type="text"
+                placeholder="Search for books"
                 value={this.state.search}
                 onKeyPress={this.handleSubmit}
+                onChange={this.updateSearch}
             />
         )
     }
 }
+
+export default SearchBar;
