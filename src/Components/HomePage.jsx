@@ -1,11 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
+import Header from "./Header";
+import Footer from "./Footer";
+import { Image, Container } from "semantic-ui-react";
 
 
 class HomePage extends React.Component {
     render() {
         return (
-            <div>Hi Everyone</div>
+        <Container>
+            <Header></Header>
+            <Footer></Footer>
+         </Container>
         );
     }
 }
