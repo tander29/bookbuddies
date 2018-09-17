@@ -1,5 +1,16 @@
-import { Types } from './Types'
+import {
+    LOGIN,
+    LOGOUT,
+    REGISTER,
+    BOOKSHELF,
+    BOOKS
+} from './Types'
 
-export default function reducer() {
+const initialState = {}
 
+export default function (state = initialState, action) {
+    switch (action.type) {
+        default:
+            return state
+    }
 }
