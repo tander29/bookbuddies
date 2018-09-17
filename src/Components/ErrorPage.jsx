@@ -2,10 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 
 
-class HomePage extends React.Component {
+class ErrorPage extends React.Component {
     render() {
         return (
-            <div>Hi Everyone</div>
+            <React.Fragment>
+                <div>Nav bar import on this so we can navigate</div>
+                <div>Wrong page, go home</div>
+            </React.Fragment>
+
+
         );
     }
 }
@@ -22,5 +27,5 @@ function mapDispatchToProps(dispatch) {
 const Connect = connect(
     mapStateToProps,
     mapDispatchToProps
-)(HomePage);
+)(ErrorPage);
 export default Connect;
