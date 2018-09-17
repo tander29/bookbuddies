@@ -2,6 +2,14 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import Header from "./Header";
+import Footer from "./Footer";
+import { Image, Container } from "semantic-ui-react";
+
+import { Login, Register } from "./Authorization"
+import SearchBar from "./SearchBar"
+
+
 
 import BookShelf from './BookShelf.jsx'
 
@@ -9,10 +17,23 @@ import BookShelf from './BookShelf.jsx'
 class HomePage extends React.Component {
     render() {
         return (
-            <React.Fragment>
 
-                <BookShelf></BookShelf>
+ <React.Fragment>
+        <Container>
+            <Header></Header>
+          <BookShelf></BookShelf>
+              <Login />
+                <Register />
+                <SearchBar />
+            <Footer></Footer>
+         </Container>
+
+           
+                
+                
             </React.Fragment>
+
+
         );
     }
 }
