@@ -27,10 +27,6 @@ class HomePage extends React.Component {
                     <SearchBar />
                     <Footer></Footer>
                 </Container>
-
-
-
-
             </React.Fragment>
 
 
