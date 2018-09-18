@@ -41,3 +41,8 @@
 body {
   height: 3000px;
 }
+
+.search {
+  width: 100%;
+  color: black;
+}

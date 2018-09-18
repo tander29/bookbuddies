@@ -10,8 +10,8 @@ import NavBar from "./NavBar";
 import Login from './Login'
 import Register from './Register'
 
-import { Image, Container } from "semantic-ui-react";
-import SearchBar from "./SearchBar"
+import { Container } from "semantic-ui-react";
+
 
 
 
