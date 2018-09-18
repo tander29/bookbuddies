@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import "../App.css";
-import { Icon } from "semantic-ui-react";
+import { } from "semantic-ui-react";
 
 export class SearchBar extends Component {
     state = {
@@ -27,7 +27,7 @@ export class SearchBar extends Component {
     render() {
         return(
             <input
-                className="Search"
+                className="search"
                 type="text"
                 placeholder="Search for books"
                 value={this.state.search}

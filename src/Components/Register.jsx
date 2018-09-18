@@ -47,7 +47,7 @@ class Register extends Component {
     render() {
         return (
             <Card style={{ padding: '1vh' }} fluid >
-                <Card.Header className="profileHeader">Register</Card.Header>
+                <Card.Header className="profileHeader" textAlign='center'><b>Register</b></Card.Header>
                 <input
 
                     className="displayName"
