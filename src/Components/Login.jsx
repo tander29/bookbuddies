@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card } from "semantic-ui-react";
 import { connect } from "react-redux";
+import { login } from '../Redux/ActLoginRegister'
 
 class Login extends Component {
     state = {
@@ -10,6 +11,7 @@ class Login extends Component {
 
     handleSubmit = () => {
         console.log("Hey, you hit the Submit button!")
+        this.props.login()
     }
 
     updateUsername = (event) => {
@@ -65,8 +67,12 @@ const mapStateToProps = state => {
 };
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        login: (username, password) => {
+            dispatch(login(username, password));
 
+        },
+    }
 }
 const Connect = connect(
     mapStateToProps,
