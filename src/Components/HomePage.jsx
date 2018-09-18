@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 
 import Header from "./Header";
 import Footer from "./Footer";
+import Login from './Login'
+import Register from './Register'
 import { Image, Container } from "semantic-ui-react";
-
-import { Login, Register } from "./Authorization"
 import SearchBar from "./SearchBar"
 
 
@@ -18,19 +18,19 @@ class HomePage extends React.Component {
     render() {
         return (
 
- <React.Fragment>
-        <Container>
-            <Header></Header>
-          <BookShelf></BookShelf>
-              <Login />
-                <Register />
-                <SearchBar />
-            <Footer></Footer>
-         </Container>
+            <React.Fragment>
+                <Container>
+                    <Header></Header>
+                    <BookShelf></BookShelf>
+                    <Login />
+                    <Register />
+                    <SearchBar />
+                    <Footer></Footer>
+                </Container>
 
-           
-                
-                
+
+
+
             </React.Fragment>
 
 
