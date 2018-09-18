@@ -30,3 +30,15 @@
 .developers {
   font-weight: bold;
 }
+#Switchbar {
+  width: 295px;
+}
+#feed {
+  display: flex;
+  justify-content: center;
+  
+}
+#menubar {
+  display: flex;
+  justify-content: center;
+}
