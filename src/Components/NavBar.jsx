@@ -6,7 +6,7 @@ export class NavBar extends Component {
   render() {
     
     return (
-      <Menu style={{ marginBottom: '2vh', backgroundColor: "#EDF5E1" }}>
+      <Menu style={{ marginBottom: '2vh', backgroundColor: "#EDF5E1" }} className='stickyMenu'>
         <Menu.Menu>
           <Menu.Item>
             <Button style={{ backgroundColor: '#379683', color: 'white' }}>Profile</Button>
@@ -14,13 +14,16 @@ export class NavBar extends Component {
           </Menu.Item>
         </Menu.Menu>
         <Menu.Menu>
-          <Menu.Item> <Button style={{ backgroundColor: '#379683', color: 'white' }}>Aboot Kwitter</Button>
+          <Menu.Item> <Button style={{ backgroundColor: '#379683', color: 'white' }}>Messages</Button>
             
           </Menu.Item>
         </Menu.Menu>
 
-        <Menu.Item position='center'>
-          <SearchBar></SearchBar>
+        <Menu.Item style={{margin:'auto'}}>
+          <SearchBar>
+          
+          </SearchBar>
+          <Icon name="search"></Icon>
             
         </Menu.Item>
 
