@@ -35,7 +35,7 @@ class Login extends Component {
     render() {
         return (
             <Card style={{ padding: '1vh' }} fluid >
-                <header className="loginheader">Login</header>
+                <Card.Header className="loginheader" textAlign='center'><b>Login</b></Card.Header>
                 <input
                     autoFocus={true}
                     className="username"

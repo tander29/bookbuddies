@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -30,15 +31,35 @@
 .developers {
   font-weight: bold;
 }
+
 #Switchbar {
   width: 295px;
 }
+
 #feed {
   display: flex;
   justify-content: center;
   
 }
+
 #menubar {
   display: flex;
   justify-content: center;
 }
+
+
+.stickyMenu{
+  position:sticky;
+  top:0;
+  z-index: 8;
+}
+
+body {
+  height: 3000px;
+}
+
+.search {
+  width: 100%;
+  color: black;
+}
+

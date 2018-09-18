@@ -6,7 +6,7 @@ export class BookShelf extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <div>Hi Everyone</div>
+                <div>BookShelf</div>
                 <Book></Book>
             </React.Fragment>
         );
