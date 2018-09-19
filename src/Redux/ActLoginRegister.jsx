@@ -2,6 +2,7 @@ import { Types } from './Types.jsx'
 import { push } from 'connected-react-router'
 
 const herokuDatabseURL = "https://intense-mountain-98124.herokuapp.com"
+const local = "localhost:3000"
 
 export const login = (username, password) => dispatch => {
     console.log('login action', 'username', username, 'password:', password)
@@ -18,6 +19,10 @@ export const login = (username, password) => dispatch => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            // dispatch({
+            //     type: Types.LOGIN,
+            //     payload: data
+            // })
             dispatch(push('/bookbuddy/profile'))
         })
     //then need to navigate to profile or main page with below line
