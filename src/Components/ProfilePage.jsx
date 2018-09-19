@@ -13,6 +13,7 @@ import { Menu , Segment } from 'semantic-ui-react'
 import NavBar from './NavBar.jsx';
 import BookShelf from './BookShelf.jsx'
 import "../App.css"
+import Messages from './Messages.jsx'
 
 
 class ProfilePage extends React.Component {
@@ -69,6 +70,7 @@ class ProfilePage extends React.Component {
                         </Menu.Item>
                      </Menu>
                      </div>
+                     <Messages />
               </Grid.Column>
               
             </Grid.Row>
