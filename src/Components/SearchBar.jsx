@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import "../App.css";
-import { Icon } from "semantic-ui-react";
 
 export class SearchBar extends Component {
     state = {
@@ -33,7 +32,6 @@ export class SearchBar extends Component {
                 value={this.state.search}
                 onKeyPress={this.handleSubmit}
                 onChange={this.updateSearch}
-                
             />
         )
     }
