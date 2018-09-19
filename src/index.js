@@ -9,6 +9,7 @@ import HomePage from './Components/HomePage'
 import MainPage from './Components/MainPage'
 import ProfilePage from './Components/ProfilePage'
 import ErrorPage from './Components/ErrorPage'
+import './App.css';
 
 
 

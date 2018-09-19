@@ -5,7 +5,7 @@ import scrumteam1sp from '../images/scrumteam1sp.png';
 class Header extends React.Component {
     render() {
       return (
-        <Container className='headerNav' style={{ backgroundColor:'#05386B' }} fluid>
+        <Container className='headerNav' style={{ backgroundColor:'#222629' }} fluid>
         <Image src={ scrumteam1sp } size='medium' centered />
         
         </Container>
