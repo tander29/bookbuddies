@@ -10,8 +10,8 @@ class Login extends Component {
     }
 
     handleSubmit = () => {
-        console.log("Hey, you hit the Submit button!")
-        this.props.login()
+        console.log("Hey, you hit the Submit button to Log in!")
+        this.props.login(this.state.username, this.state.password)
     }
 
     updateUsername = (event) => {
