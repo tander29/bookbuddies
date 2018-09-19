@@ -10,7 +10,7 @@ import NavBar from "./NavBar";
 import Login from './Login'
 import Register from './Register'
 
-import { Container } from "semantic-ui-react";
+import { Container, Card, Modal, Divider } from "semantic-ui-react";
 
 
 
