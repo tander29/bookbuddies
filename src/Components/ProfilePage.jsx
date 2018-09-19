@@ -10,7 +10,7 @@ import SearchBar from "./SearchBar"
 import Pic from '../images/scrumteam1sp.png';
 import Book from './Book.jsx';
 import { Menu , Segment } from 'semantic-ui-react'
-import Nav from './NavBar.jsx';
+import NavBar from './NavBar.jsx';
 import BookShelf from './BookShelf.jsx'
 import "../App.css"
 
@@ -21,7 +21,7 @@ class ProfilePage extends React.Component {
 
             <div>
                 <Header/>
-              <Nav/>
+              <NavBar />
             <Grid celled='internally'>
             <Grid.Row>
               <Grid.Column width={3}>

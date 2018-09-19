@@ -1,6 +1,6 @@
 import React from "react";
 import { Icon, Card } from 'semantic-ui-react';
-import "../App.css";
+
 
 
 class Footer extends React.Component {
