@@ -4,7 +4,9 @@ import {
 
 
 
-const initialState = {}
+const initialState = {
+    messages: []
+}
 
 export default function (state = initialState, action) {
     switch (action.type) {
