@@ -24,7 +24,7 @@ export const login = (username, password) => dispatch => {
 
 }
 
-
+console.log('update')
 // fetch(heroku + "/likes", postLike)
 // .then(res => res.json())
 // .then(data => {
