@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import Book from "./Book.jsx"
+import Book from "./Book.jsx";
+import { Button, Modal } from "semantic-ui-react";
 
 export class BookShelf extends React.Component {
     render() {
