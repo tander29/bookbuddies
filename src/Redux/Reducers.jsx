@@ -5,8 +5,10 @@ import {
 
 
 const initialState = {
+
     username:null,
-    password:null
+    password:null,
+    messages: []
 }
 
 export default function (state = initialState, action) {
