@@ -1,16 +1,17 @@
 import { Types } from './Types.jsx'
 import { push } from 'connected-react-router'
 
-const herokuDatabseURL = "https://intense-mountain-98124.herokuapp.com"
-const local = "localhost:3000"
+const herokuDatabseURL = "https://warm-bastion-90430.herokuapp.com"
+const test = "https://whispering-cliffs-11189.herokuapp.com"
+const local = "http://127.0.0.1:8000"
 
 export const login = (username, password) => dispatch => {
     console.log('login action', 'username', username, 'password:', password)
 
     const postRequestOptions = {
-        method: "POST",
+        method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: username, password: password })
+
     }
 
     //fetch to back end
@@ -23,7 +24,7 @@ export const login = (username, password) => dispatch => {
             //     type: Types.LOGIN,
             //     payload: data
             // })
-            dispatch(push('/bookbuddy/profile'))
+            // dispatch(push('/bookbuddy/profile'))
         })
     //then need to navigate to profile or main page with below line
 
