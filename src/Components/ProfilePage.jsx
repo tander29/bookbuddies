@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Grid } from 'semantic-ui-react'
+import { Grid, Button } from 'semantic-ui-react'
 import Header from "./Header";
 import Footer from "./Footer";
 import Login from './Login'
@@ -9,7 +9,7 @@ import { Image, Icon, Card } from "semantic-ui-react";
 import SearchBar from "./SearchBar"
 import Pic from '../images/scrumteam1sp.png';
 import Book from './Book.jsx';
-import { Menu , Segment } from 'semantic-ui-react'
+import { Menu , Segment, Rating } from 'semantic-ui-react'
 import Nav from './NavBar.jsx';
 import BookShelf from './BookShelf.jsx'
 import "../App.css"
@@ -19,7 +19,7 @@ class ProfilePage extends React.Component {
     render() {
         return (
 
-            <div>
+            <div id="profilepage">
                 <Header/>
               <Nav/>
             <Grid celled='internally'>
@@ -79,6 +79,10 @@ class ProfilePage extends React.Component {
                     <Segment vertical>UserName:</Segment>
                     <Segment vertical>Location:</Segment>
                     <Segment vertical>Bio:</Segment>
+                    <div id="ratingbox">
+                    <Button>Update Info</Button>
+                    <Rating id="rating" icon='star' size="large" defaultRating={0} maxRating={5} />
+                    </div>
               </Grid.Column>
               <Grid.Column width={10}>
               <div id="feed">
