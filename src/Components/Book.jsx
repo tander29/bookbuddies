@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Card, Modal, TextArea, Rating } from "semantic-ui-react";
+import { Card, Modal, TextArea, Rating, Button, Form, Grid } from "semantic-ui-react";
 class Book extends React.Component {
 
     state = { messageContent: null, modalOpen: false }
@@ -34,20 +34,25 @@ class Book extends React.Component {
         const { modalOpen } = this.state
         return (
             <React.Fragment>
-                <Card style={{ backgroundColor: "#EDF5E1" }}>
+                <Card style={{ backgroundColor:'#474B4F', color:'white', padding: '0.5vh' }}>
+                    
+                    
                     <div>Title of book</div>
                     <div>Author of book</div>
                     <div>book cover image</div>
                     <div> user icon</div>
+
                     <div>Rating goes here:<Rating id="rating" icon='star' size="large" defaultRating={0} maxRating={5} /></div>
 
                     <Modal size='large'
                         closeIcon
                         open={modalOpen} onClose={this.modalSwitchStatus}
-                        trigger={<button onClick={this.modalSwitchStatus}>Send Message</button>}>
-                        <TextArea autoFocus={true} placeholder="Request this book from the user" onChange={this.updateMessageContent}></TextArea>
-                        <button onClick={this.sendMessage}>Send Message</button>
-                        <button onClick={this.modalSwitchStatus}>Close</button>
+                        trigger={<Button onClick={this.modalSwitchStatus} size='small' style={{backgroundColor:'#86C232', color:'white' }}>Send Message</Button>}>
+                        <Form style={{ padding: '1vh', backgroundColor:'#474B4F' }}>
+                        <TextArea autoFocus={true} placeholder="Request this book from the user" onChange={this.updateMessageContent} style={{ marginBottom:'1vh' }}></TextArea>
+                        <Button onClick={this.sendMessage} style={{backgroundColor:'#86C232', color:'white' }} >Send Message</Button>
+                        <Button onClick={this.modalSwitchStatus} floated='right'  >Close</Button>
+                        </Form>
                     </Modal>
 
                 </Card>

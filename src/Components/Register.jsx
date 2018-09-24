@@ -56,8 +56,8 @@ class Register extends Component {
 
     render() {
         return (
-            <Form style={{ padding: '1vh' }}>
-                <p className="profileHeader" style={{ color:'#61892F' }}><b>STILL NEED AN ACCOUNT? &ensp; SIGN UP BELOW.</b></p>
+            <Form style={{ padding: '1vh', margin: 'auto' }}>
+                <p className="profileHeader" style={{ color:'#61892F', textAlign:'center' }}><b>STILL NEED AN ACCOUNT? &ensp; SIGN UP BELOW.</b></p>
                 <Form.Input
 
                     className="displayName"
