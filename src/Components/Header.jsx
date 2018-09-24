@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, Container, Card } from "semantic-ui-react";
+import { Image, Card } from "semantic-ui-react";
 import bookbuddylogo from '../images/bookbuddylogo.png';
 
 class Header extends React.Component {
