@@ -27,7 +27,7 @@ class HomePage extends React.Component {
                 <Container style={{backgroundColor:'#474B4F'}} fluid>
                     <Header></Header>
                     
-                    <Container style={{ paddingTop: '3vh', paddingBottom: '3vh' }}>
+                    <Container style={{ paddingTop: '8vh', paddingBottom: '8vh' }}>
                         <Grid centered>
                             <Grid.Row columns={2}>
                                 <Grid.Column>
@@ -36,7 +36,7 @@ class HomePage extends React.Component {
                                 <Grid.Column textAlign='center'>
                                     
                                         
-                                        <Modal size='tiny'  trigger={<Button style={{backgroundColor:'#86C232', color:'white', marginBottom:'3vh'}}>Login</Button>} closeIcon>
+                                        <Modal size='tiny'  trigger={<Button style={{backgroundColor:'#86C232', color:'white', marginBottom:'5vh'}}>Login</Button>} closeIcon>
                                             <Login   />
                                         </Modal>
                                         
