@@ -14,7 +14,7 @@ export class NavBar extends Component {
           </Menu.Item>
         </Menu.Menu>
         <Menu.Menu>
-          <Menu.Item> <Button style={{ backgroundColor: '#86C232', color: 'white' }}>Messages</Button>
+          <Menu.Item> <Button style={{ backgroundColor: '#86C232', color: 'white' }}>Main Page</Button>
             
           </Menu.Item>
         </Menu.Menu>
