@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Card } from "semantic-ui-react";
+import { Card, Form, Message } from "semantic-ui-react";
 import { connect } from "react-redux";
+import { register } from '../Redux/ActLoginRegister'
 
 class Register extends Component {
     state = {
@@ -12,6 +13,15 @@ class Register extends Component {
 
     handleSubmit = () => {
         console.log("Hey, you clicked the Submit button!")
+        if (!this.state.password) { return }
+        console.log("the password field is not blank/false!")
+
+        if (this.state.password === this.state.reenterPassword) {
+            console.log("the password and reenter pass equal each other")
+            this.props.register(this.state.displayName, this.state.username, this.state.password)
+            return
+        }
+        console.log("!!!! the password and reenter pass do not equal each other")
     }
 
     updateDisplayName = (event) => {
@@ -46,9 +56,9 @@ class Register extends Component {
 
     render() {
         return (
-            <Card style={{ padding: '1vh' }} fluid >
-                <Card.Header className="profileHeader" textAlign='center'><b>Register</b></Card.Header>
-                <input
+            <Form style={{ padding: '1vh' }}>
+                <p className="profileHeader" style={{ color:'#61892F' }}><b>STILL NEED AN ACCOUNT? &ensp; SIGN UP BELOW.</b></p>
+                <Form.Input
 
                     className="displayName"
                     placeholder="Display Name"
@@ -57,7 +67,7 @@ class Register extends Component {
                     value={this.state.displayName}
                     onChange={this.updateDisplayName}
                 />
-                <input
+                <Form.Input
                     className="username"
                     placeholder="Username"
                     type="text"
@@ -65,7 +75,7 @@ class Register extends Component {
                     value={this.state.username}
                     onChange={this.updateUsername}
                 />
-                <input
+                <Form.Input
                     className="password"
                     placeholder="Password"
                     type="password"
@@ -73,17 +83,17 @@ class Register extends Component {
                     value={this.state.password}
                     onChange={this.updatePassword}
                 />
-                <input
+                <Form.Input
                     className="reenterPassword"
-                    placeholder="ReEnter Password"
+                    placeholder="Re-Enter Password"
                     type="password"
                     name="reenterPassword"
                     value={this.state.reenterPassword}
                     onChange={this.updateReenterPassword}
                     onKeyPress={this.handleEnter}
                 />
-                <button className="submit" onClick={this.handleSubmit} >Submit</button>
-            </Card>
+                <Form.Button style={{ backgroundColor:'#86C232', color:'white' }} className="submit" onClick={this.handleSubmit} >Sign Up</Form.Button>
+            </Form>
         );
     }
 }
@@ -94,7 +104,11 @@ const mapStateToProps = state => {
 };
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        register: (displayname, username, password) => {
+            dispatch(register(displayname, username, password))
+        }
+    }
 
 }
 const Connect = connect(

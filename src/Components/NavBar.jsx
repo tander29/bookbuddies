@@ -6,15 +6,15 @@ export class NavBar extends Component {
   render() {
     
     return (
-      <Menu style={{ marginBottom: '2vh', backgroundColor: "#EDF5E1" }} className='stickyMenu' fluid>
+      <Menu style={{ backgroundColor: "#474B4F", margin:'0' }} className='stickyMenu' fluid>
         <Menu.Menu>
           <Menu.Item>
-            <Button style={{ backgroundColor: '#379683', color: 'white' }}>Profile</Button>
+            <Button style={{ backgroundColor: '#86C232', color: 'white' }}>Profile</Button>
             
           </Menu.Item>
         </Menu.Menu>
         <Menu.Menu>
-          <Menu.Item> <Button style={{ backgroundColor: '#379683', color: 'white' }}>Messages</Button>
+          <Menu.Item> <Button style={{ backgroundColor: '#86C232', color: 'white' }}>Messages</Button>
             
           </Menu.Item>
         </Menu.Menu>
@@ -27,7 +27,7 @@ export class NavBar extends Component {
             
         </Menu.Menu>
 
-        <Menu.Item position='right'><Button onClick={this.props.getLogout} style={{ backgroundColor: '#379683', color: 'white' }}>Logout</Button></Menu.Item>
+        <Menu.Item position='right'><Button onClick={this.props.getLogout} style={{ backgroundColor: '#86C232', color: 'white' }}>Logout</Button></Menu.Item>
       </Menu>
     )
   }

@@ -4,18 +4,16 @@ import { connect } from "react-redux";
 
 import Header from "./Header";
 import Footer from "./Footer";
-
 import NavBar from "./NavBar";
-
 import Login from './Login'
 import Register from './Register'
-
-import { Container } from "semantic-ui-react";
-
-
-
-
 import BookShelf from './BookShelf.jsx'
+
+import { Container, Card, Modal, Divider, Grid, Button } from "semantic-ui-react";
+
+
+
+
 
 
 class HomePage extends React.Component {
@@ -26,12 +24,31 @@ class HomePage extends React.Component {
           
 
             <React.Fragment>
-                <Container>
+                <Container style={{backgroundColor:'#474B4F'}} fluid>
                     <Header></Header>
-                    <NavBar></NavBar>
-                    <BookShelf></BookShelf>
-                    <Login />
-                    <Register />                    
+                    
+                    <Container style={{ paddingTop: '3vh', paddingBottom: '3vh' }}>
+                        <Grid centered>
+                            <Grid.Row columns={2}>
+                                <Grid.Column>
+                                    <BookShelf></BookShelf>
+                                </Grid.Column>
+                                <Grid.Column textAlign='center'>
+                                    
+                                        
+                                        <Modal size='tiny'  trigger={<Button style={{backgroundColor:'#86C232', color:'white', marginBottom:'3vh'}}>Login</Button>} closeIcon>
+                                            <Login   />
+                                        </Modal>
+                                        
+                                        
+                                        <Register />
+                                        
+                                        
+                                    
+                                </Grid.Column>
+                            </Grid.Row>  
+                        </Grid>      
+                     </Container>           
                     <Footer></Footer>
                 </Container>
             </React.Fragment>
