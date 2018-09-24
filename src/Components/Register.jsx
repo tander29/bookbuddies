@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card, Form, Message } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { register } from '../Redux/ActLoginRegister'
+import { register } from '../Redux/Actions/ActLoginRegister'
 
 
 const initialState = {

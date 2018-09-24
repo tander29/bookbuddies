@@ -1,17 +1,15 @@
 import { Types } from '../Types'
 import { push } from 'connected-react-router'
 
-const herokuDatabseURL = "https://warm-bastion-90430.herokuapp.com"
-const test = "https://whispering-cliffs-11189.herokuapp.com"
-const local = "http://127.0.0.1:8000"
+const herokuDatabseURL = "https://intense-mountain-98124.herokuapp.com"
 
 export const login = (username, password) => dispatch => {
     console.log('login action', 'username', username, 'password:', password)
 
     const postRequestOptions = {
-        method: "GET",
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-
+        body: JSON.stringify({ username: username, password: password })
     }
 
     //fetch to back end
@@ -21,18 +19,27 @@ export const login = (username, password) => dispatch => {
         .then(data => {
             console.log(data)
             dispatch({
-                type: Types.LOGIN,
-                username: username,
-                password: password
-            })
+            type: Types.LOGIN,
+            username: username,
+            password: password
         })
-    //then need to navigate to profile or main page with below line
-
-    dispatch(push('/bookbuddy/profile'))
+    })        
+        //then need to navigate to profile or main page with below line
+        
+        dispatch(push('/bookbuddy/profile'))
 }
 
 console.log('update')
-
+// fetch(heroku + "/likes", postLike)
+// .then(res => res.json())
+// .then(data => {
+//   dispatch({
+//     type: LIKE,
+//     messageId: data.like.messageId
+//   })
+//   dispatch(getMessages())
+// })
+// };
 
 export const register = (displayname, username, password) => dispatch => {
     console.log('register action', 'displayname', displayname, 'username', username, 'password:', password)
