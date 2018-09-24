@@ -1,31 +1,33 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Card, Modal, TextArea, Rating } from "semantic-ui-react";
+import { sendMessage } from "../Redux/Actions/ActSendMessage"
 class Book extends React.Component {
 
     state = { messageContent: null, modalOpen: false }
 
     // open or close modal based on current state
     modalSwitchStatus = () => {
-        console.log(this.state.modalOpen)
         this.setState({ modalOpen: !this.state.modalOpen })
     }
 
     updateMessageContent = (event) => {
-
-
-        console.log(event.target.value)
-
         this.setState({ messageContent: event.target.value })
     }
 
     sendMessage = () => {
         if (this.state.messageContent) {
-            console.log('this is the message you sent', this.state.messageContent)
+
             this.modalSwitchStatus()
+
+            this.props.sendMessage(this.state.messageContent)
             this.setState({ messageContent: null })
         }
 
+    }
+
+    handleEnter = (event) => {
+        event.key === 'Enter' ? this.sendMessage() : null
     }
 
 
@@ -44,9 +46,9 @@ class Book extends React.Component {
                     <Modal size='large'
                         closeIcon
                         open={modalOpen} onClose={this.modalSwitchStatus}
-                        trigger={<button onClick={this.modalSwitchStatus}>Send Message</button>}>
-                        <TextArea autoFocus={true} placeholder="Request this book from the user" onChange={this.updateMessageContent}></TextArea>
-                        <button onClick={this.sendMessage}>Send Message</button>
+                        trigger={<button onClick={this.modalSwitchStatus}>Request Information</button>}>
+                        <TextArea autoFocus={true} onKeyPress={this.handleEnter} placeholder="Request this book from the user" onChange={this.updateMessageContent}></TextArea>
+                        <button onClick={this.sendMessage} >Send Message to Owner</button>
                         <button onClick={this.modalSwitchStatus}>Close</button>
                     </Modal>
 
@@ -57,11 +59,15 @@ class Book extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {}
+    return { ...state }
 };
 
 function mapDispatchToProps(dispatch) {
-    return {}
+    return {
+        sendMessage: (messageItem) => {
+            dispatch(sendMessage(messageItem))
+        }
+    }
 
 }
 
@@ -70,3 +76,4 @@ const Connect = connect(
     mapDispatchToProps
 )(Book);
 export default Connect;
+

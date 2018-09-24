@@ -1,5 +1,4 @@
 import { Types } from '../Types'
-import { push } from 'connected-react-router'
 const herokuDatabseURL = "https://intense-mountain-98124.herokuapp.com"
 
 export const getBooks = () => dispatch => {
