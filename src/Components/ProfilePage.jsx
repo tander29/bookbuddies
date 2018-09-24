@@ -1,30 +1,49 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Grid } from 'semantic-ui-react'
+import { Grid, Button, Modal } from 'semantic-ui-react'
 import Header from "./Header";
 import Footer from "./Footer";
 import Login from './Login'
 import Register from './Register'
-import { Image, Icon, Card } from "semantic-ui-react";
+import { Image, Icon, Card, Input } from "semantic-ui-react";
 import SearchBar from "./SearchBar"
 import Pic from '../images/scrumteam1sp.png';
 import Book from './Book.jsx';
-import { Menu, Segment } from 'semantic-ui-react'
+import { Menu, Segment, Rating } from 'semantic-ui-react'
 import NavBar from './NavBar.jsx';
 import BookShelf from './BookShelf.jsx'
 import "../App.css"
 import Messages from './Messages.jsx'
 
 
+
 class ProfilePage extends React.Component {
 
-    handleItemClick = () => {
-        console.log("I was clicked!")
+    state = {
+        messageContent: null,
+        modalOpen: false,
+        name: '',
+        username: '',
+        location: '',
+        bio: ''
     }
+
+    modalSwitchStatus = () => {
+        console.log(this.state.modalOpen)
+        this.setState({ modalOpen: !this.state.modalOpen })
+    }
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+
+
+    }
+
+
     render() {
+        const { modalOpen } = this.state
         return (
 
-            <div>
+            <div id="profilepage">
                 <Header />
                 <NavBar />
                 <Grid celled='internally'>
@@ -81,10 +100,32 @@ class ProfilePage extends React.Component {
 
                     <Grid.Row>
                         <Grid.Column width={3}>
-                            <Segment vertical>Name:</Segment>
-                            <Segment vertical>UserName:</Segment>
-                            <Segment vertical>Location:</Segment>
-                            <Segment vertical>Bio:</Segment>
+                            <Segment vertical>Name: {this.state.name}</Segment>
+                            <Segment vertical>UserName: {this.state.username}</Segment>
+                            <Segment vertical>Location:{this.state.location}</Segment>
+                            <Segment vertical>Bio:{this.state.bio}</Segment>
+                            <div id="ratingbox">
+                                <Modal closeIcon
+                                    open={modalOpen} onClose={this.modalSwitchStatus} trigger={<Button onClick={this.modalSwitchStatus}>Update Info</Button>}>
+                                    <Modal.Header>Update Your Info</Modal.Header>
+                                    <Modal.Content image>
+
+                                        <Modal.Description>
+                                            <Header>Profile Info:</Header>
+                                            <Segment vertical>Name: <input onChange={this.handleChange} name='name' /></Segment>
+                                            <Segment vertical>UserName: <input onChange={this.handleChange} name='username' /></Segment>
+                                            <Segment vertical>Location: <input onChange={this.handleChange} name='location' /></Segment>
+                                            <Segment vertical>Bio: <input onChange={this.handleChange} name='bio' /></Segment>
+                                            <Segment vertical>Rating:<Rating id="rating" icon='star' size="large" defaultRating={0} maxRating={5} /></Segment>
+
+                                        </Modal.Description>
+                                    </Modal.Content>
+                                    <button onClick={this.modalSwitchStatus}>Close</button>
+                                    <button >Update</button>
+                                </Modal>
+
+                                <Rating id="rating" icon='star' size="large" defaultRating={0} maxRating={5} />
+                            </div>
                         </Grid.Column>
                         <Grid.Column width={10}>
                             <div id="feed">

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Card, Modal, TextArea } from "semantic-ui-react";
+import { Card, Modal, TextArea, Rating } from "semantic-ui-react";
 class Book extends React.Component {
 
     state = { messageContent: null, modalOpen: false }
@@ -39,7 +39,7 @@ class Book extends React.Component {
                     <div>Author of book</div>
                     <div>book cover image</div>
                     <div> user icon</div>
-                    <div>Rating goes here</div>
+                    <div>Rating goes here:<Rating id="rating" icon='star' size="large" defaultRating={0} maxRating={5} /></div>
 
                     <Modal size='large'
                         closeIcon

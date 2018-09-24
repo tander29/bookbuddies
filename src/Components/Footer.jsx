@@ -14,7 +14,7 @@ class Footer extends React.Component {
                 <p className='developers'>Kyle Meiklejohn</p>
                 <p className='developers'>Travis Meikleanderson</p>
                 <p className='developers'>David Meiklestewart</p>
-                <p className='developers'>Adrian Meikleluley</p>
+                <p className='developers'>Adrian Luley</p>
              
                 <p className="address">
                 47 S Meridian St, Indianapolis, IN 46204
