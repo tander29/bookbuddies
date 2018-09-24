@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Form } from "semantic-ui-react";
+import { Container, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { login } from '../Redux/ActLoginRegister'
 
@@ -34,8 +34,9 @@ class Login extends Component {
 
     render() {
         return (
-            <Form style={{ padding: '1vh', backgroundColor:'#474B4F' }} fluid >
-                <p className="loginheader" textAlign='center'><b>Login</b></p>
+            <Container textAlign='center'>
+            <Form style={{ padding: '2vh', backgroundColor:'#474B4F' }}>
+                <p className="loginheader" style={{ color:'#61892F' }}><b>Login</b></p>
                 <Form.Input
                     autoFocus={true}
                     className="username"
@@ -54,8 +55,9 @@ class Login extends Component {
                     onChange={this.updatePassword}
                     onKeyPress={this.handleEnter}
                 />
-                <Form.Button className="submit" style={{backgroundColor:'#86C232' }} onClick={this.handleSubmit}>Submit</Form.Button>
+                <Form.Button className="submit" style={{backgroundColor:'#86C232', color:'white' }} onClick={this.handleSubmit}>Submit</Form.Button>
             </Form>
+            </Container>
         )
     }
 }
