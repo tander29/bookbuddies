@@ -20,36 +20,19 @@ export const login = (username, password) => dispatch => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-<<<<<<< HEAD
-            // dispatch({
-            //     type: Types.LOGIN,
-            //     payload: data
-            // })
-            // dispatch(push('/bookbuddy/profile'))
-=======
             dispatch({
-            type: Types.LOGIN,
-            username: username,
-            password: password
->>>>>>> dev
+                type: Types.LOGIN,
+                username: username,
+                password: password
+            })
         })
-    })        
-        //then need to navigate to profile or main page with below line
-        
-        dispatch(push('/bookbuddy/profile'))
+    //then need to navigate to profile or main page with below line
+
+    dispatch(push('/bookbuddy/profile'))
 }
 
 console.log('update')
-// fetch(heroku + "/likes", postLike)
-// .then(res => res.json())
-// .then(data => {
-//   dispatch({
-//     type: LIKE,
-//     messageId: data.like.messageId
-//   })
-//   dispatch(getMessages())
-// })
-// };
+
 
 export const register = (displayname, username, password) => dispatch => {
     console.log('register action', 'displayname', displayname, 'username', username, 'password:', password)

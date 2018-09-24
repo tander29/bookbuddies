@@ -34,10 +34,11 @@ class Login extends Component {
 
     render() {
         return (
-            <Form style={{ padding: '1vh', backgroundColor:'#474B4F' }} fluid >
+            <Form style={{ padding: '1vh', backgroundColor: '#474B4F' }} fluid >
                 <p className="loginheader" textAlign='center'><b>Login</b></p>
                 <Form.Input
                     autoFocus={true}
+                    autocomplete={false}
                     className="username"
                     placeholder="Username"
                     type="text"
@@ -46,6 +47,7 @@ class Login extends Component {
                     onChange={this.updateUsername}
                 />
                 <Form.Input
+                    autocomplete={false}
                     className="password"
                     placeholder="Password"
                     type="password"
@@ -54,7 +56,7 @@ class Login extends Component {
                     onChange={this.updatePassword}
                     onKeyPress={this.handleEnter}
                 />
-                <Form.Button className="submit" style={{backgroundColor:'#86C232' }} onClick={this.handleSubmit}>Submit</Form.Button>
+                <Form.Button className="submit" style={{ backgroundColor: '#86C232' }} onClick={this.handleSubmit}>Submit</Form.Button>
             </Form>
         )
     }
