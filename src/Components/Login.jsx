@@ -3,32 +3,31 @@ import { Card, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { login } from '../Redux/Actions/ActLoginRegister'
 
+const initialState = {
+    username: "",
+    password: ""
+}
 class Login extends Component {
     state = {
-        username: "",
-        password: ""
+        ...initialState
     }
 
     handleSubmit = () => {
         console.log("Hey, you hit the Submit button to Log in!")
         this.props.login(this.state.username, this.state.password)
+        this.setState({ ...initialState })
     }
 
-    updateUsername = (event) => {
-        this.setState({
-            username: event.target.value
-        })
-    }
 
-    updatePassword = (event) => {
-        this.setState({
-            password: event.target.value
-        })
+
+    updateInput = (event) => {
+        console.log(this.state)
+        this.setState({ [event.target.name]: event.target.value })
     }
 
     handleEnter = (event) => {
         if (event.key === 'Enter') {
-            console.log("Hey, you hit the Enter key!")
+            this.handleSubmit()
         }
     }
 
@@ -38,22 +37,21 @@ class Login extends Component {
                 <p className="loginheader" textAlign='center'><b>Login</b></p>
                 <Form.Input
                     autoFocus={true}
-                    autocomplete={false}
                     className="username"
                     placeholder="Username"
                     type="text"
                     value={this.state.username}
                     name="username"
-                    onChange={this.updateUsername}
+                    onChange={this.updateInput}
                 />
                 <Form.Input
-                    autocomplete={false}
+
                     className="password"
                     placeholder="Password"
                     type="password"
                     value={this.state.password}
                     name="password"
-                    onChange={this.updatePassword}
+                    onChange={this.updateInput}
                     onKeyPress={this.handleEnter}
                 />
                 <Form.Button className="submit" style={{ backgroundColor: '#86C232' }} onClick={this.handleSubmit}>Submit</Form.Button>

@@ -69,7 +69,7 @@ class Register extends Component {
                     name="displayName"
                     value={this.state.displayName}
                     onChange={this.updateUserInput}
-                    on
+
                 />
                 <Form.Input
                     className="username"
@@ -81,6 +81,7 @@ class Register extends Component {
 
                 />
                 <Form.Input
+
                     className="password"
                     placeholder="Password"
                     type="password"
@@ -90,6 +91,7 @@ class Register extends Component {
 
                 />
                 <Form.Input
+
                     className="reenterPassword"
                     placeholder="Re-Enter Password"
                     type="password"
