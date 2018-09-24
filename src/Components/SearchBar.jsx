@@ -33,7 +33,6 @@ export class SearchBar extends Component {
                 value={this.state.search}
                 onKeyPress={this.handleSubmit}
                 onChange={this.updateSearch}
-                
             />
         )
     }

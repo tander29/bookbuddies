@@ -1,12 +1,10 @@
 .App {
   text-align: center;
+  height: 100%;
   
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+
 
 .App-header {
   background-color: #222;
@@ -23,13 +21,19 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+
 
 .developers {
   font-weight: bold;
+  color: white;
+}
+
+.teamName {
+  color: white;
+}
+
+.address{
+  color: white;
 }
 
 #Switchbar {
@@ -42,6 +46,12 @@
   
 }
 
+#rating {
+  float: right;
+}
+#ratingbox {
+  margin: 5px;
+}
 #menubar {
   display: flex;
   justify-content: center;
@@ -54,9 +64,7 @@
   z-index: 8;
 }
 
-body {
-  height: 3000px;
-}
+
 
 .search {
   width: 100%;

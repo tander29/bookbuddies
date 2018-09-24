@@ -24,25 +24,27 @@ class HomePage extends React.Component {
           
 
             <React.Fragment>
-                <Container fluid>
+                <Container style={{backgroundColor:'#474B4F'}} fluid>
                     <Header></Header>
-                    <NavBar></NavBar>
-                    <Container>
+                    
+                    <Container style={{ paddingTop: '8vh', paddingBottom: '8vh' }}>
                         <Grid centered>
                             <Grid.Row columns={2}>
                                 <Grid.Column>
                                     <BookShelf></BookShelf>
                                 </Grid.Column>
-                                <Grid.Column>
-                                    <Card style={{ backgroundColor:"#EDF5E1"}} centered>
-                                        <Modal size='tiny' trigger={<Button style={{backgroundColor:'#379683', color:'white'}}>Login</Button>} closeIcon>
-                                            <Login  />
+                                <Grid.Column textAlign='center'>
+                                    
+                                        
+                                        <Modal size='tiny'  trigger={<Button style={{backgroundColor:'#86C232', color:'white', marginBottom:'5vh'}}>Login</Button>} closeIcon>
+                                            <Login   />
                                         </Modal>
-                                        <Divider horizontal >Or</Divider>
-                                        <Modal size='tiny' trigger={<Button style={{backgroundColor:'#379683', color:'white'}}>Register</Button>} closeIcon>
-                                            <Register test={this.props.register} />
-                                        </Modal>
-                                    </Card>
+                                        
+                                        
+                                        <Register />
+                                        
+                                        
+                                    
                                 </Grid.Column>
                             </Grid.Row>  
                         </Grid>      

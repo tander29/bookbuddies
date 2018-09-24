@@ -16,21 +16,30 @@ export const login = (username, password) => dispatch => {
 
     //fetch to back end
 
-    fetch(herokuDatabseURL + "/login", postRequestOptions)
+    fetch("http://localhost:8000" + "/authorize/login", postRequestOptions)
         .then(res => res.json())
         .then(data => {
             console.log(data)
+<<<<<<< HEAD
             // dispatch({
             //     type: Types.LOGIN,
             //     payload: data
             // })
             // dispatch(push('/bookbuddy/profile'))
+=======
+            dispatch({
+            type: Types.LOGIN,
+            username: username,
+            password: password
+>>>>>>> dev
         })
-    //then need to navigate to profile or main page with below line
-
+    })        
+        //then need to navigate to profile or main page with below line
+        
+        dispatch(push('/bookbuddy/profile'))
 }
 
-
+console.log('update')
 // fetch(heroku + "/likes", postLike)
 // .then(res => res.json())
 // .then(data => {
