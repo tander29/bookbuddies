@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Form, Message } from "semantic-ui-react";
+import { Form, Message } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { register } from '../Redux/Actions/ActLoginRegister'
 
