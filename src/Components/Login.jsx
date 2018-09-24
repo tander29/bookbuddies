@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { login } from '../Redux/ActLoginRegister'
+import { login } from '../Redux/Actions/ActLoginRegister'
 
 class Login extends Component {
     state = {
