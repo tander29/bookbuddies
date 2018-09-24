@@ -3,5 +3,7 @@ export const Types = {
     LOGOUT: 'LOGOUT',
     REGISTER: 'REGISTER',
     BOOKSHELF: 'BOOKSHELF',
-    BOOKS: 'BOOKS'
+    BOOKS: 'BOOKS',
+    TO_PROFILE: 'TO_PROFILE',
+    TO_MAIN: 'TO_MAIN'
 }
