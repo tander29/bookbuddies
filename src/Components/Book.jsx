@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 
 import { sendMessage } from "../Redux/Actions/ActSendMessage"
 
-import { Card, Modal, TextArea, Rating, Button, Form, Grid } from "semantic-ui-react";
-
+import { Card, Modal, TextArea, Rating, Button, Form, Grid, Image, Icon } from "semantic-ui-react";
+import bookbuddyicon from '../images/bookbuddyicon.png';
 class Book extends React.Component {
 
     state = { messageContent: null, modalOpen: false }
@@ -40,22 +40,28 @@ class Book extends React.Component {
         return (
             <React.Fragment>
                 <Card style={{ backgroundColor:'#474B4F', color:'white', padding: '0.5vh' }}>
-                    <Grid celled>
+                    <Grid celled='internally' centered>
                         <Grid.Row>
                             <Grid.Column width={8}>
-                                <div>Title of book</div>
-                                <div>Author of book</div>
+                                <Grid>
+                                <Grid.Row textAlign='left'>
+                                    <div>Title: &nbsp;Pickle-Chiffon Pie</div>
+                                </Grid.Row>
+                                <Grid.Row>
+                                    <div>By: &nbsp; Jolly Roger Bradfield</div>
+                                </Grid.Row>
+                                </Grid>
                             </Grid.Column>
-                            <Grid.Column width={8}>
-                                <div>book cover image</div>
+                            <Grid.Column width={7} stetched='true'>
+                                <Image src={bookbuddyicon} />
                             </Grid.Column>
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column width={3}>
-                                <div> user icon</div>
+                                <Icon name='user'></Icon>
                             </Grid.Column>
                             <Grid.Column width={13}>                         
-                                <div>Rating goes here:<Rating id="rating" icon='star' size="large" defaultRating={0} maxRating={5} /></div>
+                                <div>User Rating:<Rating id="rating" icon='star' size="large" defaultRating={0} maxRating={5} /></div>
                             </Grid.Column>
                         </Grid.Row>
                         </Grid>
