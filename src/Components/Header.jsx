@@ -6,7 +6,7 @@ class Header extends React.Component {
     render() {
       return (
         <Card className='headerNav' style={{ backgroundColor:'#222629', margin: '0' }} fluid>
-        <Image style={{ backgroundColor:'white' }} src={ bookbuddylogo } size='medium' centered />
+        <Image style={{ backgroundColor:'white' }} src={ bookbuddylogo } id="headerimg" centered />
         
         </Card>
         

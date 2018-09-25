@@ -24,18 +24,31 @@ class HomePage extends React.Component {
           
 
             <React.Fragment>
-                <Container style={{backgroundColor:'#474B4F'}} fluid>
+                <Container style={{backgroundColor:'#474B4F'}} fluid id="homepagecontainer">
                     <Header></Header>
                     
-                    <Container style={{ paddingTop: '8vh', paddingBottom: '8vh' }}>
-                        <Grid centered>
+                    <Container >
+                       
+                        <Grid centered >
                             <Grid.Row columns={2}>
-                                <Grid.Column>
-                                    <BookShelf></BookShelf>
+                                <Grid.Column id="homepageinfo">
+                                <Grid divided='vertically'>
+                                    <Grid.Row columns={1}>
+                                    <Grid.Column>
+                                        <div id="blah">
+                                       <Image src= {Backgroundinfo} />
+                                       </div>
+                                    </Grid.Column>
+                              
+                                    </Grid.Row>
+                                </Grid>
+                                
                                 </Grid.Column>
-                                <Grid.Column textAlign='center'>
+                               
+                                <Grid.Column columns={2} id="divider"  textAlign='center'>
                                     
-                                        
+
+                                    <div id="homepageregister">
                                         <Modal size='tiny'  trigger={<Button style={{backgroundColor:'#86C232', color:'white', marginBottom:'5vh'}}>Login</Button>} closeIcon>
                                             <Login   />
                                         </Modal>
@@ -43,7 +56,7 @@ class HomePage extends React.Component {
                                         
                                         <Register />
                                         
-                                        
+                                        </div>
                                     
                                 </Grid.Column>
                             </Grid.Row>  
