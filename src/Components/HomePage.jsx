@@ -4,12 +4,12 @@ import { connect } from "react-redux";
 
 import Header from "./Header";
 import Footer from "./Footer";
-import NavBar from "./NavBar";
+
 import Login from './Login'
 import Register from './Register'
 import BookShelf from './BookShelf.jsx'
-import Backgroundinfo from '../images/BookBuddiesinfo.jpg'
-import { Container, Modal, Divider, Grid, Button, Image } from "semantic-ui-react";
+
+import { Container, Modal, Grid, Button } from "semantic-ui-react";
 
 
 
