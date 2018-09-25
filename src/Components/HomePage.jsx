@@ -4,17 +4,9 @@ import { connect } from "react-redux";
 import BookBuddiesinfo from '../images/BookBuddiesinfo.jpg'
 import Header from "./Header";
 import Footer from "./Footer";
-
 import Login from './Login'
 import Register from './Register'
-import BookShelf from './BookShelf.jsx'
-
 import { Container, Modal, Grid, Button, Image } from "semantic-ui-react";
-
-
-
-
-
 
 class HomePage extends React.Component {
     render() {
