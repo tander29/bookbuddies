@@ -6,7 +6,7 @@ import { Button, Modal, Grid} from "semantic-ui-react";
 export class BookShelf extends React.Component {
     render() {
         return (
-            <Grid columns={3} stackable style={{ padding:'auto' }}>
+            <Grid columns={3} stackable>
             
                 <Grid.Row>
                     <Grid.Column>
