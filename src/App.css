@@ -21,7 +21,10 @@
   font-size: large;
 }
 
-
+#headerimg {
+  width: 500px;
+  height: 200px;
+}
 
 .developers {
   font-weight: bold;
@@ -65,10 +68,40 @@
 }
 
 
-
 .search {
   width: 100%;
   color: black;
+}
+#homepagecontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+  
+}
+#homepageinfo {
+  position: absolute;
+  right: 70%;
+  display: flex;
+  height: 375px;
+  
+  
+}
+#homepageregister {
+  position: relative;
+  left:70%;
+}
+
+#blah {
+ height: 500px;
+ width: 800px;
+  border: 2px solid black;
+  position: relative;
+  right: 50px;
+  
+}
+#divider {
+  width: 10px;
 }
 
 .bookStyling {
