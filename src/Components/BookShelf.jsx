@@ -9,6 +9,8 @@ export class BookShelf extends React.Component {
             <React.Fragment>
                 <div>BookShelf</div>
                 <Book></Book>
+                <Book></Book>
+                <Book></Book>
             </React.Fragment>
         );
     }
