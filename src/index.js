@@ -7,9 +7,10 @@ import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router'
 import HomePage from './Components/HomePage'
 import MainPage from './Components/MainPage'
-import ProfilePage from './Components/ProfilePage'
+import ProfilePage from './Components/ProfilePage.jsx'
 import ErrorPage from './Components/ErrorPage'
 import './App.css';
+
 
 
 

@@ -8,8 +8,8 @@ import Footer from "./Footer";
 import Login from './Login'
 import Register from './Register'
 import BookShelf from './BookShelf.jsx'
-
-import { Container, Modal, Grid, Button } from "semantic-ui-react";
+import Backgroundinfo from '../images/BookBuddiesinfo.jpg';
+import { Container, Modal, Grid, Button, Image } from "semantic-ui-react";
 
 
 
