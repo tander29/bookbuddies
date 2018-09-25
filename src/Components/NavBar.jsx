@@ -21,6 +21,12 @@ export class NavBar extends Component {
             
           </Menu.Item>
         </Menu.Menu>
+        <Menu.Menu>
+          <Menu.Item>
+            <Button  style={{ backgroundColor: '#86C232', color: 'white' }}><Icon name='plus' corner></Icon>Add Book</Button>
+          </Menu.Item>
+        </Menu.Menu>
+
 
         <Menu.Menu style={{margin:'auto'}}>
           <SearchBar>
