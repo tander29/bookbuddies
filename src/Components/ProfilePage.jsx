@@ -3,17 +3,13 @@ import { connect } from "react-redux";
 import { Grid, Button, Modal } from 'semantic-ui-react'
 import Header from "./Header";
 import Footer from "./Footer";
-import Login from './Login'
-import Register from './Register'
-import { Image, Icon, Card, Input } from "semantic-ui-react";
-import SearchBar from "./SearchBar"
-import Pic from '../images/scrumteam1sp.png';
-import Book from './Book.jsx';
+import { Image, Icon, Card } from "semantic-ui-react";
+import bookbuddyicon from '../images/bookbuddyicon.png';
 import { Menu, Segment, Rating } from 'semantic-ui-react'
 import NavBar from './NavBar.jsx';
 import BookShelf from './BookShelf.jsx'
 import "../App.css"
-import Messages from './Messages.jsx'
+import MessageBoard from './MessageBoard.jsx'
 import { Switch, Route, Link } from 'react-router-dom'
 
 
@@ -78,7 +74,7 @@ class ProfilePage extends React.Component {
                     <Grid.Row>
                         <Grid.Column width={3}>
                             <Card>
-                                <Image src={Pic} />
+                                <Image src={bookbuddyicon} />
                                 <Card.Content>
                                     <Card.Header>Matthew</Card.Header>
                                     <Card.Meta>
@@ -161,7 +157,7 @@ class ProfilePage extends React.Component {
                         </Grid.Column>
                         <Grid.Column width={10}>
                             <div id="feed">
-                                <Messages />
+                                <MessageBoard />
                             </div>
                         </Grid.Column>
 
