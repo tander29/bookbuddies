@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Card, Grid, Button, Modal, Divider } from "semantic-ui-react";
+import { Card, Grid, Button, Modal, Divider, Container } from "semantic-ui-react";
 
 class Messages extends Component {
     handleEnter = (event) => {
@@ -12,8 +12,9 @@ class Messages extends Component {
     render() {
         return(
             <React.Fragment>
+                <Container>
                 <Card className="messages" style={{ padding: '1vh', backgroundColor:'#474B4F' }} >
-                    <Grid>
+                    <Grid celled>
                         <Grid.Row columns={2} >
                             <Grid.Column textAlign='left' >Message Sender</Grid.Column>
                             <Grid.Column textAlign='right' >Time Stamp</Grid.Column>
@@ -37,6 +38,7 @@ class Messages extends Component {
                         </Grid.Row>
                     </Grid>
                 </Card>
+                </Container>
             </React.Fragment>
         )
     }
