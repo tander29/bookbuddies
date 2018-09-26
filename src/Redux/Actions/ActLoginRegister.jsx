@@ -1,47 +1,57 @@
-import { Types } from '../Types'
-import { push } from 'connected-react-router'
-
-const herokuDatabseURL = "https://intense-mountain-98124.herokuapp.com"
+import { Types, heroku } from "../Types";
+import { push } from "connected-react-router";
 
 export const login = (username, password) => dispatch => {
+  console.log("attempt", username, password);
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username: username, password: password })
+  };
 
-
-    const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username: username, password: password })
-    }
-
-    fetch("http://localhost:8000" + "/authorize/login", requestOptions)
-        .then(res => res.json())
-        .then(data => {
-
-            dispatch({
-                type: Types.LOGIN,
-                username: username,
-                password: password
-            })
-        })
-    dispatch(push('/bookbuddy/profile'))
-}
-
+  fetch(heroku + "/authorize/login", requestOptions)
+    .then(res => res.json())
+    .then(data => {
+      console.log("data from login", data);
+      dispatch({
+        type: Types.LOGIN,
+        username: username,
+        password: password
+      });
+    });
+  dispatch(push("/bookbuddy/profile"));
+};
 
 export const register = (displayname, username, password) => dispatch => {
+  console.log(displayname, username, password);
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      displayname: displayname,
+      username: username,
+      password: password
+    })
+  };
 
+  fetch(heroku + "/authorize/register", requestOptions)
+    .then(res => res.json())
+    .then(data => {
+      console.log("data received from backend:", data);
+      dispatch({
+        type: Types.REGISTER,
+        payload: data
+      });
+    });
+};
 
-    const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ displayname: displayname, username: username, password: password })
-    }
+export const test = () => dispatch => {
+  const url =
+    "https://www.googleapis.com/books/v1/volumes?q=Harry+Potter+chamber";
 
-    fetch(herokuDatabseURL + "/register", requestOptions)
-        .then(res => res.json())
-        .then(data => {
-            dispatch({
-                type: Types.REGISTER,
-                payload: data
-            })
-        })
-
-}
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    });
+};

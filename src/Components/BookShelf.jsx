@@ -6,7 +6,8 @@ import { Grid } from "semantic-ui-react";
 export class BookShelf extends React.Component {
   render() {
     return (
-      <Grid columns={3} stackable>
+
+      <Grid columns={3} stackable style={{ padding: "auto" }}>
         <Grid.Row>
           <Grid.Column>
             <Book className="bookStyling" />
@@ -18,7 +19,7 @@ export class BookShelf extends React.Component {
             <Book className="bookStyling" />
           </Grid.Column>
         </Grid.Row>
-      </Grid>
+
     );
   }
 }
