@@ -14,6 +14,7 @@ import NavBar from "./NavBar.jsx";
 import BookShelf from "./BookShelf.jsx";
 import "../App.css";
 import Messages from "./Messages.jsx";
+import { Switch, Route, Link } from "react-router-dom";
 
 class ProfilePage extends React.Component {
   state = {
@@ -31,6 +32,38 @@ class ProfilePage extends React.Component {
   };
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleItemClick = () => {
+    console.log("you clicked me!");
+    window.location.reload(true);
+  };
+
+  Owned = () => {
+    return (
+      <div>
+        This is the books you own.
+        <BookShelf />
+      </div>
+    );
+  };
+
+  Available = () => {
+    return (
+      <div>
+        These are the books you have available.
+        <BookShelf />
+      </div>
+    );
+  };
+
+  Onloan = () => {
+    return (
+      <div>
+        And these are your books other users are reading.
+        <BookShelf />
+      </div>
+    );
   };
 
   render() {
@@ -62,7 +95,6 @@ class ProfilePage extends React.Component {
               </Card>
             </Grid.Column>
             <Grid.Column width={10}>
-              <SearchBar />
               <div id="menubar">
                 <Menu id="Switchbar">
                   <Menu.Item
@@ -70,7 +102,7 @@ class ProfilePage extends React.Component {
                     // active={activeItem === 'editorials'}
                     onClick={this.handleItemClick}
                   >
-                    Owned
+                    <Link to="/bookbuddy/profile/owned">Owned</Link>
                   </Menu.Item>
 
                   <Menu.Item
@@ -78,7 +110,7 @@ class ProfilePage extends React.Component {
                     //  active={activeItem === 'reviews'}
                     onClick={this.handleItemClick}
                   >
-                    Currently Have
+                    <Link to="/bookbuddy/profile/available">Available</Link>
                   </Menu.Item>
 
                   <Menu.Item
@@ -86,11 +118,27 @@ class ProfilePage extends React.Component {
                     // active={activeItem === 'upcomingEvents'}
                     onClick={this.handleItemClick}
                   >
-                    Messages
+                    <Link to="/bookbuddy/profile/onloan">On Loan</Link>
                   </Menu.Item>
                 </Menu>
               </div>
-              <Messages />
+              <Switch>
+                <Route
+                  exact
+                  path="/bookbuddy/profile/owned"
+                  component={this.Owned}
+                />
+                <Route
+                  exact
+                  path="/bookbuddy/profile/available"
+                  component={this.Available}
+                />
+                <Route
+                  exact
+                  path="/bookbuddy/profile/onloan"
+                  component={this.Onloan}
+                />
+              </Switch>
             </Grid.Column>
           </Grid.Row>
 
@@ -162,7 +210,7 @@ class ProfilePage extends React.Component {
             </Grid.Column>
             <Grid.Column width={10}>
               <div id="feed">
-                <BookShelf />
+                <Messages />
               </div>
             </Grid.Column>
           </Grid.Row>

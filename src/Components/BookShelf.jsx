@@ -1,32 +1,49 @@
 import React from "react";
 import { connect } from "react-redux";
 import Book from "./Book.jsx";
-import { Button, Modal } from "semantic-ui-react";
+import { Button, Modal, Grid } from "semantic-ui-react";
 
 export class BookShelf extends React.Component {
-    render() {
-        return (
-            <React.Fragment>
-                <div>BookShelf</div>
-                <Book></Book>
-                <Book></Book>
-                <Book></Book>
-            </React.Fragment>
-        );
-    }
+  render() {
+    return (
+      <Grid columns={3} stackable style={{ padding: "auto" }}>
+        <Grid.Row>
+          <Grid.Column>
+            <Book className="bookStyling" />
+          </Grid.Column>
+          <Grid.Column>
+            <Book className="bookStyling" />
+          </Grid.Column>
+          <Grid.Column>
+            <Book className="bookStyling" />
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row>
+          <Grid.Column>
+            <Book className="bookStyling" />
+          </Grid.Column>
+          <Grid.Column>
+            <Book className="bookStyling" />
+          </Grid.Column>
+          <Grid.Column>
+            <Book className="bookStyling" />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-    return {}
+  return {};
 };
 
 function mapDispatchToProps(dispatch) {
-    return {}
-
+  return {};
 }
 
 const Connect = connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(BookShelf);
 export default Connect;
