@@ -23,10 +23,14 @@ export default function (state = initialState, action) {
             }
 
         case Types.REGISTER:
-            return {
-                ...state,
-                message: action.payload
-            }
+        return {
+            ...state,
+
+            displayName: action.displayName,
+            username: action.username,
+            password: action.password
+
+        }
 
         case Types.LOGOUT:
             return { ...initialState }
