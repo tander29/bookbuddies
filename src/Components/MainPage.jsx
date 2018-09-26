@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import Header from "./Header";
 import Footer from "./Footer";
 import NavBar from './NavBar.jsx';
-import MessageBoard from './MessageBoard.jsx'
-import { Grid, GridColumn } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
+import { BookShelf } from './BookShelf';
 
 class MainPage extends React.Component {
     render() {
@@ -21,7 +21,7 @@ class MainPage extends React.Component {
                     </Grid.Column>
                     <Grid.Column width={10} >
                         <Grid.Row >Search for Books!!</Grid.Row>
-                        <MessageBoard></MessageBoard>
+                        <BookShelf />
                     </Grid.Column>
                     <Grid.Column width={3} >
                         <Footer />

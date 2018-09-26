@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { Card } from "semantic-ui-react";
 import Messages from './Messages'
 
@@ -10,7 +9,11 @@ class MessageBoard extends Component {
 
     render() {
         return(
-            <Messages />
+            <React.Fragment>
+                <Messages />
+                <Messages />
+                <Messages />
+            </React.Fragment>
         )
     }
 }
