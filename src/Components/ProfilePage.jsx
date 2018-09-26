@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Grid, Button, Modal } from 'semantic-ui-react'
+import { Grid, Button, Modal } from "semantic-ui-react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { Image, Icon, Card } from "semantic-ui-react";
@@ -170,16 +170,15 @@ class ProfilePage extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {}
+  return {};
 };
 
 function mapDispatchToProps(dispatch) {
-    return {}
-
+  return {};
 }
 
 const Connect = connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ProfilePage);
 export default Connect;
