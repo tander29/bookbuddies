@@ -6,7 +6,14 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Login from './Login'
 import Register from './Register'
-import { Container, Modal, Grid, Button, Image } from "semantic-ui-react";
+
+import BookShelf from './BookShelf.jsx'
+
+import { Container, Modal, Grid, Button,Image } from "semantic-ui-react";
+
+
+
+
 
 class HomePage extends React.Component {
     render() {
@@ -28,7 +35,9 @@ class HomePage extends React.Component {
                                     <Grid.Row columns={1}>
                                     <Grid.Column>
                                         <div id="blah">
+                 
                                        <Image src= {BookBuddiesinfo} />
+
                                        </div>
                                     </Grid.Column>
                               
