@@ -22,43 +22,33 @@ class HomePage extends React.Component {
         >
           <Header />
 
-          <Container>
-            <Grid centered>
+          <Container fluid >
+            <Grid >
               <Grid.Row columns={2}>
                 <Grid.Column id="homepageinfo">
-                  <Grid divided="vertically">
-                    <Grid.Row columns={1}>
-                      <Grid.Column>
-                        <div id="blah">
-                          <Image src={BookBuddiesinfo} fluid/>
-                        </div>
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
+                  <Image className="homePicture" src={BookBuddiesinfo}/>
                 </Grid.Column>
 
-                <Grid.Column columns={2} id="divider" textAlign="center">
-                  <div id="homepageregister">
-                    <Modal
-                      size="tiny"
-                      trigger={
-                        <Button
-                          style={{
-                            backgroundColor: "#86C232",
-                            color: "white",
-                            marginBottom: "5vh"
-                          }}
-                        >
-                          Login
-                        </Button>
-                      }
-                      closeIcon
-                    >
-                      <Login />
-                    </Modal>
+                <Grid.Column id="divider" textAlign="center" className='loginRegister'>
+                  <Modal
+                    size="tiny"
+                    trigger={
+                      <Button
+                        style={{
+                          backgroundColor: "#86C232",
+                          color: "white",
+                          marginBottom: "5vh"
+                        }}
+                      >
+                        Login
+                      </Button>
+                    }
+                    closeIcon
+                  >
+                    <Login />
+                  </Modal>
 
-                    <Register />
-                  </div>
+                  <Register />
                 </Grid.Column>
               </Grid.Row>
             </Grid>

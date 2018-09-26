@@ -19,7 +19,7 @@ export class BookShelf extends React.Component {
             <Book className="bookStyling" />
           </Grid.Column>
         </Grid.Row>
-
+      </Grid>
     );
   }
 }
