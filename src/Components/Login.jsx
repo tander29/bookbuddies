@@ -25,8 +25,6 @@ class Login extends Component {
 
   handleEnter = event => {
     if (event.key === "Enter") {
-      event.preventDefault();
-      console.log("hi dad");
       this.props.test();
       // this.props.xmlTest()
       // this.handleSubmit()
