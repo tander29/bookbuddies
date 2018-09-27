@@ -1,31 +1,3 @@
-.App {
-  text-align: center;
-  height: 100%;
-  
-}
-
-
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-#headerimg {
-  width: 500px;
-  height: 200px;
-}
-
 .developers {
   font-weight: bold;
   color: white;
@@ -35,7 +7,7 @@
   color: white;
 }
 
-.address{
+.address {
   color: white;
 }
 
@@ -46,7 +18,6 @@
 #feed {
   display: flex;
   justify-content: center;
-  
 }
 
 #rating {
@@ -60,19 +31,30 @@
   justify-content: center;
 }
 
-
-.stickyMenu{
-  position:sticky;
-  top:0;
+.stickyMenu {
+  position: sticky;
+  top: 0;
   z-index: 8;
 }
-
 
 .search {
   width: 100%;
   color: black;
 }
-#homepagecontainer {
+
+.homePicture {
+  width: 100%;
+  height: 100%;
+}
+
+.loginHeader {
+  color: #61892f;
+  font-size: 3vh;
+  margin-top: 1vh !important;
+}
+
+
+/* #homepagecontainer {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -102,5 +84,4 @@
 }
 #divider {
   width: 10px;
-}
-
+} */

@@ -107,7 +107,7 @@ class ProfilePage extends React.Component {
                     // active={activeItem === 'editorials'}
                     onClick={this.handleItemClick}
                   >
-                    <Link to="/bookbuddy/profile/owned">Owned</Link>
+                    {/* <Link to="/bookbuddy/profile/owned">Owned</Link> */}
                   </Menu.Item>
 
                   <Menu.Item
@@ -115,7 +115,7 @@ class ProfilePage extends React.Component {
                     //  active={activeItem === 'reviews'}
                     onClick={this.handleItemClick}
                   >
-                    <Link to="/bookbuddy/profile/available">Available</Link>
+                    {/* <Link to="/bookbuddy/profile/available">Available</Link> */}
                   </Menu.Item>
 
                   <Menu.Item
@@ -123,7 +123,7 @@ class ProfilePage extends React.Component {
                     // active={activeItem === 'upcomingEvents'}
                     onClick={this.handleItemClick}
                   >
-                    <Link to="/bookbuddy/profile/onloan">On Loan</Link>
+                    {/* <Link to="/bookbuddy/profile/onloan">On Loan</Link> */}
                   </Menu.Item>
                 </Menu>
               </div>

@@ -33,8 +33,8 @@ class Login extends Component {
   render() {
     return (
       <Container textAlign="center">
-        <Form style={{ padding: "2vh", backgroundColor: "#474B4F" }}>
-          <p className="loginheader" style={{ color: "#61892F" }}>
+        <Form style={{ padding: "1vh", backgroundColor: "#474B4F"}}>
+          <p className="loginHeader">
             <b>Login</b>
           </p>
 
