@@ -43,6 +43,7 @@ export class NavBar extends Component {
                   Add Book
                 </Button>
               }
+              closeIcon
             >
               <AddBook />
             </Modal>

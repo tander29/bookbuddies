@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import Messages from './Messages'
 
 class MessageBoard extends Component {
@@ -9,11 +9,11 @@ class MessageBoard extends Component {
 
     render() {
         return(
-            <React.Fragment>
+            <Container fluid>
                 <Messages />
                 <Messages />
                 <Messages />
-            </React.Fragment>
+            </Container>
         )
     }
 }
