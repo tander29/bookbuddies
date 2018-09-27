@@ -15,7 +15,7 @@ class AddBook extends React.Component {
   state = { ...initialState };
 
   componentDidMount() {
-    // this.props.getAllBooks("test");
+     this.props.getAllBooks("test");
   }
 
   updateBookState = event => {
