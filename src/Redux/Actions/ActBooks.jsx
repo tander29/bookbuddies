@@ -17,11 +17,6 @@ export const getBooks = () => dispatch => {
 };
 
 export const getSingleBook = bookId => dispatch => {
-  const requestOptions = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" }
-  };
-
   fetch(heroku + "/getSingleBook/" + bookId)
     .then(res => res.json())
     .then(data =>
@@ -49,10 +44,6 @@ export const addNewBook = bookData => dispatch => {
 
 export const getAllBooks = book => dispatch => {
   console.log("sending this data", book);
-  const requestOptions = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" }
-  };
 
   fetch(heroku + "/books")
     .then(res => res.json())
@@ -66,14 +57,12 @@ export const getAllBooks = book => dispatch => {
 };
 
 export const googleBook = bookTitle => dispatch => {
-  const string = "The big blue whale";
-  console.log(string.split(" ").join("+"));
   const bookTitleURL = bookTitle.split(" ").join("+");
   const googleURL = "https://www.googleapis.com/books/v1/volumes?q=";
 
   fetch(googleURL + bookTitleURL)
     .then(res => res.json())
     .then(data => {
-      console.log(data);
+      console.log("google API data", data);
     });
 };

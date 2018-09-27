@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Form } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { addNewBook, getAllBooks, googleBook } from "../Redux/Actions/ActBooks";
@@ -43,7 +43,6 @@ class AddBook extends React.Component {
           placeholder="Title"
           type="text"
           name="title"
-          // value={this.state.bookTitle}
           onChange={this.updateBookState}
         />
         <Form.Input
@@ -51,7 +50,6 @@ class AddBook extends React.Component {
           placeholder="Author"
           type="text"
           name="author"
-          // value={this.state.bookAuthor}
           onChange={this.updateBookState}
         />
         <Form.Input
@@ -59,7 +57,6 @@ class AddBook extends React.Component {
           placeholder="To Be Determined!"
           type="text"
           name="rating"
-          // value={this.state.bookAuthor}
           onChange={this.updateBookState}
         />
         <Form.Input
@@ -67,7 +64,6 @@ class AddBook extends React.Component {
           placeholder="isbn10"
           type="text"
           name="isbn10"
-          // value={this.state.bookAuthor}
           onChange={this.updateBookState}
         />
         <Form.Input
@@ -75,7 +71,6 @@ class AddBook extends React.Component {
           placeholder="isbn13"
           type="text"
           name="isbn13"
-          // value={this.state.bookAuthor}
           onChange={this.updateBookState}
         />
         <Form.Input
