@@ -12,7 +12,7 @@ import { Container, Modal, Grid, Button, Image } from "semantic-ui-react";
 class HomePage extends React.Component {
   render() {
     return (
-      <React.Fragment>
+      
         <Container
           style={{ backgroundColor: "#474B4F" }}
           fluid
@@ -57,7 +57,7 @@ class HomePage extends React.Component {
           </Container>
           <Footer />
         </Container>
-      </React.Fragment>
+      
     );
   }
 }
