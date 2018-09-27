@@ -13,13 +13,11 @@ class Login extends Component {
   };
 
   handleSubmit = () => {
-    console.log("Hey, you hit the Submit button to Log in!");
     this.props.login(this.state.username, this.state.password);
     this.setState({ ...initialState });
   };
 
   updateInput = event => {
-    console.log(this.state);
     this.setState({ [event.target.name]: event.target.value });
   };
 
@@ -33,7 +31,7 @@ class Login extends Component {
   render() {
     return (
       <Container textAlign="center">
-        <Form style={{ padding: "1vh", backgroundColor: "#474B4F"}}>
+        <Form style={{ padding: "1vh", backgroundColor: "#474B4F" }}>
           <p className="loginHeader">
             <b>Login</b>
           </p>
@@ -42,6 +40,7 @@ class Login extends Component {
             autoFocus={true}
             className="username"
             placeholder="Username"
+            autoComplete="username"
             type="text"
             value={this.state.username}
             name="username"
@@ -51,6 +50,7 @@ class Login extends Component {
             className="password"
             placeholder="Password"
             type="password"
+            autoComplete="current-password"
             value={this.state.password}
             name="password"
             onChange={this.updateInput}

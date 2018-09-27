@@ -1,4 +1,4 @@
-import { Types, heroku } from "../Types";
+import { Types, heroku, local } from "../Types";
 import { push } from "connected-react-router";
 
 export const login = (username, password) => dispatch => {
@@ -13,13 +13,15 @@ export const login = (username, password) => dispatch => {
     .then(res => res.json())
     .then(data => {
       console.log("data from login", data);
-      dispatch({
-        type: Types.LOGIN,
-        username: username,
-        password: password
-      });
+      if (data.success) {
+        dispatch({
+          type: Types.LOGIN,
+          username: username,
+          password: password
+        });
+        dispatch(push("/bookbuddy/profile"));
+      }
     });
-  dispatch(push("/bookbuddy/profile"));
 };
 
 export const register = (displayname, username, password) => dispatch => {
