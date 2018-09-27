@@ -37,7 +37,9 @@ class Book extends React.Component {
   };
 
   handleEnter = event => {
-    event.key === "Enter" ? this.sendMessage() : null;
+    if (event.key === "Enter") {
+      this.sendMessage();
+    }
   };
 
   render() {
