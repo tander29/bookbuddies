@@ -1,21 +1,23 @@
 import React, { Component } from "react";
+import { Container } from "semantic-ui-react";
+import Messages from './Messages'
 import { connect } from "react-redux";
-import Messages from "./Messages";
+
 
 class MessageBoard extends Component {
   state = {
     messages: []
   };
 
-  render() {
-    return (
-      <React.Fragment>
-        <Messages />
-        <Messages />
-        <Messages />
-      </React.Fragment>
-    );
-  }
+    render() {
+        return(
+            <Container fluid>
+                <Messages />
+                <Messages />
+                <Messages />
+            </Container>
+        )
+    }
 }
 
 const mapStateToProps = state => {
