@@ -23,8 +23,9 @@ class Messages extends Component {
           <Card
             className="messages"
             style={{ padding: "1vh", backgroundColor: "#474B4F" }}
+            fluid
           >
-            <Grid celled>
+            <Grid>
               <Grid.Row columns={2}>
                 <Grid.Column textAlign="left">Message Sender</Grid.Column>
                 <Grid.Column textAlign="right">Time Stamp</Grid.Column>
