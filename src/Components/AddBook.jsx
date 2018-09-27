@@ -1,7 +1,33 @@
 import React, { Component } from "react";
 import { Form } from "semantic-ui-react";
+import { connect } from "react-redux";
+import { addNewBook, getAllBooks, googleBook } from "../Redux/Actions/ActBooks";
 
+const initialState = {
+  title: "",
+  author: "",
+  isbn10: "",
+  isbn13: "",
+  image: "",
+  rating: ""
+};
 class AddBook extends React.Component {
+  state = { ...initialState };
+
+  componentDidMount() {
+    // this.props.getAllBooks("test");
+  }
+
+  updateBookState = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleAddBook = () => {
+    const bookData = { ...this.state, userInfo: "userInfo" };
+    this.props.googleBook(this.state.title);
+    this.props.addNewBook(bookData);
+  };
+
   render() {
     return (
       <Form style={{ padding: "1vh", margin: "auto" }}>
@@ -16,41 +42,49 @@ class AddBook extends React.Component {
           className="bookTitle"
           placeholder="Title"
           type="text"
-          name="bookTitle"
+          name="title"
           // value={this.state.bookTitle}
-          // onChange={this.updateBookTitle}
+          onChange={this.updateBookState}
         />
         <Form.Input
           className="bookAuthor"
           placeholder="Author"
           type="text"
-          name="bookAuthor"
+          name="author"
           // value={this.state.bookAuthor}
-          // onChange={this.updateBookAuthor}
+          onChange={this.updateBookState}
         />
         <Form.Input
           className=""
           placeholder="To Be Determined!"
           type="text"
-          name=""
+          name="rating"
           // value={this.state.bookAuthor}
-          // onChange={this.updateBookAuthor}
+          onChange={this.updateBookState}
         />
         <Form.Input
           className=""
-          placeholder="To Be Determined!"
+          placeholder="isbn10"
           type="text"
-          name=""
+          name="isbn10"
           // value={this.state.bookAuthor}
-          // onChange={this.updateBookAuthor}
+          onChange={this.updateBookState}
+        />
+        <Form.Input
+          className=""
+          placeholder="isbn13"
+          type="text"
+          name="isbn13"
+          // value={this.state.bookAuthor}
+          onChange={this.updateBookState}
         />
         <Form.Input
           className="coverImage"
           placeholder="CoverImage"
-          type="file"
-          name="coverImage"
+          type="text"
+          name="image"
           // value={this.state.coverImage}
-          // onChange={this.updateCoverImage}
+          onChange={this.updateBookState}
         />
 
         <Form.Button
@@ -64,4 +98,25 @@ class AddBook extends React.Component {
     );
   }
 }
-export default AddBook;
+const mapStateToProps = state => {
+  return {};
+};
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addNewBook: bookData => {
+      dispatch(addNewBook(bookData));
+    },
+    getAllBooks: book => {
+      dispatch(getAllBooks(book));
+    },
+    googleBook: bookTitle => {
+      dispatch(googleBook(bookTitle));
+    }
+  };
+}
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddBook);
+export default Connect;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Form } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { login, test } from "../Redux/Actions/ActLoginRegister";
+import { login } from "../Redux/Actions/ActLoginRegister";
 
 const initialState = {
   username: "",
@@ -25,7 +25,6 @@ class Login extends Component {
 
   handleEnter = event => {
     if (event.key === "Enter") {
-      this.props.test();
       // this.props.xmlTest()
       // this.handleSubmit()
     }
@@ -79,9 +78,6 @@ function mapDispatchToProps(dispatch) {
   return {
     login: (username, password) => {
       dispatch(login(username, password));
-    },
-    test: () => {
-      dispatch(test());
     }
   };
 }
