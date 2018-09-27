@@ -44,14 +44,3 @@ export const register = (displayname, username, password) => dispatch => {
       });
     });
 };
-
-export const test = () => dispatch => {
-  const url =
-    "https://www.googleapis.com/books/v1/volumes?q=Harry+Potter+chamber";
-
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-    });
-};

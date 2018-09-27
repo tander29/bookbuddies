@@ -1,11 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Grid, Button, Modal } from "semantic-ui-react";
+import {
+  Grid,
+  Button,
+  Modal,
+  Image,
+  Icon,
+  Card,
+  Menu,
+  Segment,
+  Rating
+} from "semantic-ui-react";
+
 import Header from "./Header";
 import Footer from "./Footer";
-import { Image, Icon, Card } from "semantic-ui-react";
 import bookbuddyicon from "../images/bookbuddyicon.png";
-import { Menu, Segment, Rating } from "semantic-ui-react";
 import NavBar from "./NavBar.jsx";
 import BookShelf from "./BookShelf.jsx";
 import "../App.css";
