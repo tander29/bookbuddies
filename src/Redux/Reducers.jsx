@@ -63,6 +63,12 @@ export default function(state = initialState, action) {
         ...state
       };
 
+    case Types.NEW_MESSAGE:
+      return {
+        ...state,
+        message: action.message
+      }
+
     default:
       return state;
   }

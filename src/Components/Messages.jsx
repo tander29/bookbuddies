@@ -8,6 +8,7 @@ import {
   Divider,
   Container
 } from "semantic-ui-react";
+import { sendMessage } from "../Redux/Actions/ActSendMessage";
 
 class Messages extends Component {
   handleEnter = event => {
@@ -66,11 +67,15 @@ class Messages extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {...state};
 };
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    sendMessage: (message) => {
+      dispatch(sendMessage(message));
+    }
+  };
 }
 
 const Connect = connect(
