@@ -65,4 +65,16 @@ class Messages extends Component {
   }
 }
 
-export default Messages;
+const mapStateToProps = state => {
+  return {};
+};
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Messages);
+export default Connect;
