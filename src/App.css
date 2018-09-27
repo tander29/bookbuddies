@@ -11,8 +11,6 @@
   color: white;
 }
 
-
-
 #feed {
   display: flex;
   justify-content: center;
@@ -53,9 +51,9 @@
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
-    background-color:#222629;
+  height: 100vh;
+  width: 100vw;
+  /* background-color:#222629; */
 }
 
 /* #homepagecontainer {
