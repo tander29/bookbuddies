@@ -4,7 +4,23 @@ import Messages from './Messages'
 
 class MessageBoard extends Component {
     state = {
-        messages: []
+        messages: [
+            {
+                name: 'Patrick H.',
+                timestamp: 'yesterday',
+                content: 'Hey guys I am awesome'
+            },
+            {
+                name: 'Travis A.',
+                timestamp: 'a week ago',
+                content: 'Hey I heard Patrick was awesome'
+            },
+            {
+                name: 'Nerd',
+                timestamp: 'two days ago',
+                content: 'I love books!'
+            }
+        ]
     }
 
     render() {
