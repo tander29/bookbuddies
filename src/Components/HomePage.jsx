@@ -7,14 +7,12 @@ import Footer from "./Footer";
 import Login from "./Login";
 import Register from "./Register";
 
-import BookShelf from "./BookShelf.jsx";
-
 import { Container, Modal, Grid, Button, Image } from "semantic-ui-react";
 
 class HomePage extends React.Component {
   render() {
     return (
-      <React.Fragment>
+      
         <Container
           style={{ backgroundColor: "#474B4F" }}
           fluid
@@ -22,14 +20,18 @@ class HomePage extends React.Component {
         >
           <Header />
 
-          <Container fluid >
-            <Grid >
+          <Container fluid>
+            <Grid>
               <Grid.Row columns={2}>
                 <Grid.Column id="homepageinfo">
-                  <Image className="homePicture" src={BookBuddiesinfo}/>
+                  <Image className="homePicture" src={BookBuddiesinfo} />
                 </Grid.Column>
 
-                <Grid.Column id="divider" textAlign="center" className='loginRegister'>
+                <Grid.Column
+                  id="divider"
+                  textAlign="center"
+                  className="loginRegister"
+                >
                   <Modal
                     size="tiny"
                     trigger={
@@ -55,7 +57,7 @@ class HomePage extends React.Component {
           </Container>
           <Footer />
         </Container>
-      </React.Fragment>
+      
     );
   }
 }
