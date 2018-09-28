@@ -1,21 +1,35 @@
 import React, { Component } from "react";
-import { Card } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import Messages from './Messages'
+import { connect } from "react-redux";
+
 
 class MessageBoard extends Component {
-    state = {
-        messages: []
-    }
+  state = {
+    messages: []
+  };
 
     render() {
         return(
-            <React.Fragment>
+            <Container fluid>
                 <Messages />
                 <Messages />
                 <Messages />
-            </React.Fragment>
+            </Container>
         )
     }
 }
 
-export default MessageBoard
+const mapStateToProps = state => {
+  return {};
+};
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MessageBoard);
+export default Connect;

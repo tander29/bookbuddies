@@ -4,48 +4,35 @@ import Book from "./Book.jsx";
 import { Grid } from "semantic-ui-react";
 
 export class BookShelf extends React.Component {
-    render() {
-        return (
-            <Grid columns={3} stackable style={{ padding:'auto' }}>
-            
-                <Grid.Row>
-                    <Grid.Column>
-                        <Book className="bookStyling"></Book>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Book className="bookStyling"></Book>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Book className="bookStyling"></Book>
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column>
-                        <Book className="bookStyling"></Book>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Book className="bookStyling"></Book>
-                    </Grid.Column>
-                    <Grid.Column>
-                        <Book className="bookStyling"></Book>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid>
-        );
-    }
+  render() {
+    return (
+      <Grid columns={3} stackable style={{ padding: "auto" }}>
+        <Grid.Row>
+          <Grid.Column>
+            <Book className="bookStyling" />
+          </Grid.Column>
+          <Grid.Column>
+            <Book className="bookStyling" />
+          </Grid.Column>
+          <Grid.Column>
+            <Book className="bookStyling" />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-    return {}
+  return {};
 };
 
 function mapDispatchToProps(dispatch) {
-    return {}
-
+  return {};
 }
 
 const Connect = connect(
-    mapStateToProps,
-    mapDispatchToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(BookShelf);
 export default Connect;
