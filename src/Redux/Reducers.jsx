@@ -7,7 +7,7 @@ const initialState = {
     id: null,
     accountCreated: null,
     aboutBio: "",
-    loginSucces: false,
+    loginSuccess: false,
     booksOwned: [],
     messages: []
   },
@@ -28,10 +28,13 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case Types.LOGIN:
       return {
-        ...state.userInfo,
-
-        username: action.username,
-        password: action.password
+        ...state,
+        userInfo: {
+          username: action.username,
+          displayName: action.username,
+          id: action.id,
+          loginSuccess: action.success
+        }
       };
 
     case Types.REGISTER:

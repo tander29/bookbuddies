@@ -227,7 +227,7 @@ class ProfilePage extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return { ...state };
 };
 
 function mapDispatchToProps(dispatch) {

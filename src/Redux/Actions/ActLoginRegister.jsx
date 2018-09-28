@@ -17,7 +17,9 @@ export const login = (username, password) => dispatch => {
         dispatch({
           type: Types.LOGIN,
           username: username,
-          password: password
+          password: password,
+          id: data.id,
+          success: data.success
         });
         dispatch(push("/bookbuddy/profile"));
       }

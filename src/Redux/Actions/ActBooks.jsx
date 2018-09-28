@@ -32,7 +32,7 @@ export const addNewBook = bookData => dispatch => {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ...bookData, userId: 1 })
+    body: JSON.stringify({ ...bookData, userId: 4 })
   };
 
   fetch(heroku + "/books", requestOptions)
