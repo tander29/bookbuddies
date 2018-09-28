@@ -50,19 +50,24 @@
   margin-top: 1vh !important;
 }
 
-body {
-  height: 100vh;
-  width: 100vw;
-  /* background-color:#222629; */
-}
 
-/* #homepagecontainer {
+#homepagecontainer {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   background-color:#222629;
+  height: 75%;
   
-} */
+}
+.headerNav {
+  height: 25vh;
+}
+.custFooter {
+  height: 25vh;
+}
+.two {
+  height: 55vh;
+}
 
 /* #homepageinfo {
   position: absolute;
