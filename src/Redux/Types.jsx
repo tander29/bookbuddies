@@ -10,7 +10,8 @@ export const Types = {
   TO_PROFILE: "TO_PROFILE",
   TO_MAIN: "TO_MAIN",
   GOOGLE_BOOK: "GOOGLE_BOOK",
-  NEW_MESSAGE: "NEW_MESSAGE"
+  NEW_MESSAGE: "NEW_MESSAGE",
+  GET_MESSAGES: "GET_MESSAGES"
 };
 
 export const heroku = "https://warm-bastion-90430.herokuapp.com";

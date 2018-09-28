@@ -55,6 +55,12 @@ export default function(state = initialState, action) {
         books: action.payload
       };
 
+    case Types.GET_MESSAGES:
+      return {
+        ...state,
+        allMessages: [action.payload]
+      };
+
     case Types.GETONEBOOK:
       return {
         ...state,
@@ -70,7 +76,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         message: action.message
-      }
+      };
 
     default:
       return state;
