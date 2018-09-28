@@ -108,7 +108,7 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return {...state};
 };
 
 function mapDispatchToProps(dispatch) {
