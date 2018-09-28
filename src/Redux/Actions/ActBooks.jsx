@@ -1,21 +1,5 @@
 import { Types, heroku } from "../Types";
 
-export const getBooks = () => dispatch => {
-  const requestOptions = {
-    method: "GET",
-    headers: { "Content- Type": "application/json" }
-  };
-
-  fetch(heroku + "/getManyBooks", requestOptions)
-    .then(res => res.json())
-    .then(data => {
-      dispatch({
-        type: Types.GETBOOKS,
-        payload: data
-      });
-    });
-};
-
 export const getSingleBook = bookId => dispatch => {
   fetch(heroku + "/getSingleBook/" + bookId)
     .then(res => res.json())
@@ -49,10 +33,10 @@ export const getAllBooks = book => dispatch => {
     .then(res => res.json())
     .then(data => {
       console.log("data I receive back", data);
-      // dispatch({
-      //   type: Types.POSTNEWBOOK,
-      //   payload: data
-      // });
+      dispatch({
+        type: Types.GETBOOKS,
+        payload: data.book
+      });
     });
 };
 

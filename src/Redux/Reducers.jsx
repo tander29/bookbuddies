@@ -55,6 +55,12 @@ export default function(state = initialState, action) {
         books: action.payload
       };
 
+    case Types.GET_MESSAGES:
+      return {
+        ...state,
+        allMessages: [action.payload]
+      };
+
     case Types.GETONEBOOK:
       return {
         ...state,
@@ -64,6 +70,12 @@ export default function(state = initialState, action) {
     case Types.GOOGLE_BOOK:
       return {
         ...state
+      };
+
+    case Types.NEW_MESSAGE:
+      return {
+        ...state,
+        message: action.message
       };
 
     default:
