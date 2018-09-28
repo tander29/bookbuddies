@@ -20,7 +20,7 @@ class Footer extends React.Component {
                 47 S Meridian St, Indianapolis, IN 46204
                 </p>
           
-          </Card.Content>
+            </Card.Content>
           </Card>
          
        );

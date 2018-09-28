@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Menu, Icon, Modal } from "semantic-ui-react";
-import SearchBar from "./SearchBar";
 import AddBook from "./AddBook";
 import { logout } from "../Redux/Actions/ActLogout";
 import { to_main, to_profile } from "../Redux/Actions/ActNavBar";
@@ -49,12 +48,6 @@ export class NavBar extends Component {
             </Modal>
           </Menu.Item>
         </Menu.Menu>
-
-        <Menu.Menu style={{ margin: "auto" }}>
-          <SearchBar />
-          <Icon name="search" />
-        </Menu.Menu>
-
         <Menu.Item position="right">
           <Button
             onClick={this.props.logout}
