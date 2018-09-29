@@ -34,8 +34,10 @@
 }
 
 .search {
-  width: 100%;
+  width: 50%;
   color: black;
+  padding: 5px;
+  margin: 10px;
 }
 
 .homePicture {

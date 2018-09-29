@@ -3,8 +3,9 @@ import { connect } from 'react-redux'
 import Header from "./Header";
 import Footer from "./Footer";
 import NavBar from './NavBar.jsx';
-import { Grid } from 'semantic-ui-react'
+import { Grid, Icon } from 'semantic-ui-react'
 import { BookShelf } from './BookShelf';
+import { SearchBar } from './SearchBar';
 
 class MainPage extends React.Component {
     render() {
@@ -20,7 +21,10 @@ class MainPage extends React.Component {
                         <div>Bio: I am a sloth</div>
                     </Grid.Column>
                     <Grid.Column width={10} >
-                        <Grid.Row >Search for Books!!</Grid.Row>
+                        <div>
+                            <SearchBar />
+                            <Icon name="search" />
+                        </div>
                         <BookShelf />
                     </Grid.Column>
                     <Grid.Column width={3} >
