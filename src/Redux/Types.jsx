@@ -15,4 +15,4 @@ export const Types = {
 };
 
 export const heroku = "https://warm-bastion-90430.herokuapp.com";
-export const local = "http://127.0.0.1:8000";
+export const local = "http://127.0.0.1:8001";
