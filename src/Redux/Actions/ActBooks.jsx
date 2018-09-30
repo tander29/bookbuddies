@@ -26,12 +26,9 @@ export const addNewBook = bookData => dispatch => {
 };
 
 export const getAllBooks = book => dispatch => {
-  console.log("sending this data", book);
-
   fetch(heroku + "/books")
     .then(res => res.json())
     .then(data => {
-      console.log("all books:", data);
       dispatch({
         type: Types.GETBOOKS,
         payload: data.book

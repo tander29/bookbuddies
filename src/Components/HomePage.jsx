@@ -12,58 +12,56 @@ import { Container, Modal, Grid, Button, Image } from "semantic-ui-react";
 class HomePage extends React.Component {
   render() {
     return (
-      
-        <Container
-          style={{ backgroundColor: "#474B4F" }}
-          fluid
-          id="homepagecontainer"
-        >
-          <Header />
+      <Container
+        style={{ backgroundColor: "#474B4F" }}
+        fluid
+        id="homepagecontainer"
+      >
+        <Header />
 
-          <Container fluid>
-            <Grid>
-              <Grid.Row columns={2}>
-                <Grid.Column id="homepageinfo">
-                  <Image className="homePicture" src={BookBuddiesinfo} />
-                </Grid.Column>
+        <Container fluid>
+          <Grid>
+            <Grid.Row columns={2}>
+              <Grid.Column id="homepageinfo">
+                <Image className="homePicture" src={BookBuddiesinfo} />
+              </Grid.Column>
 
-                <Grid.Column
-                  id="divider"
-                  textAlign="center"
-                  className="loginRegister"
+              <Grid.Column
+                id="divider"
+                textAlign="center"
+                className="loginRegister"
+              >
+                <Modal
+                  size="tiny"
+                  trigger={
+                    <Button
+                      style={{
+                        backgroundColor: "#86C232",
+                        color: "white",
+                        marginBottom: "5vh"
+                      }}
+                    >
+                      Login
+                    </Button>
+                  }
+                  closeIcon
                 >
-                  <Modal
-                    size="tiny"
-                    trigger={
-                      <Button
-                        style={{
-                          backgroundColor: "#86C232",
-                          color: "white",
-                          marginBottom: "5vh"
-                        }}
-                      >
-                        Login
-                      </Button>
-                    }
-                    closeIcon
-                  >
-                    <Login />
-                  </Modal>
+                  <Login />
+                </Modal>
 
-                  <Register />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Container>
-          <Footer />
+                <Register />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
         </Container>
-      
+        <Footer />
+      </Container>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return {};
+  return { ...state };
 };
 
 function mapDispatchToProps(dispatch) {

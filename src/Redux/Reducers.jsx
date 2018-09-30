@@ -6,7 +6,7 @@ const initialState = {
     displayname: null,
     id: null,
     accountCreated: null,
-    aboutBio: "",
+    about: "",
     loginSuccess: false,
     booksOwned: [],
     messages: []
@@ -31,7 +31,7 @@ export default function(state = initialState, action) {
         ...state,
         userInfo: {
           username: action.username,
-          displayName: action.username,
+          displayname: action.displayname,
           id: action.id,
           loginSuccess: action.success
         }
