@@ -9,19 +9,35 @@ class MessageBoard extends Component {
     messages: []
   };
 
+  componentDidMount() {
+    if(this.props.allMessages) {
+      this.setState({ messages: this.props.allMessages })
+    }
+  }
+
+  userMessages() {
+    return this.state.messages.map(message => {
+      return(
+        <Messages 
+          messageFrom={message.fromuserid}
+          timestamp={message.createdAt}
+          text={message.text}
+        />
+      )
+    })
+  }
+
     render() {
         return(
             <Container fluid>
-                <Messages />
-                <Messages />
-                <Messages />
+                {this.userMessages()}
             </Container>
         )
     }
 }
 
 const mapStateToProps = state => {
-  return {};
+  return { allMessages: state.messages };
 };
 
 function mapDispatchToProps(dispatch) {
