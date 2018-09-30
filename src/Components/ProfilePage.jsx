@@ -22,7 +22,11 @@ import MessageBoard from "./MessageBoard.jsx";
 import { Switch, Route, Link } from "react-router-dom";
 import { getAllMessages } from "../Redux/Actions/ActSendMessage";
 import { getAllBooks } from "../Redux/Actions/ActBooks";
-import { patchInfo } from "../Redux/Actions/ActLoginRegister";
+import {
+  patchInfo,
+  getMyUser,
+  getAllUsers
+} from "../Redux/Actions/ActLoginRegister";
 
 class ProfilePage extends React.Component {
   state = {
@@ -36,12 +40,16 @@ class ProfilePage extends React.Component {
   };
 
   componentDidMount() {
+    setTimeout(this.props.getMyUser(this.props.userInfo.id), 200);
+
     if (this.props.allMessages.length < 1) {
       this.props.getAllMessages();
     }
-
     if (this.props.allBooks.length < 1) {
       this.props.getAllBooks();
+    }
+    if (this.props.allUsers.length < 1) {
+      this.props.getAllUsers();
     }
   }
 
@@ -62,7 +70,8 @@ class ProfilePage extends React.Component {
       this.props.patchInfo(
         this.state.username,
         this.state.password,
-        this.state.about
+        this.state.about,
+        this.props.userInfo.id
       );
   };
 
@@ -272,8 +281,14 @@ function mapDispatchToProps(dispatch) {
     getAllBooks: () => {
       dispatch(getAllBooks());
     },
-    patchInfo: (username, password, about) => {
-      dispatch(patchInfo(username, password, about));
+    patchInfo: (username, password, about, id) => {
+      dispatch(patchInfo(username, password, about, id));
+    },
+    getMyUser: id => {
+      dispatch(getMyUser(id));
+    },
+    getAllUsers: id => {
+      dispatch(getAllUsers());
     }
   };
 }

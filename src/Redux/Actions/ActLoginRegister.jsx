@@ -57,10 +57,19 @@ export const getAllUsers = () => dispatch => {
     .then(res => res.json())
     .then(data => {
       console.log("all user", data);
+      dispatch({ type: Types.GETALLUSERS, payload: data });
     });
 };
 
-export const patchInfo = (username, password, about) => dispatch => {
+export const getMyUser = id => dispatch => {
+  fetch(heroku + "/User/" + id)
+    .then(res => res.json())
+    .then(data => {
+      console.log("my user", data);
+    });
+};
+
+export const patchInfo = (username, password, about, id) => dispatch => {
   const requestOptions = {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -68,7 +77,7 @@ export const patchInfo = (username, password, about) => dispatch => {
       username: username,
       password: password,
       about: about,
-      id: 1
+      id: id
     })
   };
 
@@ -78,7 +87,7 @@ export const patchInfo = (username, password, about) => dispatch => {
     .then(data => {
       console.log("data received from backend:", data);
       dispatch({
-        type: Types.REGISTER,
+        type: Types.PATCHINFO,
         payload: data
       });
     });

@@ -19,6 +19,8 @@ const initialState = {
     image: null
   },
 
+  allUsers: [],
+
   allBooks: [],
 
   allMessages: []
@@ -39,11 +41,7 @@ export default function(state = initialState, action) {
 
     case Types.REGISTER:
       return {
-        ...state,
-
-        displayName: action.displayName,
-        username: action.username,
-        password: action.password
+        ...state
       };
 
     case Types.LOGOUT:
@@ -58,7 +56,7 @@ export default function(state = initialState, action) {
     case Types.GET_MESSAGES:
       return {
         ...state,
-        allMessages: [action.payload]
+        allMessages: action.payload.messages
       };
 
     case Types.GETONEBOOK:
@@ -76,6 +74,21 @@ export default function(state = initialState, action) {
       return {
         ...state,
         message: action.message
+      };
+
+    case Types.PATCHINFO:
+      return {
+        ...state,
+        userInfo: {
+          username: action.payload.username,
+          displayname: action.payload.displayname,
+          about: action.payload.about
+        }
+      };
+    case Types.GETALLUSERS:
+      return {
+        ...state,
+        allUsers: action.payload.users
       };
 
     default:

@@ -28,7 +28,7 @@ export const getAllMessages = () => dispatch => {
     .then(data => {
       dispatch({
         type: Types.GET_MESSAGES,
-        messages: data
+        payload: data
       });
     });
 };
