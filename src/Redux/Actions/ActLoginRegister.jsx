@@ -1,8 +1,9 @@
 import { Types, heroku, local } from "../Types";
 import { push } from "connected-react-router";
+import { getAllBooks } from "./ActBooks";
+import { getAllMessages } from "./ActSendMessage";
 
 export const login = (username, password) => dispatch => {
-  console.log("attempt", username, password);
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -21,6 +22,9 @@ export const login = (username, password) => dispatch => {
           id: data.id,
           success: data.success
         });
+        dispatch(getAllBooks());
+        dispatch(getAllMessages());
+        // dispatch(getAllUsers());
         dispatch(push("/bookbuddy/profile"));
       }
     });
@@ -46,5 +50,14 @@ export const register = (displayname, username, password) => dispatch => {
         type: Types.REGISTER,
         payload: data
       });
+    });
+};
+
+export const getAllUsers = () => dispatch => {
+  console.log("fetching users");
+  fetch(heroku + "/user/" + 1)
+    .then(res => res.json())
+    .then(data => {
+      console.log("all users", data);
     });
 };

@@ -15,7 +15,8 @@ class AddBook extends React.Component {
   state = { ...initialState };
 
   componentDidMount() {
-    this.props.getAllBooks("test");
+    // this.props.getAllBooks("test");
+
     console.log("redux state", this.props.state);
   }
 

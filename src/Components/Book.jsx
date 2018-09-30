@@ -16,7 +16,12 @@ import {
 } from "semantic-ui-react";
 import bookbuddyicon from "../images/bookbuddyicon.png";
 class Book extends React.Component {
-  state = { messageContent: null, modalOpen: false };
+  state = {
+    messageContent: { text: null, userId: null },
+    modalOpen: false
+  };
+
+  componentDidMount() {}
 
   // open or close modal based on current state
   modalSwitchStatus = () => {
@@ -24,7 +29,8 @@ class Book extends React.Component {
   };
 
   updateMessageContent = event => {
-    this.setState({ messageContent: event.target.value });
+    console.log(this.state);
+    this.setState({ messageContent: { text: event.target.value, userId: 1 } });
   };
 
   sendMessage = () => {
@@ -44,6 +50,7 @@ class Book extends React.Component {
 
   render() {
     const { modalOpen } = this.state;
+    const { title, author, rating, bookId, ownerId } = this.props;
     return (
       <React.Fragment>
         <Card
@@ -58,10 +65,13 @@ class Book extends React.Component {
               <Grid.Column width={8}>
                 <Grid>
                   <Grid.Row textAlign="left">
-                    <div>Title: &nbsp;Pickle-Chiffon Pie</div>
+                    <div>
+                      Title: &nbsp;
+                      {title}
+                    </div>
                   </Grid.Row>
                   <Grid.Row>
-                    <div>By: &nbsp; Jolly Roger Bradfield</div>
+                    <div>By: &nbsp; {author}</div>
                   </Grid.Row>
                 </Grid>
               </Grid.Column>
@@ -80,7 +90,7 @@ class Book extends React.Component {
                     id="rating"
                     icon="star"
                     size="large"
-                    defaultRating={0}
+                    defaultRating={rating ? rating : 0}
                     maxRating={5}
                   />
                 </div>

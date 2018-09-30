@@ -20,6 +20,8 @@ import BookShelf from "./BookShelf.jsx";
 import "../App.css";
 import MessageBoard from "./MessageBoard.jsx";
 import { Switch, Route, Link } from "react-router-dom";
+import { getAllMessages } from "../Redux/Actions/ActSendMessage";
+import { getAllBooks } from "../Redux/Actions/ActBooks";
 
 class ProfilePage extends React.Component {
   state = {
@@ -31,6 +33,16 @@ class ProfilePage extends React.Component {
     bio: ""
   };
 
+  componentDidMount() {
+    if (this.props.allMessages.length < 1) {
+      this.props.getAllMessages();
+    }
+
+    if (this.props.allBooks.length < 1) {
+      this.props.getAllBooks();
+    }
+  }
+
   modalSwitchStatus = () => {
     console.log(this.state.modalOpen);
     this.setState({ modalOpen: !this.state.modalOpen });
@@ -40,7 +52,6 @@ class ProfilePage extends React.Component {
   };
 
   handleItemClick = () => {
-    console.log("you clicked me!");
     window.location.reload(true);
   };
 
@@ -231,7 +242,14 @@ const mapStateToProps = state => {
 };
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    getAllMessages: () => {
+      dispatch(getAllMessages());
+    },
+    getAllBooks: () => {
+      dispatch(getAllBooks());
+    }
+  };
 }
 
 const Connect = connect(

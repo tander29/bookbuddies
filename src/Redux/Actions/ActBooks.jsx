@@ -12,7 +12,6 @@ export const getSingleBook = bookId => dispatch => {
 };
 
 export const addNewBook = bookData => dispatch => {
-  console.log("sending this data", bookData.title, bookData.author, heroku);
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -22,7 +21,7 @@ export const addNewBook = bookData => dispatch => {
   fetch(heroku + "/books", requestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log("data I receive back", data);
+      console.log("success added new book");
     });
 };
 
@@ -32,7 +31,7 @@ export const getAllBooks = book => dispatch => {
   fetch(heroku + "/books")
     .then(res => res.json())
     .then(data => {
-      console.log("data I receive back", data);
+      console.log("all books:", data);
       dispatch({
         type: Types.GETBOOKS,
         payload: data.book
@@ -47,6 +46,6 @@ export const googleBook = bookTitle => dispatch => {
   fetch(googleURL + bookTitleURL)
     .then(res => res.json())
     .then(data => {
-      console.log("google API data", data);
+      // console.log("google API data", data);
     });
 };
