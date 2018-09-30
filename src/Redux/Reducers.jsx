@@ -21,7 +21,7 @@ const initialState = {
 
   allUsers: [],
 
-  allBooks: [],
+  books: [],
 
   allMessages: []
 };

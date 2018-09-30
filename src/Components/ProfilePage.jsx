@@ -45,7 +45,7 @@ class ProfilePage extends React.Component {
     if (this.props.allMessages.length < 1) {
       this.props.getAllMessages();
     }
-    if (this.props.allBooks.length < 1) {
+    if (this.props.books.length < 1) {
       this.props.getAllBooks();
     }
     if (this.props.allUsers.length < 1) {
