@@ -23,8 +23,6 @@ class Login extends Component {
 
   handleEnter = event => {
     if (event.key === "Enter") {
-      // this.props.xmlTest()
-      // this.handleSubmit()
     }
   };
 

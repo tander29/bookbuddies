@@ -1,5 +1,7 @@
 import { Types, heroku, local } from "../Types";
 import { push } from "connected-react-router";
+import { getAllBooks } from "./ActBooks";
+import { getAllMessages } from "./ActSendMessage";
 
 export const login = (username, password) => dispatch => {
   console.log("attempt", username, password);
@@ -21,6 +23,8 @@ export const login = (username, password) => dispatch => {
           id: data.id,
           success: data.success
         });
+        dispatch(getAllBooks());
+        dispatch(getAllMessages());
         dispatch(push("/bookbuddy/profile"));
       }
     });
