@@ -28,12 +28,12 @@ class Messages extends Component {
           >
             <Grid>
               <Grid.Row columns={2}>
-                <Grid.Column textAlign="left">Message Sender</Grid.Column>
-                <Grid.Column textAlign="right">Time Stamp</Grid.Column>
+                <Grid.Column textAlign="left">{this.props.messageFrom}</Grid.Column>
+                <Grid.Column textAlign="right">{this.props.timeStamp}</Grid.Column>
               </Grid.Row>
               <Divider />
               <Grid.Row columns={2}>
-                <Grid.Column textAlign="left">Message Content</Grid.Column>
+                <Grid.Column textAlign="left">{this.props.text}</Grid.Column>
               </Grid.Row>
               <Grid.Row columns={2}>
                 <Grid.Column textAlign="left" />
