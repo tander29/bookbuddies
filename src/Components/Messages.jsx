@@ -23,7 +23,7 @@ class Messages extends Component {
         <Container>
           <Card
             className="messages"
-            style={{ padding: "1vh", backgroundColor: "#474B4F" }}
+            style={{ padding: "2vh", backgroundColor: "#474B4F", color: 'white' }}
             fluid
           >
             <Grid>

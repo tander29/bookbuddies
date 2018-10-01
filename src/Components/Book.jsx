@@ -61,30 +61,34 @@ class Book extends React.Component {
     } = this.props;
     return (
       <React.Fragment>
-        <Card
+        <Card className='bookStyle'
           style={{
             backgroundColor: "#474B4F",
             color: "white",
-            padding: "0.5vh"
+            padding: "0.5vh",
+            margin: "0.5vh"
           }}
         >
           <Grid celled="internally" centered>
-            <Grid.Row>
+            <Grid.Row style={{height:'25vh'}}>
               <Grid.Column width={8}>
                 <Grid>
                   <Grid.Row textAlign="left">
-                    <div>
-                      Title: &nbsp;
+                    <div><b>
+                      Title: &nbsp;</b>
                       {title}
+                      
                     </div>
                   </Grid.Row>
-                  <Grid.Row>
-                    <div>By: &nbsp; {author}</div>
+                  <Grid.Row style={{height:'15vh'}}>
+                    <div><b>By: &nbsp; </b>{author}</div>
                   </Grid.Row>
                 </Grid>
               </Grid.Column>
               <Grid.Column width={7} stetched="true">
                 <Image
+                  centered
+                  className = 'bookImage'
                   src={
                     google === "true" && googleImage
                       ? googleImage
