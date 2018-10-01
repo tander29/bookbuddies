@@ -5,28 +5,22 @@ import { connect } from "react-redux";
 
 
 class MessageBoard extends React.Component {
-  state = {
-    messages: []
-  };
-
-  componentDidMount() {
-    console.log("allMessages:", this.props.allMessages)
-    if(this.props.allMessages) {
-      this.setState({ messages: this.props.allMessages })
-    }
-  }
 
   userMessages() {
-    if(this.props.allMessages.length === 0) {
-      return(
+    const myMessages = this.props.messages.filter(myMessage => {
+      return myMessage.touserid === this.props.userId
+    })
+    console.log("myMessages are here", myMessages)
+    if (myMessages.length === 0) {
+      return (
         <div>
           You have no messages yet!
         </div>
       )
     } else {
-      return this.props.allMessages.map(message => {
-        return(
-          <Messages 
+      return myMessages.map(message => {
+        return (
+          <Messages
             messageFrom={message.fromuserid}
             timestamp={message.createdAt}
             text={message.text}
@@ -36,19 +30,22 @@ class MessageBoard extends React.Component {
     }
   }
 
-    render() {
-        return(
-            <React.Fragment>
-              <Container fluid>
-                  {this.userMessages()}
-              </Container>
-            </React.Fragment>
-        )
-    }
+  render() {
+    return (
+      <React.Fragment>
+        <Container fluid>
+          {this.userMessages()}
+        </Container>
+      </React.Fragment>
+    )
+  }
 }
 
 const mapStateToProps = state => {
-  return { allMessages: state.allMessages };
+  return {
+    messages: state.allMessages,
+    userId: state.userInfo.id
+  };
 };
 
 function mapDispatchToProps(dispatch) {
