@@ -23,13 +23,13 @@ class Messages extends Component {
         <Container>
           <Card
             className="messages"
-            style={{ padding: "1vh", backgroundColor: "#474B4F" }}
+            style={{ padding: "1vh" }}
             fluid
           >
             <Grid>
               <Grid.Row columns={2}>
                 <Grid.Column textAlign="left">{this.props.messageFrom}</Grid.Column>
-                <Grid.Column textAlign="right">{this.props.timeStamp}</Grid.Column>
+                <Grid.Column textAlign="right">{this.props.timestamp}</Grid.Column>
               </Grid.Row>
               <Divider />
               <Grid.Row columns={2}>
