@@ -58,7 +58,7 @@ export default function(state = initialState, action) {
     case Types.GET_MESSAGES:
       return {
         ...state,
-        allMessages: [action.payload]
+        allMessages: action.payload.messages
       };
 
     case Types.GETONEBOOK:

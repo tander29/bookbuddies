@@ -4,34 +4,45 @@ import Messages from './Messages'
 import { connect } from "react-redux";
 
 
-class MessageBoard extends Component {
+class MessageBoard extends React.Component {
   state = {
     messages: []
   };
 
   componentDidMount() {
+    console.log("allMessages:", this.props.allMessages)
     if(this.props.allMessages) {
       this.setState({ messages: this.props.allMessages })
     }
   }
 
   userMessages() {
-    return this.state.messages.map(message => {
+    if(this.state.messages.length === 0) {
       return(
-        <Messages 
-          messageFrom={message.fromuserid}
-          timestamp={message.createdAt}
-          text={message.text}
-        />
+        <div>
+          You have no messages yet!
+        </div>
       )
-    })
+    } else {
+      return this.state.messages.map(message => {
+        return(
+          <Messages 
+            messageFrom={message.fromuserid}
+            timestamp={message.createdAt}
+            text={message.text}
+          />
+        )
+      })
+    }
   }
 
     render() {
         return(
-            <Container fluid>
-                {this.userMessages()}
-            </Container>
+            <React.Fragment>
+              <Container fluid>
+                  {this.userMessages()}
+              </Container>
+            </React.Fragment>
         )
     }
 }
