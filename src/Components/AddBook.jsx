@@ -67,31 +67,23 @@ class AddBook extends React.Component {
           />
           <Form.Input
             className=""
-            placeholder="To Be Determined!"
+            placeholder="rating"
             type="text"
             name="rating"
             onChange={this.updateBookState}
           />
           <Form.Input
             className=""
-            placeholder="isbn10"
+            placeholder="*optional isbn10"
             type="text"
             name="isbn10"
             onChange={this.updateBookState}
           />
           <Form.Input
             className=""
-            placeholder="isbn13"
+            placeholder="*optional isbn13"
             type="text"
             name="isbn13"
-            onChange={this.updateBookState}
-          />
-          <Form.Input
-            className="coverImage"
-            placeholder="CoverImage"
-            type="text"
-            name="image"
-            // value={this.state.coverImage}
             onChange={this.updateBookState}
           />
 
