@@ -6,20 +6,17 @@ const initialState = {
     displayname: null,
     id: null,
     accountCreated: null,
-    aboutBio: "",
+    about: "",
     loginSuccess: false,
     booksOwned: [],
     messages: []
   },
 
-  googleBookAPI: {
-    title: null,
-    author: null,
-    rating: null,
-    image: null
-  },
+  googleBookAPI: [],
 
-  allBooks: [],
+  allUsers: [],
+
+  books: [],
 
   allMessages: []
 };
@@ -31,7 +28,7 @@ export default function(state = initialState, action) {
         ...state,
         userInfo: {
           username: action.username,
-          displayName: action.username,
+          displayname: action.displayname,
           id: action.id,
           loginSuccess: action.success
         }
@@ -39,11 +36,7 @@ export default function(state = initialState, action) {
 
     case Types.REGISTER:
       return {
-        ...state,
-
-        displayName: action.displayName,
-        username: action.username,
-        password: action.password
+        ...state
       };
 
     case Types.LOGOUT:
@@ -69,13 +62,29 @@ export default function(state = initialState, action) {
 
     case Types.GOOGLE_BOOK:
       return {
-        ...state
+        ...state,
+        googleBookAPI: action.payload.items
       };
 
     case Types.NEW_MESSAGE:
       return {
         ...state,
         message: action.message
+      };
+
+    case Types.PATCHINFO:
+      return {
+        ...state,
+        userInfo: {
+          username: action.payload.username,
+          displayname: action.payload.displayname,
+          about: action.payload.about
+        }
+      };
+    case Types.GETALLUSERS:
+      return {
+        ...state,
+        allUsers: action.payload.users
       };
 
     default:
