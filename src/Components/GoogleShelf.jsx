@@ -29,7 +29,7 @@ class GoogleShelf extends React.Component {
           author={
             book.volumeInfo.authors[0] ? book.volumeInfo.authors[0] : "N/A"
           }
-          image={book.volumeInfo.imageLinks.smallThumbnail}
+          googleImage={book.volumeInfo.imageLinks.smallThumbnail}
           rating={book.volumeInfo.averageRating}
           ratingsCount={book.volumeInfo.ratingsCount}
           cardSize={"tiny"}
