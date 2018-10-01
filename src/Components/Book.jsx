@@ -50,7 +50,15 @@ class Book extends React.Component {
 
   render() {
     const { modalOpen } = this.state;
-    const { title, author, rating, bookId, ownerId } = this.props;
+    const {
+      title,
+      author,
+      rating,
+      bookId,
+      ownerId,
+      googleImage,
+      google
+    } = this.props;
     return (
       <React.Fragment>
         <Card
@@ -76,7 +84,13 @@ class Book extends React.Component {
                 </Grid>
               </Grid.Column>
               <Grid.Column width={7} stetched="true">
-                <Image src={bookbuddyicon} />
+                <Image
+                  src={
+                    google === "true" && googleImage
+                      ? googleImage
+                      : bookbuddyicon
+                  }
+                />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
