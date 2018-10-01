@@ -23,17 +23,25 @@ class Messages extends Component {
         <Container>
           <Card
             className="messages"
-            style={{ padding: "1vh" }}
+            style={{ padding: "2vh", backgroundColor: "#474B4F", color: 'white' }}
             fluid
           >
-            <Grid>
+            <Grid celled="internally" centered>
               <Grid.Row columns={2}>
-                <Grid.Column textAlign="left">{this.props.messageFrom}</Grid.Column>
-                <Grid.Column textAlign="right">{this.props.timestamp}</Grid.Column>
+                <Grid.Column textAlign="left">
+                  Message from User ID
+                  {this.props.messageFrom}
+                </Grid.Column>
+                <Grid.Column textAlign="right">
+                  Message Time Stamp:
+                  {this.props.timeStamp}
+                </Grid.Column>
               </Grid.Row>
               <Divider />
               <Grid.Row columns={2}>
-                <Grid.Column textAlign="left">{this.props.text}</Grid.Column>
+                <Grid.Column textAlign="left">
+                  Message {this.props.text}
+                </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={2}>
                 <Grid.Column textAlign="left" />
@@ -67,12 +75,12 @@ class Messages extends Component {
 }
 
 const mapStateToProps = state => {
-  return {...state};
+  return { ...state };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    sendMessage: (message) => {
+    sendMessage: message => {
       dispatch(sendMessage(message));
     }
   };

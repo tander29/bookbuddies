@@ -2,12 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import Book from "./Book.jsx";
 import { googleBook } from "../Redux/Actions/ActBooks";
+import { Container, Button, Grid, Input } from "semantic-ui-react";
 
 class GoogleShelf extends React.Component {
   state = { googleBooks: [], data: this.props.data, passData: this.props.data };
 
   componentDidMount() {
-    console.log("propsbooks", this.props.googleBooks);
     if (this.props.googleBooks) {
       this.setState({ googleBooks: this.props.googleBooks });
     }
@@ -29,11 +29,12 @@ class GoogleShelf extends React.Component {
           author={
             book.volumeInfo.authors[0] ? book.volumeInfo.authors[0] : "N/A"
           }
-          image={book.volumeInfo.imageLinks.smallThumbnail}
+          googleImage={book.volumeInfo.imageLinks.smallThumbnail}
           rating={book.volumeInfo.averageRating}
           ratingsCount={book.volumeInfo.ratingsCount}
           cardSize={"tiny"}
           google={"true"}
+          key={Math.random() * 200000000}
         />
       );
     });
@@ -42,20 +43,33 @@ class GoogleShelf extends React.Component {
   render() {
     return (
       <React.Fragment>
+          <Container style={{padding:'1vh'}} textAlign='center'>
         <div id="search">
-          <div>
-            Save some typing, Search for a book details enter title or author
-          </div>
-          <input
+        <b>
+          <p style={{ color: "#61892F", paddingBottom:'2vh'}}>
+            ENTER A TITLE OR AUTHOR TO BEGIN YOUR BOOK SEARCH BELOW
+            </p>
+            </b>
+          <Input
+            
             type="text"
-            placeholder="title or author"
+            placeholder="Title or Author"
+            className = "searchBarGoogle"
             name="search"
             onChange={this.updateBookState}
           />
-          <button onClick={this.searchGoogle}>Search!</button>
+          <Button
+            onClick={this.searchGoogle}
+            style={{ backgroundColor: "#86C232", color: "white" }}
+            >
+            Search!
+          </Button>
         </div>
+            </Container>
 
-        {this.defaultBooks()}
+        <Grid container>
+          <Grid.Row>{this.defaultBooks()}</Grid.Row>
+        </Grid>
       </React.Fragment>
     );
   }

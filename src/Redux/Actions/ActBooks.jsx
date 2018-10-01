@@ -21,7 +21,7 @@ export const addNewBook = (bookData, id) => dispatch => {
   fetch(heroku + "/books", requestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log("success added new book");
+      console.log("success added new book", data);
     });
 };
 

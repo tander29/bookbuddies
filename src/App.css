@@ -52,24 +52,36 @@
   margin-top: 1vh !important;
 }
 
-
 #homepagecontainer {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color:#222629;
+  background-color: #222629;
   height: 75%;
-  
 }
 .headerNav {
   height: 25vh;
 }
-.custFooter {
+
+/* .bookStyle {
+  width: 35vh !important;
+  height: 35vh !important;
+} */
+
+.bookImage {
+  object-fit: contain !important;
+}
+
+.searchBarGoogle {
+  width: 60vh;
+  
+}
+/* .custFooter {
   height: 25vh;
-}
-.two {
+} */
+/* .two {
   height: 55vh;
-}
+} */
 
 /* #homepageinfo {
   position: absolute;

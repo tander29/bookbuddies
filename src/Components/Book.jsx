@@ -15,10 +15,24 @@ import {
   Icon
 } from "semantic-ui-react";
 import bookbuddyicon from "../images/bookbuddyicon.png";
+import { addNewBook } from "../Redux/Actions/ActBooks";
+
+const initialState = {
+  search: "",
+  title: "",
+  author: "",
+  isbn10: "",
+  isbn13: "",
+  image: "",
+  rating: "",
+  id: null,
+  messageContent: { text: null, userId: null },
+  modalOpen: false,
+  backUp: ""
+};
 class Book extends React.Component {
   state = {
-    messageContent: { text: null, userId: null },
-    modalOpen: false
+    ...initialState
   };
 
   componentDidMount() {}
@@ -48,35 +62,61 @@ class Book extends React.Component {
     }
   };
 
+  //below is for adding a new book using the google api stuff
+  addBook(bookData) {
+    this.props.addNewBook(bookData, this.props.userInfo.id);
+  }
+
   render() {
     const { modalOpen } = this.state;
-    const { title, author, rating, bookId, ownerId } = this.props;
+    const {
+      title,
+      author,
+      rating,
+      bookId,
+      ownerId,
+      googleImage,
+      google,
+      image
+    } = this.props;
     return (
       <React.Fragment>
-        <Card
+        <Card className='bookStyle'
           style={{
             backgroundColor: "#474B4F",
             color: "white",
-            padding: "0.5vh"
+            padding: "0.5vh",
+            margin: "0.5vh"
           }}
         >
           <Grid celled="internally" centered>
-            <Grid.Row>
+            <Grid.Row style={{height:'25vh'}}>
               <Grid.Column width={8}>
                 <Grid>
                   <Grid.Row textAlign="left">
-                    <div>
-                      Title: &nbsp;
+                    <div><b>
+                      Title: &nbsp;</b>
                       {title}
+                      
                     </div>
                   </Grid.Row>
-                  <Grid.Row>
-                    <div>By: &nbsp; {author}</div>
+                  <Grid.Row style={{height:'15vh'}}>
+                    <div><b>By: &nbsp; </b>{author}</div>
                   </Grid.Row>
                 </Grid>
               </Grid.Column>
               <Grid.Column width={7} stetched="true">
-                <Image src={bookbuddyicon} />
+                <Image
+                  centered
+                  className = 'bookImage'
+                  src={
+                    image
+                      ? image
+                      : google === "true" && googleImage
+                        ? googleImage
+                        : bookbuddyicon
+                  }
+                />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
@@ -100,6 +140,18 @@ class Book extends React.Component {
 
           {this.props.google === "true" ? (
             <button
+              onClick={() =>
+                this.addBook({
+                  title,
+                  author,
+                  rating,
+                  bookId,
+                  ownerId,
+                  googleImage,
+                  google,
+                  image: googleImage
+                })
+              }
               size="small"
               style={{ backgroundColor: "#86C232", color: "white" }}
             >
@@ -155,6 +207,9 @@ function mapDispatchToProps(dispatch) {
   return {
     sendMessage: messageItem => {
       dispatch(sendMessage(messageItem));
+    },
+    addNewBook: (bookData, id) => {
+      dispatch(addNewBook(bookData, id));
     }
   };
 }
