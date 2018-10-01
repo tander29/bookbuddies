@@ -12,12 +12,7 @@ const initialState = {
     messages: []
   },
 
-  googleBookAPI: {
-    title: null,
-    author: null,
-    rating: null,
-    image: null
-  },
+  googleBookAPI: [],
 
   allUsers: [],
 
@@ -67,7 +62,8 @@ export default function(state = initialState, action) {
 
     case Types.GOOGLE_BOOK:
       return {
-        ...state
+        ...state,
+        googleBookAPI: action.payload.items
       };
 
     case Types.NEW_MESSAGE:

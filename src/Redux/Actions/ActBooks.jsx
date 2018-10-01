@@ -11,11 +11,11 @@ export const getSingleBook = bookId => dispatch => {
     );
 };
 
-export const addNewBook = bookData => dispatch => {
+export const addNewBook = (bookData, id) => dispatch => {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ...bookData, userId: 4 })
+    body: JSON.stringify({ ...bookData, userId: id })
   };
 
   fetch(heroku + "/books", requestOptions)
@@ -43,6 +43,10 @@ export const googleBook = bookTitle => dispatch => {
   fetch(googleURL + bookTitleURL)
     .then(res => res.json())
     .then(data => {
-      // console.log("google API data", data);
+      dispatch({
+        type: Types.GOOGLE_BOOK,
+        payload: data
+      });
+      console.log("google API data", data);
     });
 };
