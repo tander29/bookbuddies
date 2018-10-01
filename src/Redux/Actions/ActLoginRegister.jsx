@@ -20,18 +20,18 @@ export const login = (username, password) => dispatch => {
           username: username,
           password: password,
           id: data.id,
-          success: data.success
+          success: data.success,
+          displayname: data.displayname
         });
         dispatch(getAllBooks());
         dispatch(getAllMessages());
-        // dispatch(getAllUsers());
+        dispatch(getAllUsers());
         dispatch(push("/bookbuddy/profile"));
       }
     });
 };
 
 export const register = (displayname, username, password) => dispatch => {
-  console.log(displayname, username, password);
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -45,7 +45,6 @@ export const register = (displayname, username, password) => dispatch => {
   fetch(heroku + "/authorize/register", requestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log("data received from backend:", data);
       dispatch({
         type: Types.REGISTER,
         payload: data
@@ -54,10 +53,42 @@ export const register = (displayname, username, password) => dispatch => {
 };
 
 export const getAllUsers = () => dispatch => {
-  console.log("fetching users");
-  fetch(heroku + "/user/" + 1)
+  fetch(heroku + "/User")
     .then(res => res.json())
     .then(data => {
-      console.log("all users", data);
+      console.log("all user", data);
+      dispatch({ type: Types.GETALLUSERS, payload: data });
+    });
+};
+
+export const getMyUser = id => dispatch => {
+  fetch(heroku + "/User/" + id)
+    .then(res => res.json())
+    .then(data => {
+      console.log("my user", data);
+    });
+};
+
+export const patchInfo = (username, password, about, id) => dispatch => {
+  const requestOptions = {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+      about: about,
+      id: id
+    })
+  };
+
+  console.log("request options:", requestOptions);
+  fetch(heroku + "/User", requestOptions)
+    .then(res => res.json())
+    .then(data => {
+      console.log("data received from backend:", data);
+      dispatch({
+        type: Types.PATCHINFO,
+        payload: data
+      });
     });
 };

@@ -97,40 +97,50 @@ class Book extends React.Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-          <Modal
-            size="large"
-            closeIcon
-            open={modalOpen}
-            onClose={this.modalSwitchStatus}
-            trigger={
-              <Button
-                onClick={this.modalSwitchStatus}
-                size="small"
-                style={{ backgroundColor: "#86C232", color: "white" }}
-              >
-                Request Information
-              </Button>
-            }
-          >
-            <Form style={{ padding: "1vh", backgroundColor: "#474B4F" }}>
-              <TextArea
-                autoFocus={true}
-                onKeyPress={this.handleEnter}
-                placeholder="Request this book from the user"
-                onChange={this.updateMessageContent}
-                style={{ marginBottom: "1vh" }}
-              />
-              <Button
-                onClick={this.sendMessage}
-                style={{ backgroundColor: "#86C232", color: "white" }}
-              >
-                Send Message to Owner
-              </Button>
-              <Button onClick={this.modalSwitchStatus} floated="right">
-                Close
-              </Button>
-            </Form>
-          </Modal>
+
+          {this.props.google === "true" ? (
+            <button
+              size="small"
+              style={{ backgroundColor: "#86C232", color: "white" }}
+            >
+              Submit Book
+            </button>
+          ) : (
+            <Modal
+              size="large"
+              closeIcon
+              open={modalOpen}
+              onClose={this.modalSwitchStatus}
+              trigger={
+                <Button
+                  onClick={this.modalSwitchStatus}
+                  size="small"
+                  style={{ backgroundColor: "#86C232", color: "white" }}
+                >
+                  Request Information
+                </Button>
+              }
+            >
+              <Form style={{ padding: "1vh", backgroundColor: "#474B4F" }}>
+                <TextArea
+                  autoFocus={true}
+                  onKeyPress={this.handleEnter}
+                  placeholder="Request this book from the user"
+                  onChange={this.updateMessageContent}
+                  style={{ marginBottom: "1vh" }}
+                />
+                <Button
+                  onClick={this.sendMessage}
+                  style={{ backgroundColor: "#86C232", color: "white" }}
+                >
+                  Send Message to Owner
+                </Button>
+                <Button onClick={this.modalSwitchStatus} floated="right">
+                  Close
+                </Button>
+              </Form>
+            </Modal>
+          )}
         </Card>
       </React.Fragment>
     );
