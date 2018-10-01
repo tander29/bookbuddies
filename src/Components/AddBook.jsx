@@ -11,24 +11,25 @@ const initialState = {
   isbn10: "",
   isbn13: "",
   image: "",
-  rating: ""
+  rating: "",
+  id: null
 };
 class AddBook extends React.Component {
   state = { ...initialState };
 
   componentDidMount() {
-    // this.props.getAllBooks("test");
-
     console.log("redux state", this.props.state);
   }
 
   updateBookState = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
   handleAddBook = () => {
-    const bookData = { ...this.state, userInfo: "userInfo" };
-    this.props.addNewBook(bookData);
+    const bookData = { ...this.state };
+    this.props.addNewBook(bookData, this.props.userInfo.id);
   };
 
   // searchGoogle = () => {

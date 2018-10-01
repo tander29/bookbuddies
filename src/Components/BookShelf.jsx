@@ -6,14 +6,12 @@ import { Grid } from "semantic-ui-react";
 class BookShelf extends React.Component {
   state = { booksToDisplay: [] };
   componentDidMount() {
-    console.log("propsbooks", this.props.allBooks);
     if (this.props.allBooks) {
       this.setState({ booksToDisplay: this.props.allBooks });
     }
   }
 
   defaultBooks() {
-    console.log("default books", this.state);
     return this.state.booksToDisplay.map(book => {
       return (
         <Book
@@ -23,6 +21,7 @@ class BookShelf extends React.Component {
           ownerId={book.userId}
           image={book.image}
           rating={book.rating}
+          key={book.id}
           google={"false"}
         />
       );
@@ -30,24 +29,7 @@ class BookShelf extends React.Component {
   }
 
   render() {
-    return (
-      <React.Fragment>
-        {this.defaultBooks()}
-        {/* <Grid columns={3} stackable style={{ padding: "auto" }}>
-        <Grid.Row>
-          <Grid.Column>
-            <Book className="bookStyling" />
-          </Grid.Column>
-          <Grid.Column>
-            <Book className="bookStyling" />
-          </Grid.Column>
-          <Grid.Column>
-            <Book className="bookStyling" />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid> */}
-      </React.Fragment>
-    );
+    return <React.Fragment>{this.defaultBooks()}</React.Fragment>;
   }
 }
 

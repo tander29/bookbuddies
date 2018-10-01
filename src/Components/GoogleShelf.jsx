@@ -7,7 +7,6 @@ class GoogleShelf extends React.Component {
   state = { googleBooks: [], data: this.props.data, passData: this.props.data };
 
   componentDidMount() {
-    console.log("propsbooks", this.props.googleBooks);
     if (this.props.googleBooks) {
       this.setState({ googleBooks: this.props.googleBooks });
     }
@@ -34,6 +33,7 @@ class GoogleShelf extends React.Component {
           ratingsCount={book.volumeInfo.ratingsCount}
           cardSize={"tiny"}
           google={"true"}
+          key={Math.random() * 200000000}
         />
       );
     });
