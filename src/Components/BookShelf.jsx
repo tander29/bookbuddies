@@ -23,6 +23,7 @@ class BookShelf extends React.Component {
           ownerId={book.userId}
           image={book.image}
           rating={book.rating}
+          google={"false"}
         />
       );
     });
