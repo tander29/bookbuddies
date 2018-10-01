@@ -15,10 +15,24 @@ import {
   Icon
 } from "semantic-ui-react";
 import bookbuddyicon from "../images/bookbuddyicon.png";
+import { addNewBook } from "../Redux/Actions/ActBooks";
+
+const initialState = {
+  search: "",
+  title: "",
+  author: "",
+  isbn10: "",
+  isbn13: "",
+  image: "",
+  rating: "",
+  id: null,
+  messageContent: { text: null, userId: null },
+  modalOpen: false,
+  backUp: ""
+};
 class Book extends React.Component {
   state = {
-    messageContent: { text: null, userId: null },
-    modalOpen: false
+    ...initialState
   };
 
   componentDidMount() {}
@@ -48,6 +62,11 @@ class Book extends React.Component {
     }
   };
 
+  //below is for adding a new book using the google api stuff
+  addBook(bookData) {
+    this.props.addNewBook(bookData, this.props.userInfo.id);
+  }
+
   render() {
     const { modalOpen } = this.state;
     const {
@@ -57,7 +76,8 @@ class Book extends React.Component {
       bookId,
       ownerId,
       googleImage,
-      google
+      google,
+      image
     } = this.props;
     return (
       <React.Fragment>
@@ -86,9 +106,11 @@ class Book extends React.Component {
               <Grid.Column width={7} stetched="true">
                 <Image
                   src={
-                    google === "true" && googleImage
-                      ? googleImage
-                      : bookbuddyicon
+                    image
+                      ? image
+                      : google === "true" && googleImage
+                        ? googleImage
+                        : bookbuddyicon
                   }
                 />
               </Grid.Column>
@@ -114,6 +136,18 @@ class Book extends React.Component {
 
           {this.props.google === "true" ? (
             <button
+              onClick={() =>
+                this.addBook({
+                  title,
+                  author,
+                  rating,
+                  bookId,
+                  ownerId,
+                  googleImage,
+                  google,
+                  image: googleImage
+                })
+              }
               size="small"
               style={{ backgroundColor: "#86C232", color: "white" }}
             >
@@ -169,6 +203,9 @@ function mapDispatchToProps(dispatch) {
   return {
     sendMessage: messageItem => {
       dispatch(sendMessage(messageItem));
+    },
+    addNewBook: (bookData, id) => {
+      dispatch(addNewBook(bookData, id));
     }
   };
 }
