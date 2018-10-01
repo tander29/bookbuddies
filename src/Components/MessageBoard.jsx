@@ -17,14 +17,14 @@ class MessageBoard extends React.Component {
   }
 
   userMessages() {
-    if(this.state.messages.length === 0) {
+    if(this.props.allMessages.length === 0) {
       return(
         <div>
           You have no messages yet!
         </div>
       )
     } else {
-      return this.state.messages.map(message => {
+      return this.props.allMessages.map(message => {
         return(
           <Messages 
             messageFrom={message.fromuserid}
@@ -48,7 +48,7 @@ class MessageBoard extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { allMessages: state.messages };
+  return { allMessages: state.allMessages };
 };
 
 function mapDispatchToProps(dispatch) {
