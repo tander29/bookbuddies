@@ -5,6 +5,7 @@ import BookBuddiesinfo from "../images/BookBuddiesinfoCropped.jpg";
 import Header from "./Header";
 import Footer from "./Footer";
 import Login from "./Login";
+
 import Register from "./Register";
 
 import { Container, Modal, Grid, Button, Image } from "semantic-ui-react";

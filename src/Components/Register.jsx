@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Form } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { register } from "../Redux/Actions/ActLoginRegister";
+import { register, getAllUsers } from "../Redux/Actions/ActLoginRegister";
+import { getAllMessages } from "../Redux/Actions/ActSendMessage";
+import { getAllBooks } from "../Redux/Actions/ActBooks";
 
 const initialState = {
   displayName: "",
@@ -14,15 +16,28 @@ class Register extends Component {
     ...initialState
   };
 
-  handleSubmit = () => {
-    const { displayName, username, password, reenterPassword } = this.state;
+  componentDidMount() {
+    this.props.getAllUsers();
+    this.props.getAllMessages();
+    this.props.getAllBooks();
+  }
 
+  handleSubmit = () => {
+    const { username } = this.state;
+
+    const checkExistingUsers = this.props.allUsers.filter(
+      user => username === user.username
+    );
+
+    checkExistingUsers.length > 0 ? alert("username exists") : this.addUser();
+  };
+
+  addUser() {
+    const { displayName, username, password, reenterPassword } = this.state;
     if (this.lengthofFieldsValid() === false) {
       return;
     }
-
     if (password === reenterPassword) {
-      console.log("success!");
       this.props.register(displayName, username, password);
       this.setState({ ...initialState });
       return;
@@ -30,7 +45,7 @@ class Register extends Component {
       alert("Passwords don't match!");
       this.setState({ password: "", reenterPassword: "" });
     }
-  };
+  }
 
   lengthofFieldsValid = () => {
     const { displayName, username, password, reenterPassword } = this.state;
@@ -108,13 +123,22 @@ class Register extends Component {
 }
 
 const mapStateToProps = state => {
-  return {...state};
+  return { ...state };
 };
 
 function mapDispatchToProps(dispatch) {
   return {
     register: (displayname, username, password) => {
       dispatch(register(displayname, username, password));
+    },
+    getAllUsers: () => {
+      dispatch(getAllUsers());
+    },
+    getAllMessages: () => {
+      dispatch(getAllMessages());
+    },
+    getAllBooks: () => {
+      dispatch(getAllBooks());
     }
   };
 }
