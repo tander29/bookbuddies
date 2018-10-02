@@ -20,7 +20,7 @@ class MainPage extends React.Component {
             <div>Rating: 5 Stars!</div>
             <div>Bio: I am a sloth</div>
           </Grid.Column>
-          <Grid.Column width={10}>
+          <Grid.Column width={10} centered>
             <div>
               <SearchBar />
               <Icon name="search" />
