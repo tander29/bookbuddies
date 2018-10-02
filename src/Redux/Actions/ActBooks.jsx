@@ -66,3 +66,13 @@ export const googleBook = bookTitle => dispatch => {
 export const clearGoogle = () => dispatch => {
   dispatch({ type: Types.RESET_GOOGLE });
 };
+
+
+export const filterBooks = (search) => dispatch =>{
+  dispatch({type: Types.FILTER_BOOKS,
+            search: search})
+}
+
+export const stuff = () => dispatch =>{
+  console.log("works")
+}

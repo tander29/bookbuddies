@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import Book from "./Book.jsx";
-import { Grid } from "semantic-ui-react";
+
+import { Container, Grid, Button } from "semantic-ui-react";
+
 
 class BookShelf extends React.Component {
   state = { booksToDisplay: [] };
@@ -27,11 +29,25 @@ class BookShelf extends React.Component {
       );
     });
   }
+  filterBooks = () =>{
+    const filterBooksArray = this.state.booksToDisplay.filter(book =>{
+        return book.title.includes(this.props.search)
+      
+    })
+    console.log(filterBooksArray)
+    console.log(this.state.booksToDisplay)
+    console.log(this.props.search, "searched")
+    
+    
+  }
 
   render() {
     return (
       <React.Fragment>
+
+      <Button onClick={this.filterBooks}>search</Button>
         <Grid container style={{ paddingTop: "5vh" }} centered>
+
           {this.defaultBooks()}
         </Grid>
       </React.Fragment>
@@ -40,7 +56,8 @@ class BookShelf extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { allBooks: state.books };
+  return { allBooks: state.books,
+          ...state };
 };
 
 function mapDispatchToProps(dispatch) {

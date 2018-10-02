@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import NavBar from "./NavBar.jsx";
 import { Grid, Icon, Card , Image} from "semantic-ui-react";
 import BookShelf from "./BookShelf";
-import { SearchBar } from "./SearchBar";
+import  SearchBar  from "./SearchBar";
 import { logout } from "../Redux/Actions/ActLogout";
 import bookbuddyicon from "../images/bookbuddyicon.png";
 
