@@ -12,6 +12,7 @@ export const getSingleBook = bookId => dispatch => {
 };
 
 export const addNewBook = (bookData, id) => dispatch => {
+  console.log("id in action", id);
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -32,6 +33,7 @@ export const getAllBooks = book => dispatch => {
   fetch(heroku + "/books")
     .then(res => res.json())
     .then(data => {
+      console.log(" all books", data);
       dispatch({
         type: Types.GETBOOKS,
         payload: data.book

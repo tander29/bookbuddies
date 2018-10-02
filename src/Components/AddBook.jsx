@@ -36,6 +36,7 @@ class AddBook extends React.Component {
   };
 
   handleAddBook = () => {
+    console.log("adding book user id", this.props.userInfo.id);
     const bookData = { ...this.state };
     this.props.addNewBook(bookData, this.props.userInfo.id);
   };
