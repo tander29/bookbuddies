@@ -27,6 +27,7 @@ import {
   getMyUser,
   getAllUsers
 } from "../Redux/Actions/ActLoginRegister";
+import { logout } from "../Redux/Actions/ActLogout";
 
 class ProfilePage extends React.Component {
   state = {
@@ -40,16 +41,11 @@ class ProfilePage extends React.Component {
   };
 
   componentDidMount() {
-    setTimeout(this.props.getMyUser(this.props.userInfo.id), 200);
-
-    if (this.props.allMessages.length < 1) {
-      this.props.getAllMessages();
-    }
-    if (this.props.books.length < 1) {
-      this.props.getAllBooks();
-    }
-    if (this.props.allUsers.length < 1) {
-      this.props.getAllUsers();
+    this.props.getAllMessages();
+    this.props.getAllBooks();
+    this.props.getAllUsers();
+    if (!this.props.userInfo.loginSuccess) {
+      this.props.logout();
     }
   }
 
@@ -180,14 +176,10 @@ class ProfilePage extends React.Component {
           <Grid.Row>
             <Grid.Column width={3}>
               <Segment vertical>Username: {username}</Segment>
-              <Segment vertical>{displayname}</Segment>
-              <Segment vertical>
-                Location:
-                {this.state.location}
-              </Segment>
+              <Segment vertical>Location: USA</Segment>
               <Segment vertical>
                 Bio:
-                {about}
+                {about || " I am such a book worm"}
               </Segment>
               <div id="ratingbox">
                 <Modal
@@ -231,16 +223,6 @@ class ProfilePage extends React.Component {
                         {about}
                         <input onChange={this.handleChange} name="about" />
                       </Segment>
-                      <Segment vertical>
-                        Rating:
-                        <Rating
-                          id="rating"
-                          icon="star"
-                          size="large"
-                          defaultRating={0}
-                          maxRating={5}
-                        />
-                      </Segment>
                     </Modal.Description>
                   </Modal.Content>
                   <button onClick={this.modalSwitchStatus}>Close</button>
@@ -251,7 +233,7 @@ class ProfilePage extends React.Component {
                   id="rating"
                   icon="star"
                   size="large"
-                  defaultRating={0}
+                  defaultRating={5}
                   maxRating={5}
                 />
               </div>
@@ -289,6 +271,9 @@ function mapDispatchToProps(dispatch) {
     },
     getAllUsers: id => {
       dispatch(getAllUsers());
+    },
+    logout: () => {
+      dispatch(logout());
     }
   };
 }
