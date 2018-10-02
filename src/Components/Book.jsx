@@ -102,7 +102,11 @@ class Book extends React.Component {
           }}
         >
           <Grid celled="internally" centered>
-            <Grid.Row style={{ height: "25vh" }}>
+
+            
+
+            <Grid.Row style={{height:'20vh'}}>
+
               <Grid.Column width={8}>
                 <Grid>
                   <Grid.Row textAlign="left">
@@ -111,11 +115,13 @@ class Book extends React.Component {
                       {title}
                     </div>
                   </Grid.Row>
-                  <Grid.Row style={{ height: "15vh" }}>
+
+                  <Grid.Row style={{ height: "13vh" }}>
                     <div>
                       <b>By: &nbsp; </b>
                       {author}
                     </div>
+
                   </Grid.Row>
                 </Grid>
               </Grid.Column>
@@ -153,7 +159,7 @@ class Book extends React.Component {
           </Grid>
 
           {this.props.google === "true" ? (
-            <button
+            <Button
               onClick={() =>
                 this.addBook({
                   title,
@@ -166,11 +172,11 @@ class Book extends React.Component {
                   image: googleImage
                 })
               }
-              size="small"
+              
               style={{ backgroundColor: "#86C232", color: "white" }}
             >
               Submit Book
-            </button>
+            </Button>
           ) : (
             <Modal
               size="large"
@@ -201,7 +207,7 @@ class Book extends React.Component {
                 >
                   Send Message to Owner
                 </Button>
-                <Button onClick={this.modalSwitchStatus} floated="right">
+                <Button onClick={this.modalSwitchStatus} negative floated="right">
                   Close
                 </Button>
               </Form>
