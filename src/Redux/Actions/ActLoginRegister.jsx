@@ -24,9 +24,9 @@ export const login = (username, password) => dispatch => {
           success: data.success,
           displayname: data.displayname
         });
-        // dispatch(getAllBooks());
-        // dispatch(getAllMessages());
-        // dispatch(getAllUsers());
+         dispatch(getAllBooks());
+         dispatch(getAllMessages());
+         dispatch(getAllUsers());
         dispatch(push("/bookbuddy/main"));
       }
       if (!data.success) {
