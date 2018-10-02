@@ -50,6 +50,7 @@ export const register = (displayname, username, password) => dispatch => {
         payload: data
       });
     });
+    dispatch(login(username,password))
 };
 
 export const getAllUsers = () => dispatch => {
