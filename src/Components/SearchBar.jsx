@@ -1,28 +1,47 @@
 import React, { Component } from "react";
-
+import { connect } from 'react-redux';
+import {filterBooks} from '../Redux/Actions/ActBooks'
 import "../App.css";
-import { } from "semantic-ui-react";
+
 
 export class SearchBar extends Component {
     state = {
-        search: ""
+        search: "",
+        searchBooks: []
     }
 
-    handleSubmit = (event) => {
-        if (event.key === 'Enter') {
-            console.log("Hey, you hit the Enter key!")
-            console.log(this.state.search)
-            this.setState({
-                search: ""
-            })
+    componentDidMount(){
+        if (this.props.searchBooks){
+            this.setState({searchBooks: this.props.searchBooks})
         }
     }
 
-    updateSearch = (event) => {
+
+    updateState = event => {
+        this.setState({search: event.target.value})
+            console.log(this.state)
+         
+        };
+
+    handleSubmit = (event) => {
+        if (event.key === 'Enter') {
+            this.updateState()
+        }
+    }
+
+    updateSearch = () => {
+        if(this.state.search.length > 1){
+            this.props.filterBooks(this.state.search)
+        }
+    }
+    filterBooks = (event) =>{
         this.setState({
             search: event.target.value
+            
         })
+        console.log(this.filterBooks)
     }
+
 
     render() {
         return(
@@ -31,11 +50,31 @@ export class SearchBar extends Component {
                 type="text"
                 placeholder="Search for books"
                 value={this.state.search}
+                onChange={this.updateState}
                 onKeyPress={this.handleSubmit}
-                onChange={this.updateSearch}
+
             />
         )
     }
 }
+const mapStateToProps = state => {
+    return {
+      books:[{}]
+    };
+  };
+  
+  function mapDispatchToProps(dispatch) {
+    return {
+        filterBooks: () => {
+            dispatch(filterBooks())
+        }
+    };
+  }
+  
+  const Connect = connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SearchBar);
 
-export default SearchBar;
+
+export default Connect;

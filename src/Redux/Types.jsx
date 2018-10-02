@@ -15,7 +15,8 @@ export const Types = {
   NEW_MESSAGE: "NEW_MESSAGE",
   GET_MESSAGES: "GET_MESSAGES",
   PATCHINFO: "PATCHINFO",
-  GETALLUSERS: "GETAllUSERS"
+  GETALLUSERS: "GETAllUSERS",
+  FILTER_BOOKS: "FILTER_BOOKS"
 };
 
 export const herokuStandard = "https://warm-bastion-90430.herokuapp.com";

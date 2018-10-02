@@ -90,6 +90,12 @@ export default function(state = initialState, action) {
         allUsers: action.payload.users
       };
 
+    case Types.FILTER_BOOKS:
+    return {
+      ...state,
+      books: action.books
+    }
+
     default:
       return state;
   }

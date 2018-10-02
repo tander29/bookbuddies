@@ -63,3 +63,8 @@ export const googleBook = bookTitle => dispatch => {
 export const clearGoogle = () => dispatch => {
   dispatch({ type: Types.RESET_GOOGLE });
 };
+
+
+export const filterBooks = () => dispatch =>{
+  dispatch({type: Types.FILTER_BOOKS})
+}
