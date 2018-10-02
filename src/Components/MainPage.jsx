@@ -3,10 +3,11 @@ import { connect } from "react-redux";
 import Header from "./Header";
 import Footer from "./Footer";
 import NavBar from "./NavBar.jsx";
-import { Grid, Icon } from "semantic-ui-react";
+import { Grid, Icon, Card , Image} from "semantic-ui-react";
 import BookShelf from "./BookShelf";
 import { SearchBar } from "./SearchBar";
 import { logout } from "../Redux/Actions/ActLogout";
+import bookbuddyicon from "../images/bookbuddyicon.png";
 
 class MainPage extends React.Component {
   componentDidMount() {
@@ -23,6 +24,16 @@ class MainPage extends React.Component {
           <Grid.Row>
           <Grid.Column width={3}>
             <h1>Profile</h1>
+            {/* <Card>
+                <Image src={bookbuddyicon} />
+                <Card.Content>
+                  <Card.Header>{username}</Card.Header>
+                  <Card.Meta>
+                    <span className="date">Joined in 2018</span>
+                  </Card.Meta>
+                  <Card.Description>{about}</Card.Description>
+                </Card.Content>
+            </Card> */}
             <div>Name: Sloth</div>
             <div>Rating: 5 Stars!</div>
             <div>Bio: I am a sloth</div>
