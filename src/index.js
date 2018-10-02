@@ -22,7 +22,6 @@ ReactDOM.render(
                 <Route exact path="/bookbuddy/home" render={(props) => (<HomePage />)} />
                 <Route exact path="/bookbuddy/main" render={(props) => (<MainPage />)} />
                 <Route exact path="/bookbuddy/profile" render={(props) => (<ProfilePage />)} />
-                <Route exact path="/bookbuddy/profile/owned" render={(props) => (<ProfilePage />)} />
                 <Route exact path="/bookbuddy/profile/available" render={(props) => (<ProfilePage />)} />
                 <Route exact path="/bookbuddy/profile/onloan" render={(props) => (<ProfilePage />)} />
                 <Route render={(props) => (<ErrorPage />)} />
