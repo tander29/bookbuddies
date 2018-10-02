@@ -26,6 +26,7 @@ const initialState = {
   image: "",
   rating: "",
   id: null,
+  bookOwnerID: null,
   messageContent: { text: null, userId: null },
   modalOpen: false,
   backUp: ""
@@ -44,10 +45,16 @@ class Book extends React.Component {
 
   updateMessageContent = event => {
     console.log(this.state);
-    this.setState({ messageContent: { text: event.target.value, userId: 1 } });
+    this.setState({
+      messageContent: {
+        text: event.target.value,
+        fromUserId: this.props.userInfo.id,
+        toOwnerId: this.props.ownerId
+      }
+    });
   };
 
-  sendMessage = () => {
+  sendMessage = ownerId => {
     if (this.state.messageContent) {
       this.modalSwitchStatus();
 
@@ -81,7 +88,8 @@ class Book extends React.Component {
     } = this.props;
     return (
       <React.Fragment>
-        <Card className='bookStyle'
+        <Card
+          className="bookStyle"
           style={{
             backgroundColor: "#474B4F",
             color: "white",
@@ -90,25 +98,33 @@ class Book extends React.Component {
           }}
         >
           <Grid celled="internally" centered>
+
+            
+
             <Grid.Row style={{height:'20vh'}}>
+
               <Grid.Column width={8}>
                 <Grid>
                   <Grid.Row textAlign="left">
-                    <div><b>
-                      Title: &nbsp;</b>
+                    <div>
+                      <b>Title: &nbsp;</b>
                       {title}
-                      
                     </div>
                   </Grid.Row>
-                  <Grid.Row style={{height:'13vh'}}>
-                    <div><b>By: &nbsp; </b>{author}</div>
+
+                  <Grid.Row style={{ height: "13vh" }}>
+                    <div>
+                      <b>By: &nbsp; </b>
+                      {author}
+                    </div>
+
                   </Grid.Row>
                 </Grid>
               </Grid.Column>
               <Grid.Column width={7} stetched="true">
                 <Image
                   centered
-                  className = 'bookImage'
+                  className="bookImage"
                   src={
                     image
                       ? image
@@ -182,7 +198,7 @@ class Book extends React.Component {
                   style={{ marginBottom: "1vh" }}
                 />
                 <Button
-                  onClick={this.sendMessage}
+                  onClick={() => this.sendMessage()}
                   style={{ backgroundColor: "#86C232", color: "white" }}
                 >
                   Send Message to Owner

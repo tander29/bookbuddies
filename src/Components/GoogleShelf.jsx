@@ -5,7 +5,12 @@ import { googleBook } from "../Redux/Actions/ActBooks";
 import { Container, Button, Grid, Input } from "semantic-ui-react";
 
 class GoogleShelf extends React.Component {
-  state = { googleBooks: [], data: this.props.data, passData: this.props.data };
+  state = {
+    googleBooks: [],
+    data: this.props.data,
+    passData: this.props.data,
+    search: ""
+  };
 
   componentDidMount() {
     if (this.props.googleBooks) {
@@ -18,7 +23,15 @@ class GoogleShelf extends React.Component {
   };
 
   searchGoogle = () => {
-    this.props.googleBook(this.state.search);
+    if (this.state.search.length > 1) {
+      this.props.googleBook(this.state.search);
+    }
+  };
+
+  keyPress = event => {
+    if (event.key === "Enter") {
+      this.searchGoogle();
+    }
   };
 
   defaultBooks() {
@@ -43,29 +56,29 @@ class GoogleShelf extends React.Component {
   render() {
     return (
       <React.Fragment>
-          <Container style={{padding:'2vh'}} textAlign='center'>
-        <div id="search">
-        <b>
-          <p style={{ color: "#61892F", paddingBottom:'2vh'}}>
-            ENTER A TITLE OR AUTHOR TO BEGIN YOUR BOOK SEARCH BELOW
-            </p>
+        <Container style={{ padding: "2vh" }} textAlign="center">
+          <div id="search">
+            <b>
+              <p style={{ color: "#61892F", paddingBottom: "2vh" }}>
+                ENTER A TITLE OR AUTHOR TO BEGIN YOUR BOOK SEARCH BELOW
+              </p>
             </b>
-          <Input
-            
-            type="text"
-            placeholder="Title or Author"
-            className = "searchBarGoogle"
-            name="search"
-            onChange={this.updateBookState}
-          />
-          <Button
-            onClick={this.searchGoogle}
-            style={{ backgroundColor: "#86C232", color: "white" }}
+            <Input
+              type="text"
+              placeholder="Title or Author"
+              className="searchBarGoogle"
+              name="search"
+              onChange={this.updateBookState}
+              onKeyPress={this.keyPress}
+            />
+            <Button
+              onClick={this.searchGoogle}
+              style={{ backgroundColor: "#86C232", color: "white" }}
             >
-            Search!
-          </Button>
-        </div>
-            </Container>
+              Search!
+            </Button>
+          </div>
+        </Container>
 
         <Grid container textAlign='center'>
           <Grid.Row>{this.defaultBooks()}</Grid.Row>
