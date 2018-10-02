@@ -19,6 +19,7 @@ state = {
         return (
           <Messages
             messageFrom={message.fromuserid}
+            messageTo={message.touserid}
             timestamp={message.createdAt}
             text={message.text}
             key={message.id}
@@ -43,8 +44,10 @@ state = {
         return (
           <Messages
             messageFrom={message.fromuserid}
+            messageTo={message.touserid}
             timestamp={message.createdAt}
             text={message.text}
+            key={message.id}
           />
         )
       })
@@ -53,10 +56,8 @@ state = {
 
   whichMessages() {
     if(this.state.renderMessages === true) {
-      console.log("renderMessages: ", this.state.renderMessages)
       return this.userMessages()
     } else {
-      console.log("renderMessages: ", this.state.renderMessages)
       return this.sentMessages()
     }
   }

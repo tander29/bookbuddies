@@ -79,10 +79,14 @@ class Messages extends Component {
             fluid
           >
             <Grid centered>
-              <Grid.Row columns={2}>
+              <Grid.Row columns={3}>
                 <Grid.Column textAlign="left">
                   From: &nbsp;
                   {this.findUsername(this.props.messageFrom)}
+                </Grid.Column>
+                <Grid.Column textAlign="left">
+                  To: &nbsp;
+                  {this.findUsername(this.props.messageTo)}
                 </Grid.Column>
                 <Grid.Column textAlign="right">
                   {this.timeConversion(this.props.timestamp)}
