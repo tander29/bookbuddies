@@ -3,7 +3,6 @@ import { Container, Button, Menu } from "semantic-ui-react";
 import Messages from './Messages'
 import { connect } from "react-redux";
 
-
 class MessageBoard extends React.Component {
 state = {
   renderMessages: true
@@ -11,14 +10,10 @@ state = {
   
   userMessages() {
     const myMessages = this.props.messages.filter(myMessage => {
-      return myMessage.touserid === this.props.userId
-    })
+      return myMessage.touserid === this.props.userId;
+    });
     if (myMessages.length === 0) {
-      return (
-        <div>
-          You have no messages yet!
-        </div>
-      )
+      return <div>You have no messages yet!</div>;
     } else {
       return myMessages.map(message => {
         return (
@@ -26,9 +21,10 @@ state = {
             messageFrom={message.fromuserid}
             timestamp={message.createdAt}
             text={message.text}
+            key={message.id}
           />
-        )
-      })
+        );
+      });
     }
   }
 
@@ -98,7 +94,7 @@ state = {
           {this.whichMessages()}
         </Container>
       </React.Fragment>
-    )
+    );
   }
 }
 
