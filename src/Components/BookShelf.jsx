@@ -1,9 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Book from "./Book.jsx";
-
 import { Container, Grid, Button } from "semantic-ui-react";
-
 
 class BookShelf extends React.Component {
   state = { booksToDisplay: [] };
@@ -15,6 +13,7 @@ class BookShelf extends React.Component {
 
   defaultBooks() {
     return this.state.booksToDisplay.map(book => {
+      console.log("book.userId", book.userId);
       return (
         <Book
           title={book.title}
@@ -31,23 +30,16 @@ class BookShelf extends React.Component {
   }
   filterBooks = () =>{
     const filterBooksArray = this.state.booksToDisplay.filter(book =>{
-        return book.title.includes(this.props.search)
-      
+     return book.title.includes(this.props.search)      
     })
-    console.log(filterBooksArray)
-    console.log(this.state.booksToDisplay)
-    console.log(this.props.search, "searched")
-    
-    
+      
   }
 
   render() {
     return (
       <React.Fragment>
-
       <Button onClick={this.filterBooks}>search</Button>
-        <Grid container style={{ paddingTop: "5vh" }} centered>
-
+        <Grid container style={{ paddingTop: "3vh" }}>
           {this.defaultBooks()}
         </Grid>
       </React.Fragment>

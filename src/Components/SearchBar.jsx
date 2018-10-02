@@ -13,7 +13,6 @@ export class SearchBar extends Component {
   handleSubmit = event => {
     if (event.key === "Enter") {
       this.setState({
-
         search: ""
       });
     }
@@ -21,9 +20,7 @@ export class SearchBar extends Component {
 
 
     updateState = event => {
-        this.setState({search: event.target.value})
-       
-        
+        this.setState({search: event.target.value}) 
         };
 
     handleSubmit = (event) => {
