@@ -6,15 +6,8 @@ import NavBar from "./NavBar.jsx";
 import { Grid, Icon } from "semantic-ui-react";
 import BookShelf from "./BookShelf";
 import { SearchBar } from "./SearchBar";
-import { logout } from "../Redux/Actions/ActLogout";
 
 class MainPage extends React.Component {
-  componentDidMount() {
-    if (!this.props.userInfo.loginSuccess) {
-      this.props.logout();
-    }
-  }
-
   render() {
     return (
       <React.Fragment>
@@ -46,15 +39,11 @@ class MainPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { ...state };
+  return {};
 };
 
 function mapDispatchToProps(dispatch) {
-  return {
-    logout: () => {
-      dispatch(logout());
-    }
-  };
+  return {};
 }
 
 const Connect = connect(
