@@ -80,7 +80,7 @@ class GoogleShelf extends React.Component {
           </div>
         </Container>
 
-        <Grid container>
+        <Grid container textAlign='center'>
           <Grid.Row>{this.defaultBooks()}</Grid.Row>
         </Grid>
       </React.Fragment>
