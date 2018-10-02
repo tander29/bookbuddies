@@ -1,7 +1,12 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { addNewBook, getAllBooks, googleBook } from "../Redux/Actions/ActBooks";
+import {
+  addNewBook,
+  getAllBooks,
+  googleBook,
+  clearGoogle
+} from "../Redux/Actions/ActBooks";
 import GoogleShelf from "./GoogleShelf";
 
 const initialState = {
@@ -17,6 +22,9 @@ const initialState = {
 class AddBook extends React.Component {
   state = { ...initialState };
 
+  componentWillMount() {
+    this.props.clearGoogle();
+  }
   componentDidMount() {
     console.log("redux state", this.props.state);
   }
@@ -31,12 +39,6 @@ class AddBook extends React.Component {
     const bookData = { ...this.state };
     this.props.addNewBook(bookData, this.props.userInfo.id);
   };
-
-  // searchGoogle = () => {
-  //   if (this.props.userInfo.id) {
-  //     this.props.googleBook(this.state.search);
-  //   }
-  // };
 
   render() {
     return (
@@ -113,6 +115,9 @@ function mapDispatchToProps(dispatch) {
     },
     googleBook: bookData => {
       dispatch(googleBook(bookData));
+    },
+    clearGoogle: bookData => {
+      dispatch(clearGoogle());
     }
   };
 }

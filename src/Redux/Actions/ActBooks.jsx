@@ -22,6 +22,9 @@ export const addNewBook = (bookData, id) => dispatch => {
     .then(res => res.json())
     .then(data => {
       console.log("success added new book", data);
+      dispatch(getAllBooks());
+      alert(`Thanks for adding ${data.title} by ${data.author} as a listing! `);
+      dispatch({ type: Types.RESET_GOOGLE });
     });
 };
 
@@ -49,4 +52,8 @@ export const googleBook = bookTitle => dispatch => {
       });
       console.log("google API data", data);
     });
+};
+
+export const clearGoogle = () => dispatch => {
+  dispatch({ type: Types.RESET_GOOGLE });
 };
