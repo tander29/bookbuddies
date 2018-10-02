@@ -52,11 +52,14 @@ export const googleBook = bookTitle => dispatch => {
   fetch(googleURL + bookTitleURL)
     .then(res => res.json())
     .then(data => {
-      dispatch({
-        type: Types.GOOGLE_BOOK,
-        payload: data
-      });
-      console.log("google API data", data);
+      if (data.totalItems > 0) {
+        dispatch({
+          type: Types.GOOGLE_BOOK,
+          payload: data
+        });
+      } else {
+        alert("We couldn't find that one, try to adjust your spelling!");
+      }
     });
 };
 

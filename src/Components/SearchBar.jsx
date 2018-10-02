@@ -3,11 +3,22 @@ import { connect } from 'react-redux';
 import {filterBooks, stuff} from '../Redux/Actions/ActBooks'
 import "../App.css";
 
+import {} from "semantic-ui-react";
 
-class SearchBar extends Component {
-    state = {
+export class SearchBar extends Component {
+  state = {
+    search: ""
+  };
+
+  handleSubmit = event => {
+    if (event.key === "Enter") {
+      this.setState({
+
         search: ""
+      });
     }
+  };
+
 
     updateState = event => {
         this.setState({search: event.target.value})
@@ -43,6 +54,7 @@ class SearchBar extends Component {
             />
         )
     }
+
 }
 const mapStateToProps = state => {
     return {
@@ -63,6 +75,7 @@ const mapStateToProps = state => {
     mapStateToProps,
     mapDispatchToProps
   )(SearchBar);
+
 
 
 export default Connect;

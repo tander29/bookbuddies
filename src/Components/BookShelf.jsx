@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import Book from "./Book.jsx";
+
 import { Container, Grid, Button } from "semantic-ui-react";
+
 
 class BookShelf extends React.Component {
   state = { booksToDisplay: [] };
@@ -13,7 +15,6 @@ class BookShelf extends React.Component {
 
   defaultBooks() {
     return this.state.booksToDisplay.map(book => {
-      console.log("book.userId", book.userId);
       return (
         <Book
           title={book.title}
@@ -43,8 +44,10 @@ class BookShelf extends React.Component {
   render() {
     return (
       <React.Fragment>
+
       <Button onClick={this.filterBooks}>search</Button>
-        <Grid container style={{ paddingTop: "3vh" }}>
+        <Grid container style={{ paddingTop: "5vh" }} centered>
+
           {this.defaultBooks()}
         </Grid>
       </React.Fragment>

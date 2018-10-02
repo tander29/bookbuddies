@@ -36,6 +36,7 @@ class ProfilePage extends React.Component {
     name: "",
     username: "",
     about: "",
+    location: "",
     password: "",
     password2: ""
   };
@@ -50,7 +51,6 @@ class ProfilePage extends React.Component {
   }
 
   modalSwitchStatus = () => {
-    console.log(this.state.modalOpen);
     this.setState({ modalOpen: !this.state.modalOpen });
   };
   handleChange = event => {
@@ -67,34 +67,35 @@ class ProfilePage extends React.Component {
         this.state.username,
         this.state.password,
         this.state.about,
-        this.props.userInfo.id
+        this.props.userInfo.id,
+        this.state.location
       );
   };
 
   Owned = () => {
     return (
-      <div>
-        This is the books you own.
+      <p style={{textAlign:'center'}}>
+        Books Owned
         <BookShelf />
-      </div>
+      </p>
     );
   };
 
   Available = () => {
     return (
-      <div>
-        These are the books you have available.
+      <p style={{textAlign:'center'}}>
+        Books Available
         <BookShelf />
-      </div>
+        </p>
     );
   };
 
   Onloan = () => {
     return (
-      <div>
-        And these are your books other users are reading.
+      <p style={{textAlign:'center'}}>
+        Books On Loan
         <BookShelf />
-      </div>
+        </p>
     );
   };
 
@@ -113,7 +114,7 @@ class ProfilePage extends React.Component {
                 <Card.Content>
                   <Card.Header>{username}</Card.Header>
                   <Card.Meta>
-                    <span className="date">Joined in 2015</span>
+                    <span className="date">Joined in 2018</span>
                   </Card.Meta>
                   <Card.Description>{about}</Card.Description>
                 </Card.Content>
@@ -127,13 +128,13 @@ class ProfilePage extends React.Component {
             </Grid.Column>
             <Grid.Column width={10}>
               <div id="menubar">
-                <Menu id="Switchbar">
+                <Menu id="Switchbar" style={{ marginBottom:'3vh' }}>
                   <Menu.Item
                     name="Owned"
                     // active={activeItem === 'editorials'}
                     onClick={this.handleItemClick}
                   >
-                    <Link to="/bookbuddy/profile/owned">Owned</Link>
+                    {/* <Link to="/bookbuddy/profile/">Owned</Link> */}
                   </Menu.Item>
 
                   <Menu.Item
@@ -141,7 +142,7 @@ class ProfilePage extends React.Component {
                     //  active={activeItem === 'reviews'}
                     onClick={this.handleItemClick}
                   >
-                    <Link to="/bookbuddy/profile/available">Available</Link>
+                    {/* <Link to="/bookbuddy/profile/available">Available</Link> */}
                   </Menu.Item>
 
                   <Menu.Item
@@ -149,14 +150,14 @@ class ProfilePage extends React.Component {
                     // active={activeItem === 'upcomingEvents'}
                     onClick={this.handleItemClick}
                   >
-                    <Link to="/bookbuddy/profile/onloan">On Loan</Link>
+                    {/* <Link to="/bookbuddy/profile/onloan">On Loan</Link> */}
                   </Menu.Item>
                 </Menu>
               </div>
-              <Switch>
+              {/* <Switch>
                 <Route
                   exact
-                  path="/bookbuddy/profile/owned"
+                  path="/bookbuddy/profile/"
                   component={this.Owned}
                 />
                 <Route
@@ -169,11 +170,11 @@ class ProfilePage extends React.Component {
                   path="/bookbuddy/profile/onloan"
                   component={this.Onloan}
                 />
-              </Switch>
+              </Switch> */}
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row>
+          <Grid.Row columns={2}>
             <Grid.Column width={3}>
               <Segment vertical>Username: {username}</Segment>
               <Segment vertical>Location: USA</Segment>
@@ -226,7 +227,7 @@ class ProfilePage extends React.Component {
                     </Modal.Description>
                   </Modal.Content>
                   <button onClick={this.modalSwitchStatus}>Close</button>
-                  <button onClick={this.changeInfo}>Update</button>
+                  
                 </Modal>
 
                 <Rating
