@@ -14,20 +14,20 @@ class MainPage extends React.Component {
       this.props.logout();
     }
   }
-
   render() {
     return (
       <React.Fragment>
         <Header />
         <NavBar />
         <Grid celled="internally">
+          <Grid.Row>
           <Grid.Column width={3}>
             <h1>Profile</h1>
             <div>Name: Sloth</div>
             <div>Rating: 5 Stars!</div>
             <div>Bio: I am a sloth</div>
           </Grid.Column>
-          <Grid.Column width={10} textAlign="center">
+          <Grid.Column width={10} >
             <div>
               <SearchBar />
               <Icon name="search" />
@@ -37,6 +37,7 @@ class MainPage extends React.Component {
           <Grid.Column width={3}>
             <Footer />
           </Grid.Column>
+          </Grid.Row>
         </Grid>
       </React.Fragment>
     );
