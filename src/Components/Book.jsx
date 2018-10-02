@@ -49,7 +49,7 @@ class Book extends React.Component {
       messageContent: {
         text: event.target.value,
         fromUserId: this.props.userInfo.id,
-        toOwnerID: this.props.ownerId
+        toOwnerId: this.props.ownerId
       }
     });
   };
