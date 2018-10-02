@@ -65,6 +65,11 @@ export const clearGoogle = () => dispatch => {
 };
 
 
-export const filterBooks = () => dispatch =>{
-  dispatch({type: Types.FILTER_BOOKS})
+export const filterBooks = (search) => dispatch =>{
+  dispatch({type: Types.FILTER_BOOKS,
+            search: search})
+}
+
+export const stuff = () => dispatch =>{
+  console.log("works")
 }

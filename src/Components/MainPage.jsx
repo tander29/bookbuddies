@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import NavBar from "./NavBar.jsx";
 import { Grid, Icon } from "semantic-ui-react";
 import BookShelf from "./BookShelf";
-import { SearchBar } from "./SearchBar";
+import  SearchBar  from "./SearchBar";
 import { logout } from "../Redux/Actions/ActLogout";
 
 class MainPage extends React.Component {
