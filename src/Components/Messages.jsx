@@ -6,7 +6,9 @@ import {
   Button,
   Modal,
   Divider,
-  Container
+  Container,
+  Form,
+  TextArea
 } from "semantic-ui-react";
 import { sendMessage } from "../Redux/Actions/ActSendMessage";
 
@@ -62,7 +64,7 @@ class Messages extends Component {
               <Grid.Row columns={2}>
                 <Grid.Column textAlign="left" />
                 <Grid.Column textAlign="right">
-                  <Modal
+                  {/* <Modal
                     size="tiny"
                     trigger={
                       <Button
@@ -79,7 +81,42 @@ class Messages extends Component {
                       type="text"
                       onKeyDown={this.handleEnter}
                     />
-                  </Modal>
+                  </Modal> */}
+                  <Modal
+              
+              closeIcon
+              
+              
+              trigger={
+                <Button
+                  
+                  
+                  style={{ backgroundColor: "#86C232", color: "white" }}
+                >
+                  Request Information
+                </Button>
+              }
+            >
+              <Form style={{ padding: "1vh", backgroundColor: "#474B4F" }}>
+                <TextArea
+                  autoFocus={true}
+                  onKeyPress={this.handleEnter}
+                  placeholder="Reply to sender..."
+                  // onChange={this.updateMessageContent}
+                  style={{ marginBottom: "1vh" }}
+                  
+                />
+                <Button
+                  // onClick={() => this.sendMessage()}
+                  style={{ backgroundColor: "#86C232", color: "white" }}
+                >
+                  Reply
+                </Button>
+                <Button negative floated="right">
+                  Close
+                </Button>
+              </Form>
+            </Modal>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
