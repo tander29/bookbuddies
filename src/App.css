@@ -11,10 +11,10 @@
   color: white;
 }
 
-#feed {
+/* #feed {
   display: flex;
   justify-content: center;
-}
+} */
 
 #rating {
   float: right;
