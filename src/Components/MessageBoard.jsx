@@ -1,21 +1,15 @@
 import React, { Component } from "react";
 import { Container } from "semantic-ui-react";
-import Messages from './Messages'
+import Messages from "./Messages";
 import { connect } from "react-redux";
 
-
 class MessageBoard extends React.Component {
-
   userMessages() {
     const myMessages = this.props.messages.filter(myMessage => {
-      return myMessage.touserid === this.props.userId
-    })
+      return myMessage.touserid === this.props.userId;
+    });
     if (myMessages.length === 0) {
-      return (
-        <div>
-          You have no messages yet!
-        </div>
-      )
+      return <div>You have no messages yet!</div>;
     } else {
       return myMessages.map(message => {
         return (
@@ -23,20 +17,19 @@ class MessageBoard extends React.Component {
             messageFrom={message.fromuserid}
             timestamp={message.createdAt}
             text={message.text}
+            key={message.id}
           />
-        )
-      })
+        );
+      });
     }
   }
 
   render() {
     return (
       <React.Fragment>
-        <Container fluid>
-          {this.userMessages()}
-        </Container>
+        <Container fluid>{this.userMessages()}</Container>
       </React.Fragment>
-    )
+    );
   }
 }
 

@@ -78,7 +78,13 @@ export const getMyUser = id => dispatch => {
     });
 };
 
-export const patchInfo = (username, password, about, id) => dispatch => {
+export const patchInfo = (
+  username,
+  password,
+  about,
+  id,
+  location
+) => dispatch => {
   const requestOptions = {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -86,7 +92,8 @@ export const patchInfo = (username, password, about, id) => dispatch => {
       username: username,
       password: password,
       about: about,
-      id: id
+      id: id,
+      location: location
     })
   };
 

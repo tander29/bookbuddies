@@ -9,38 +9,70 @@ import {
   Container
 } from "semantic-ui-react";
 import { sendMessage } from "../Redux/Actions/ActSendMessage";
-
+const initialState = {
+  id: null,
+  bookOwnerID: null,
+  messageContent: {
+    text: null,
+    userId: null,
+    fromUserId: null,
+    toOwnerId: null
+  },
+  text: ""
+};
 class Messages extends Component {
+  state = { ...initialState };
+
   handleEnter = event => {
     if (event.key === "Enter") {
-      console.log("Message sent...hopefully");
+      if (this.state.messageContent) {
+        this.props.sendMessage(this.state.messageContent);
+        this.setState({ messageContent: null });
+      }
     }
   };
 
-  timeConversion = (messageTime) => {
-    let time = new Date(messageTime)
-    return time.toLocaleString()
-  }
+  timeConversion = messageTime => {
+    let time = new Date(messageTime);
+    return time.toLocaleString();
+  };
 
-  findUsername = (userId) => {
+  findUsername = userId => {
     const senderUsername = this.props.allUsers.filter(sender => {
-      return sender.id === userId
-    })
-    console.log("sender findUsername ", senderUsername)
-    if(senderUsername.username) {
-      return senderUsername.username
-    } else {
-      return "Sneakster"
+      return sender.id === userId;
+    });
+
+    if (!senderUsername) {
+      return "Sneakster";
     }
-  }
-  
+    if (senderUsername[0].username) {
+      return senderUsername[0].username;
+    } else {
+      return "Sneakster";
+    }
+  };
+
+  updateMessageContent = event => {
+    this.setState({
+      messageContent: {
+        text: event.target.value,
+        fromUserId: this.props.userInfo.id,
+        toOwnerId: this.props.messageFrom
+      }
+    });
+  };
   render() {
     return (
       <React.Fragment>
         <Container>
           <Card
             className="messages"
-            style={{ padding: "2vh", backgroundColor: "#474B4F", color: 'white', margin:'1vh' }}
+            style={{
+              padding: "2vh",
+              backgroundColor: "#474B4F",
+              color: "white",
+              margin: "1vh"
+            }}
             fluid
           >
             <Grid centered>
@@ -55,9 +87,7 @@ class Messages extends Component {
               </Grid.Row>
               <Divider />
               <Grid.Row columns={2}>
-                <Grid.Column textAlign="left">
-                  {this.props.text}
-                </Grid.Column>
+                <Grid.Column textAlign="left">{this.props.text}</Grid.Column>
               </Grid.Row>
               <Grid.Row columns={2}>
                 <Grid.Column textAlign="left" />
@@ -77,6 +107,7 @@ class Messages extends Component {
                     <input
                       autoFocus={true}
                       type="text"
+                      onChange={this.updateMessageContent}
                       onKeyDown={this.handleEnter}
                     />
                   </Modal>
@@ -92,6 +123,7 @@ class Messages extends Component {
 
 const mapStateToProps = state => {
   return {
+    ...state,
     allUsers: state.allUsers
   };
 };

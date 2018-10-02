@@ -1,4 +1,5 @@
 import { Types, heroku, local } from "../Types";
+import { get } from "http";
 
 export const sendMessage = messageItem => dispatch => {
   console.log("message item", messageItem);
@@ -21,11 +22,11 @@ export const sendMessage = messageItem => dispatch => {
         type: Types.NEW_MESSAGE,
         message: messageItem
       });
+      dispatch(getAllMessages());
     });
 };
 
 export const getAllMessages = () => dispatch => {
-  console.log("messages should be received");
   fetch(heroku + "/message")
     .then(res => res.json())
     .then(data => {
@@ -33,6 +34,5 @@ export const getAllMessages = () => dispatch => {
         type: Types.GET_MESSAGES,
         payload: data
       });
-      console.log("all messages", data);
     });
 };
