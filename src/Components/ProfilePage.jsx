@@ -74,28 +74,28 @@ class ProfilePage extends React.Component {
 
   Owned = () => {
     return (
-      <div>
-        This is the books you own.
+      <p style={{textAlign:'center'}}>
+        Books Owned
         <BookShelf />
-      </div>
+      </p>
     );
   };
 
   Available = () => {
     return (
-      <div>
-        These are the books you have available.
+      <p style={{textAlign:'center'}}>
+        Books Available
         <BookShelf />
-      </div>
+        </p>
     );
   };
 
   Onloan = () => {
     return (
-      <div>
-        And these are your books other users are reading.
+      <p style={{textAlign:'center'}}>
+        Books On Loan
         <BookShelf />
-      </div>
+        </p>
     );
   };
 
@@ -128,14 +128,13 @@ class ProfilePage extends React.Component {
             </Grid.Column>
             <Grid.Column width={10}>
               <div id="menubar">
-                <Menu id="Switchbar">
+                <Menu id="Switchbar" style={{ marginBottom:'3vh' }}>
                   <Menu.Item
                     name="Owned"
                     // active={activeItem === 'editorials'}
                     onClick={this.handleItemClick}
                   >
-                    <Link to="/bookbuddy/profile/">Owned</Link>
-
+                    {/* <Link to="/bookbuddy/profile/">Owned</Link> */}
                   </Menu.Item>
 
                   <Menu.Item
@@ -143,7 +142,7 @@ class ProfilePage extends React.Component {
                     //  active={activeItem === 'reviews'}
                     onClick={this.handleItemClick}
                   >
-                    <Link to="/bookbuddy/profile/available">Available</Link>
+                    {/* <Link to="/bookbuddy/profile/available">Available</Link> */}
                   </Menu.Item>
 
                   <Menu.Item
@@ -151,11 +150,11 @@ class ProfilePage extends React.Component {
                     // active={activeItem === 'upcomingEvents'}
                     onClick={this.handleItemClick}
                   >
-                    <Link to="/bookbuddy/profile/onloan">On Loan</Link>
+                    {/* <Link to="/bookbuddy/profile/onloan">On Loan</Link> */}
                   </Menu.Item>
                 </Menu>
               </div>
-              <Switch>
+              {/* <Switch>
                 <Route
                   exact
                   path="/bookbuddy/profile/"
@@ -171,11 +170,11 @@ class ProfilePage extends React.Component {
                   path="/bookbuddy/profile/onloan"
                   component={this.Onloan}
                 />
-              </Switch>
+              </Switch> */}
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row>
+          <Grid.Row columns={2}>
             <Grid.Column width={3}>
               <Segment vertical>Username: {username}</Segment>
               <Segment vertical>Location: USA</Segment>

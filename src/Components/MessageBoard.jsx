@@ -73,11 +73,13 @@ state = {
   render() {
     return (
       <React.Fragment>
-        <Menu>
+        <Container textAlign='center'>
+        <Menu secondary>
           <Menu.Item>
             <Button
               name="myMessages"
               onClick={() => this.renderUserMessages()}
+              style={{ backgroundColor: "#86C232", color: "white" }}
             >
               My Messages
             </Button>
@@ -86,11 +88,13 @@ state = {
             <Button 
               name="sentMessages"
               onClick={() => this.renderSentMessages()}
+              style={{ backgroundColor: "#86C232", color: "white" }}
             >
               Sent Messages
             </Button>
           </Menu.Item>
         </Menu>
+        </Container>
         <Container fluid>
           {this.whichMessages()}
         </Container>
