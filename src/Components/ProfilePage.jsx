@@ -36,6 +36,7 @@ class ProfilePage extends React.Component {
     name: "",
     username: "",
     about: "",
+    location: "",
     password: "",
     password2: ""
   };
@@ -50,7 +51,6 @@ class ProfilePage extends React.Component {
   }
 
   modalSwitchStatus = () => {
-    console.log(this.state.modalOpen);
     this.setState({ modalOpen: !this.state.modalOpen });
   };
   handleChange = event => {
@@ -67,7 +67,8 @@ class ProfilePage extends React.Component {
         this.state.username,
         this.state.password,
         this.state.about,
-        this.props.userInfo.id
+        this.props.userInfo.id,
+        this.state.location
       );
   };
 
@@ -133,7 +134,7 @@ class ProfilePage extends React.Component {
                     // active={activeItem === 'editorials'}
                     onClick={this.handleItemClick}
                   >
-                    <Link to="/bookbuddy/profile/owned">Owned</Link>
+                    <Link to="/bookbuddy/profile/">Owned</Link>
                   </Menu.Item>
 
                   <Menu.Item
@@ -156,7 +157,7 @@ class ProfilePage extends React.Component {
               <Switch>
                 <Route
                   exact
-                  path="/bookbuddy/profile/owned"
+                  path="/bookbuddy/profile/"
                   component={this.Owned}
                 />
                 <Route

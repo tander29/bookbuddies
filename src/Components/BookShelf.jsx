@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Book from "./Book.jsx";
-import { Container, Grid } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 class BookShelf extends React.Component {
   state = { booksToDisplay: [] };
@@ -13,7 +13,6 @@ class BookShelf extends React.Component {
 
   defaultBooks() {
     return this.state.booksToDisplay.map(book => {
-      console.log("book.userId", book.userId);
       return (
         <Book
           title={book.title}

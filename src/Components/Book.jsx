@@ -27,9 +27,15 @@ const initialState = {
   rating: "",
   id: null,
   bookOwnerID: null,
-  messageContent: { text: null, userId: null },
+  messageContent: {
+    text: null,
+    userId: null,
+    fromUserId: null,
+    toOwnerId: null
+  },
   modalOpen: false,
-  backUp: ""
+  backUp: "",
+  text: ""
 };
 class Book extends React.Component {
   state = {
@@ -44,8 +50,6 @@ class Book extends React.Component {
   };
 
   updateMessageContent = event => {
-    console.log("this.state", this.state);
-    console.log("this.props", this.props);
     this.setState({
       messageContent: {
         text: event.target.value,
@@ -55,10 +59,7 @@ class Book extends React.Component {
     });
   };
 
-  sendMessage = ownerId => {
-    console.log("this.state", this.state);
-    console.log("this.props", this.props);
-    console.log(this.state.messageContent);
+  sendMessage = () => {
     if (this.state.messageContent) {
       this.modalSwitchStatus();
 
@@ -102,11 +103,7 @@ class Book extends React.Component {
           }}
         >
           <Grid celled="internally" centered>
-
-            
-
-            <Grid.Row style={{height:'20vh'}}>
-
+            <Grid.Row style={{ height: "20vh" }}>
               <Grid.Column width={8}>
                 <Grid>
                   <Grid.Row textAlign="left">
@@ -121,7 +118,6 @@ class Book extends React.Component {
                       <b>By: &nbsp; </b>
                       {author}
                     </div>
-
                   </Grid.Row>
                 </Grid>
               </Grid.Column>
@@ -172,7 +168,6 @@ class Book extends React.Component {
                   image: googleImage
                 })
               }
-              
               style={{ backgroundColor: "#86C232", color: "white" }}
             >
               Submit Book
@@ -207,7 +202,11 @@ class Book extends React.Component {
                 >
                   Send Message to Owner
                 </Button>
-                <Button onClick={this.modalSwitchStatus} negative floated="right">
+                <Button
+                  onClick={this.modalSwitchStatus}
+                  negative
+                  floated="right"
+                >
                   Close
                 </Button>
               </Form>
