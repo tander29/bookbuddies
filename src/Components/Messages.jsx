@@ -17,6 +17,23 @@ class Messages extends Component {
     }
   };
 
+  timeConversion = (messageTime) => {
+    let time = new Date(messageTime)
+    return time.toLocaleString()
+  }
+
+  findUsername = (userId) => {
+    const senderUsername = this.props.allUsers.filter(sender => {
+      return sender.id === userId
+    })
+    console.log("sender findUsername ", senderUsername)
+    if(senderUsername.username) {
+      return senderUsername.username
+    } else {
+      return "Sneakster"
+    }
+  }
+  
   render() {
     return (
       <React.Fragment>
@@ -29,18 +46,17 @@ class Messages extends Component {
             <Grid centered>
               <Grid.Row columns={2}>
                 <Grid.Column textAlign="left">
-                  Message from User ID
-                  {this.props.messageFrom}
+                  From: &nbsp;
+                  {this.findUsername(this.props.messageFrom)}
                 </Grid.Column>
                 <Grid.Column textAlign="right">
-                  Message Time Stamp:
-                  {this.props.timeStamp}
+                  {this.timeConversion(this.props.timestamp)}
                 </Grid.Column>
               </Grid.Row>
               <Divider />
               <Grid.Row columns={2}>
                 <Grid.Column textAlign="left">
-                  Message {this.props.text}
+                  {this.props.text}
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row columns={2}>
@@ -75,7 +91,9 @@ class Messages extends Component {
 }
 
 const mapStateToProps = state => {
-  return { ...state };
+  return {
+    allUsers: state.allUsers
+  };
 };
 
 function mapDispatchToProps(dispatch) {

@@ -10,7 +10,6 @@ class MessageBoard extends React.Component {
     const myMessages = this.props.messages.filter(myMessage => {
       return myMessage.touserid === this.props.userId
     })
-    console.log("myMessages are here", myMessages)
     if (myMessages.length === 0) {
       return (
         <div>
@@ -44,7 +43,8 @@ class MessageBoard extends React.Component {
 const mapStateToProps = state => {
   return {
     messages: state.allMessages,
-    userId: state.userInfo.id
+    userId: state.userInfo.id,
+    allUsers: state.allUsers
   };
 };
 
