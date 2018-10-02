@@ -2,12 +2,17 @@ import React from "react";
 import { connect } from "react-redux";
 import Book from "./Book.jsx";
 import { googleBook } from "../Redux/Actions/ActBooks";
+import { Container, Button, Grid, Input } from "semantic-ui-react";
 
 class GoogleShelf extends React.Component {
-  state = { googleBooks: [], data: this.props.data, passData: this.props.data };
+  state = {
+    googleBooks: [],
+    data: this.props.data,
+    passData: this.props.data,
+    search: ""
+  };
 
   componentDidMount() {
-    console.log("propsbooks", this.props.googleBooks);
     if (this.props.googleBooks) {
       this.setState({ googleBooks: this.props.googleBooks });
     }
@@ -18,7 +23,15 @@ class GoogleShelf extends React.Component {
   };
 
   searchGoogle = () => {
-    this.props.googleBook(this.state.search);
+    if (this.state.search.length > 1) {
+      this.props.googleBook(this.state.search);
+    }
+  };
+
+  keyPress = event => {
+    if (event.key === "Enter") {
+      this.searchGoogle();
+    }
   };
 
   defaultBooks() {
@@ -26,14 +39,13 @@ class GoogleShelf extends React.Component {
       return (
         <Book
           title={book.volumeInfo.title}
-          author={
-            book.volumeInfo.authors[0] ? book.volumeInfo.authors[0] : "N/A"
-          }
-          image={book.volumeInfo.imageLinks.smallThumbnail}
+          author={book.volumeInfo.authors ? book.volumeInfo.authors[0] : "N/A"}
+          googleImage={book.volumeInfo.imageLinks.smallThumbnail}
           rating={book.volumeInfo.averageRating}
           ratingsCount={book.volumeInfo.ratingsCount}
           cardSize={"tiny"}
           google={"true"}
+          key={Math.random() * 200000000}
         />
       );
     });
@@ -42,20 +54,33 @@ class GoogleShelf extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div id="search">
-          <div>
-            Save some typing, Search for a book details enter title or author
+        <Container style={{ padding: "2vh" }} textAlign="center">
+          <div id="search">
+            <b>
+              <p style={{ color: "#61892F", paddingBottom: "2vh" }}>
+                ENTER A TITLE OR AUTHOR TO BEGIN YOUR BOOK SEARCH BELOW
+              </p>
+            </b>
+            <Input
+              type="text"
+              placeholder="Title or Author"
+              className="searchBarGoogle"
+              name="search"
+              onChange={this.updateBookState}
+              onKeyPress={this.keyPress}
+            />
+            <Button
+              onClick={this.searchGoogle}
+              style={{ backgroundColor: "#86C232", color: "white" }}
+            >
+              Search!
+            </Button>
           </div>
-          <input
-            type="text"
-            placeholder="title or author"
-            name="search"
-            onChange={this.updateBookState}
-          />
-          <button onClick={this.searchGoogle}>Search!</button>
-        </div>
+        </Container>
 
-        {this.defaultBooks()}
+        <Grid container textAlign="center">
+          <Grid.Row>{this.defaultBooks()}</Grid.Row>
+        </Grid>
       </React.Fragment>
     );
   }

@@ -6,21 +6,28 @@ import NavBar from "./NavBar.jsx";
 import { Grid, Icon } from "semantic-ui-react";
 import BookShelf from "./BookShelf";
 import { SearchBar } from "./SearchBar";
+import { logout } from "../Redux/Actions/ActLogout";
 
 class MainPage extends React.Component {
+  componentDidMount() {
+    if (!this.props.userInfo.loginSuccess) {
+      this.props.logout();
+    }
+  }
   render() {
     return (
       <React.Fragment>
         <Header />
         <NavBar />
         <Grid celled="internally">
+          <Grid.Row>
           <Grid.Column width={3}>
             <h1>Profile</h1>
             <div>Name: Sloth</div>
             <div>Rating: 5 Stars!</div>
             <div>Bio: I am a sloth</div>
           </Grid.Column>
-          <Grid.Column width={10}>
+          <Grid.Column width={10} >
             <div>
               <SearchBar />
               <Icon name="search" />
@@ -30,6 +37,7 @@ class MainPage extends React.Component {
           <Grid.Column width={3}>
             <Footer />
           </Grid.Column>
+          </Grid.Row>
         </Grid>
       </React.Fragment>
     );
@@ -37,11 +45,15 @@ class MainPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  return { ...state };
 };
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    logout: () => {
+      dispatch(logout());
+    }
+  };
 }
 
 const Connect = connect(

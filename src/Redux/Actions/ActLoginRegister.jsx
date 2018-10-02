@@ -3,6 +3,8 @@ import { push } from "connected-react-router";
 import { getAllBooks } from "./ActBooks";
 import { getAllMessages } from "./ActSendMessage";
 
+//login right now is getting lots of info, could make an action called initiate
+//initiate could run all of the dispatches
 export const login = (username, password) => dispatch => {
   const requestOptions = {
     method: "POST",
@@ -13,7 +15,6 @@ export const login = (username, password) => dispatch => {
   fetch(heroku + "/authorize/login", requestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log("data from login", data);
       if (data.success) {
         dispatch({
           type: Types.LOGIN,
@@ -23,14 +24,18 @@ export const login = (username, password) => dispatch => {
           success: data.success,
           displayname: data.displayname
         });
-        dispatch(getAllBooks());
-        dispatch(getAllMessages());
-        dispatch(getAllUsers());
-        dispatch(push("/bookbuddy/profile"));
+         dispatch(getAllBooks());
+         dispatch(getAllMessages());
+         dispatch(getAllUsers());
+        dispatch(push("/bookbuddy/main"));
+      }
+      if (!data.success) {
+        alert("Error, log in failed");
       }
     });
 };
 
+//on register component, register component compares existing users to desired username
 export const register = (displayname, username, password) => dispatch => {
   const requestOptions = {
     method: "POST",
@@ -49,9 +54,13 @@ export const register = (displayname, username, password) => dispatch => {
         type: Types.REGISTER,
         payload: data
       });
+      alert("Let's find you a Book, Buddy!");
+      dispatch(login(username, password));
     });
+    dispatch(login(username,password))
 };
 
+//get's all users on log in page, front end compares new users on register component, only 1 username unique allowed
 export const getAllUsers = () => dispatch => {
   fetch(heroku + "/User")
     .then(res => res.json())
@@ -61,6 +70,7 @@ export const getAllUsers = () => dispatch => {
     });
 };
 
+//not being used, but we are able to reach end point and get user by an id number
 export const getMyUser = id => dispatch => {
   fetch(heroku + "/User/" + id)
     .then(res => res.json())
@@ -69,7 +79,13 @@ export const getMyUser = id => dispatch => {
     });
 };
 
-export const patchInfo = (username, password, about, id) => dispatch => {
+export const patchInfo = (
+  username,
+  password,
+  about,
+  id,
+  location
+) => dispatch => {
   const requestOptions = {
     method: "PATCH",
     headers: { "Content-Type": "application/json" },
@@ -77,7 +93,8 @@ export const patchInfo = (username, password, about, id) => dispatch => {
       username: username,
       password: password,
       about: about,
-      id: id
+      id: id,
+      location: location
     })
   };
 

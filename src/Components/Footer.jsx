@@ -10,10 +10,10 @@ class Footer extends React.Component {
               <Card.Content textAlign='center' className="" style={{ margin:'0'  }}>
                 <p className='teamName'>By ScrumTeam1: <Icon name ='copyright' size="small"/></p>
 
-                <p className='developers'>Patrick Meiklehanson</p>
+                <p className='developers'>Patrick Hanson</p>
                 <p className='developers'>Kyle Meiklejohn</p>
-                <p className='developers'>Travis Meikleanderson</p>
-                <p className='developers'>David Meiklestewart</p>
+                <p className='developers'>Travis Anderson</p>
+                <p className='developers'>David Stewart</p>
                 <p className='developers'>Adrian Luley</p>
              
                 <p className="address">

@@ -1,43 +1,44 @@
 import React, { Component } from "react";
 import { Container } from "semantic-ui-react";
-import Messages from './Messages'
+import Messages from "./Messages";
 import { connect } from "react-redux";
 
-
-class MessageBoard extends Component {
-  state = {
-    messages: []
-  };
-
-  componentDidMount() {
-    if(this.props.allMessages) {
-      this.setState({ messages: this.props.allMessages })
-    }
-  }
-
+class MessageBoard extends React.Component {
   userMessages() {
-    return this.state.messages.map(message => {
-      return(
-        <Messages 
-          messageFrom={message.fromuserid}
-          timestamp={message.createdAt}
-          text={message.text}
-        />
-      )
-    })
+    const myMessages = this.props.messages.filter(myMessage => {
+      return myMessage.touserid === this.props.userId;
+    });
+    if (myMessages.length === 0) {
+      return <div>You have no messages yet!</div>;
+    } else {
+      return myMessages.map(message => {
+        return (
+          <Messages
+            messageFrom={message.fromuserid}
+            timestamp={message.createdAt}
+            text={message.text}
+            key={message.id}
+          />
+        );
+      });
+    }
   }
 
-    render() {
-        return(
-            <Container fluid>
-                {this.userMessages()}
-            </Container>
-        )
-    }
+  render() {
+    return (
+      <React.Fragment>
+        <Container fluid>{this.userMessages()}</Container>
+      </React.Fragment>
+    );
+  }
 }
 
 const mapStateToProps = state => {
-  return { allMessages: state.messages };
+  return {
+    messages: state.allMessages,
+    userId: state.userInfo.id,
+    allUsers: state.allUsers
+  };
 };
 
 function mapDispatchToProps(dispatch) {

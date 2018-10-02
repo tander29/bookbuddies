@@ -15,10 +15,31 @@ import {
   Icon
 } from "semantic-ui-react";
 import bookbuddyicon from "../images/bookbuddyicon.png";
+import { addNewBook } from "../Redux/Actions/ActBooks";
+
+const initialState = {
+  search: "",
+  title: "",
+  author: "",
+  isbn10: "",
+  isbn13: "",
+  image: "",
+  rating: "",
+  id: null,
+  bookOwnerID: null,
+  messageContent: {
+    text: null,
+    userId: null,
+    fromUserId: null,
+    toOwnerId: null
+  },
+  modalOpen: false,
+  backUp: "",
+  text: ""
+};
 class Book extends React.Component {
   state = {
-    messageContent: { text: null, userId: null },
-    modalOpen: false
+    ...initialState
   };
 
   componentDidMount() {}
@@ -29,8 +50,13 @@ class Book extends React.Component {
   };
 
   updateMessageContent = event => {
-    console.log(this.state);
-    this.setState({ messageContent: { text: event.target.value, userId: 1 } });
+    this.setState({
+      messageContent: {
+        text: event.target.value,
+        fromUserId: this.props.userInfo.id,
+        toOwnerId: this.props.ownerId
+      }
+    });
   };
 
   sendMessage = () => {
@@ -48,35 +74,65 @@ class Book extends React.Component {
     }
   };
 
+  //below is for adding a new book using the google api stuff
+  addBook(bookData) {
+    this.props.addNewBook(bookData, this.props.userInfo.id);
+  }
+
   render() {
     const { modalOpen } = this.state;
-    const { title, author, rating, bookId, ownerId } = this.props;
+    const {
+      title,
+      author,
+      rating,
+      bookId,
+      ownerId,
+      googleImage,
+      google,
+      image
+    } = this.props;
     return (
       <React.Fragment>
         <Card
+          className="bookStyle"
           style={{
             backgroundColor: "#474B4F",
             color: "white",
-            padding: "0.5vh"
+            padding: "0.5vh",
+            margin: "0.5vh"
           }}
         >
           <Grid celled="internally" centered>
-            <Grid.Row>
+            <Grid.Row style={{ height: "20vh" }}>
               <Grid.Column width={8}>
                 <Grid>
                   <Grid.Row textAlign="left">
                     <div>
-                      Title: &nbsp;
+                      <b>Title: &nbsp;</b>
                       {title}
                     </div>
                   </Grid.Row>
-                  <Grid.Row>
-                    <div>By: &nbsp; {author}</div>
+
+                  <Grid.Row style={{ height: "13vh" }}>
+                    <div>
+                      <b>By: &nbsp; </b>
+                      {author}
+                    </div>
                   </Grid.Row>
                 </Grid>
               </Grid.Column>
               <Grid.Column width={7} stetched="true">
-                <Image src={bookbuddyicon} />
+                <Image
+                  centered
+                  className="bookImage"
+                  src={
+                    image
+                      ? image
+                      : google === "true" && googleImage
+                        ? googleImage
+                        : bookbuddyicon
+                  }
+                />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
@@ -99,12 +155,23 @@ class Book extends React.Component {
           </Grid>
 
           {this.props.google === "true" ? (
-            <button
-              size="small"
+            <Button
+              onClick={() =>
+                this.addBook({
+                  title,
+                  author,
+                  rating,
+                  bookId,
+                  ownerId,
+                  googleImage,
+                  google,
+                  image: googleImage
+                })
+              }
               style={{ backgroundColor: "#86C232", color: "white" }}
             >
               Submit Book
-            </button>
+            </Button>
           ) : (
             <Modal
               size="large"
@@ -130,12 +197,16 @@ class Book extends React.Component {
                   style={{ marginBottom: "1vh" }}
                 />
                 <Button
-                  onClick={this.sendMessage}
+                  onClick={() => this.sendMessage()}
                   style={{ backgroundColor: "#86C232", color: "white" }}
                 >
                   Send Message to Owner
                 </Button>
-                <Button onClick={this.modalSwitchStatus} floated="right">
+                <Button
+                  onClick={this.modalSwitchStatus}
+                  negative
+                  floated="right"
+                >
                   Close
                 </Button>
               </Form>
@@ -155,6 +226,9 @@ function mapDispatchToProps(dispatch) {
   return {
     sendMessage: messageItem => {
       dispatch(sendMessage(messageItem));
+    },
+    addNewBook: (bookData, id) => {
+      dispatch(addNewBook(bookData, id));
     }
   };
 }

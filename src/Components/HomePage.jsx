@@ -1,10 +1,11 @@
 // when making a new component, every component needs to import react and connect, to properly make component and connect to redux store
 import React from "react";
 import { connect } from "react-redux";
-import BookBuddiesinfo from "../images/BookBuddiesinfo.jpg";
+import BookBuddiesinfo from "../images/BookBuddiesinfoCropped.jpg";
 import Header from "./Header";
 import Footer from "./Footer";
 import Login from "./Login";
+
 import Register from "./Register";
 
 import { Container, Modal, Grid, Button, Image } from "semantic-ui-react";
@@ -16,6 +17,7 @@ class HomePage extends React.Component {
         style={{ backgroundColor: "#474B4F" }}
         fluid
         id="homepagecontainer"
+        
       >
         <Header />
 
@@ -30,6 +32,7 @@ class HomePage extends React.Component {
                 id="divider"
                 textAlign="center"
                 className="loginRegister"
+                verticalAlign='middle'
               >
                 <Modal
                   size="tiny"
@@ -38,7 +41,9 @@ class HomePage extends React.Component {
                       style={{
                         backgroundColor: "#86C232",
                         color: "white",
-                        marginBottom: "5vh"
+                        marginBottom: "5vh",
+                        marginTop: "1vh"
+                        
                       }}
                     >
                       Login

@@ -1,7 +1,12 @@
 import React from "react";
 import { Form } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { addNewBook, getAllBooks, googleBook } from "../Redux/Actions/ActBooks";
+import {
+  addNewBook,
+  getAllBooks,
+  googleBook,
+  clearGoogle
+} from "../Redux/Actions/ActBooks";
 import GoogleShelf from "./GoogleShelf";
 
 const initialState = {
@@ -11,38 +16,33 @@ const initialState = {
   isbn10: "",
   isbn13: "",
   image: "",
-  rating: ""
+  rating: "",
+  id: null
 };
 class AddBook extends React.Component {
   state = { ...initialState };
 
-  componentDidMount() {
-    // this.props.getAllBooks("test");
-
-    console.log("redux state", this.props.state);
+  componentWillMount() {
+    this.props.clearGoogle();
   }
 
   updateBookState = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      [event.target.name]: event.target.value
+    });
   };
 
   handleAddBook = () => {
-    const bookData = { ...this.state, userInfo: "userInfo" };
-    this.props.addNewBook(bookData);
+    const bookData = { ...this.state };
+    this.props.addNewBook(bookData, this.props.userInfo.id);
   };
-
-  // searchGoogle = () => {
-  //   if (this.props.userInfo.id) {
-  //     this.props.googleBook(this.state.search);
-  //   }
-  // };
 
   render() {
     return (
       <React.Fragment>
         <GoogleShelf data={this.props.googleBook} />
 
-        <Form style={{ padding: "1vh", margin: "auto" }}>
+        <Form style={{ padding: "2vh", margin: "auto" }}>
           <p
             className="profileHeader"
             style={{ color: "#61892F", textAlign: "center" }}
@@ -66,31 +66,23 @@ class AddBook extends React.Component {
           />
           <Form.Input
             className=""
-            placeholder="To Be Determined!"
+            placeholder="rating"
             type="text"
             name="rating"
             onChange={this.updateBookState}
           />
           <Form.Input
             className=""
-            placeholder="isbn10"
+            placeholder="*optional isbn10*"
             type="text"
             name="isbn10"
             onChange={this.updateBookState}
           />
           <Form.Input
             className=""
-            placeholder="isbn13"
+            placeholder="*optional isbn13*"
             type="text"
             name="isbn13"
-            onChange={this.updateBookState}
-          />
-          <Form.Input
-            className="coverImage"
-            placeholder="CoverImage"
-            type="text"
-            name="image"
-            // value={this.state.coverImage}
             onChange={this.updateBookState}
           />
 
@@ -120,6 +112,9 @@ function mapDispatchToProps(dispatch) {
     },
     googleBook: bookData => {
       dispatch(googleBook(bookData));
+    },
+    clearGoogle: bookData => {
+      dispatch(clearGoogle());
     }
   };
 }

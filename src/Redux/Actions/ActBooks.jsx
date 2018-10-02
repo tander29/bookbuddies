@@ -12,6 +12,11 @@ export const getSingleBook = bookId => dispatch => {
 };
 
 export const addNewBook = (bookData, id) => dispatch => {
+  console.log("id in action", id);
+  if (!id) {
+    alert("error, try loggng out then logging in");
+    return;
+  }
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -21,7 +26,10 @@ export const addNewBook = (bookData, id) => dispatch => {
   fetch(heroku + "/books", requestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log("success added new book");
+      console.log("success added new book", data);
+      dispatch(getAllBooks());
+      alert(`Thanks for adding ${data.title} by ${data.author} as a listing! `);
+      dispatch({ type: Types.RESET_GOOGLE });
     });
 };
 
@@ -29,6 +37,7 @@ export const getAllBooks = book => dispatch => {
   fetch(heroku + "/books")
     .then(res => res.json())
     .then(data => {
+      console.log(" all books", data);
       dispatch({
         type: Types.GETBOOKS,
         payload: data.book
@@ -43,10 +52,17 @@ export const googleBook = bookTitle => dispatch => {
   fetch(googleURL + bookTitleURL)
     .then(res => res.json())
     .then(data => {
-      dispatch({
-        type: Types.GOOGLE_BOOK,
-        payload: data
-      });
-      console.log("google API data", data);
+      if (data.totalItems > 0) {
+        dispatch({
+          type: Types.GOOGLE_BOOK,
+          payload: data
+        });
+      } else {
+        alert("We couldn't find that one, try to adjust your spelling!");
+      }
     });
+};
+
+export const clearGoogle = () => dispatch => {
+  dispatch({ type: Types.RESET_GOOGLE });
 };
