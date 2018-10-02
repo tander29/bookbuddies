@@ -173,7 +173,7 @@ class ProfilePage extends React.Component {
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row>
+          <Grid.Row columns={2}>
             <Grid.Column width={3}>
               <Segment vertical>Username: {username}</Segment>
               <Segment vertical>Location: USA</Segment>

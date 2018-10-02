@@ -27,12 +27,14 @@ class MainPage extends React.Component {
             <div>Rating: 5 Stars!</div>
             <div>Bio: I am a sloth</div>
           </Grid.Column>
-          <Grid.Column width={10} >
+          <Grid.Column width={10} textAlign='center'>
             <div>
               <SearchBar />
               <Icon name="search" />
             </div>
+            <div>
             <BookShelf />
+            </div>
           </Grid.Column>
           <Grid.Column width={3}>
             <Footer />

@@ -32,7 +32,7 @@ class BookShelf extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Grid container style={{ paddingTop: "3vh" }}>
+        <Grid container style={{ paddingTop: "5vh" }} centered>
           {this.defaultBooks()}
         </Grid>
       </React.Fragment>
