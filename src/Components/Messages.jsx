@@ -23,10 +23,10 @@ class Messages extends Component {
         <Container>
           <Card
             className="messages"
-            style={{ padding: "2vh", backgroundColor: "#474B4F", color: 'white' }}
+            style={{ padding: "2vh", backgroundColor: "#474B4F", color: 'white', margin:'1vh' }}
             fluid
           >
-            <Grid celled="internally" centered>
+            <Grid centered>
               <Grid.Row columns={2}>
                 <Grid.Column textAlign="left">
                   Message from User ID

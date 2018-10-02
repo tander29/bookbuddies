@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Book from "./Book.jsx";
-import { Grid } from "semantic-ui-react";
+import { Container, Grid } from "semantic-ui-react";
 
 class BookShelf extends React.Component {
   state = { booksToDisplay: [] };
@@ -29,7 +29,11 @@ class BookShelf extends React.Component {
   }
 
   render() {
-    return <React.Fragment>{this.defaultBooks()}</React.Fragment>;
+    return (
+      <React.Fragment>
+        <Grid container style={{paddingTop:'3vh'}}>{this.defaultBooks()}</Grid>
+      </React.Fragment>
+    );
   }
 }
 

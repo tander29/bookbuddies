@@ -43,7 +43,7 @@ class GoogleShelf extends React.Component {
   render() {
     return (
       <React.Fragment>
-          <Container style={{padding:'1vh'}} textAlign='center'>
+          <Container style={{padding:'2vh'}} textAlign='center'>
         <div id="search">
         <b>
           <p style={{ color: "#61892F", paddingBottom:'2vh'}}>
