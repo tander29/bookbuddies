@@ -34,5 +34,6 @@ export const getAllMessages = () => dispatch => {
         type: Types.GET_MESSAGES,
         payload: data
       });
+      console.log("all messages", data);
     });
 };
