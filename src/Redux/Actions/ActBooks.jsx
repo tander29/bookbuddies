@@ -13,6 +13,10 @@ export const getSingleBook = bookId => dispatch => {
 
 export const addNewBook = (bookData, id) => dispatch => {
   console.log("id in action", id);
+  if (!id) {
+    alert("error, try loggng out then logging in");
+    return;
+  }
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },

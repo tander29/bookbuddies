@@ -2,7 +2,7 @@ import { Types, heroku, local } from "../Types";
 
 export const sendMessage = messageItem => dispatch => {
   console.log("message item", messageItem);
-  console.log(messageItem.toUserId);
+
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
