@@ -13,6 +13,7 @@ class BookShelf extends React.Component {
 
   defaultBooks() {
     return this.state.booksToDisplay.map(book => {
+      console.log("book.userId", book.userId);
       return (
         <Book
           title={book.title}
@@ -31,7 +32,9 @@ class BookShelf extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Grid container style={{paddingTop:'3vh'}}>{this.defaultBooks()}</Grid>
+        <Grid container style={{ paddingTop: "3vh" }}>
+          {this.defaultBooks()}
+        </Grid>
       </React.Fragment>
     );
   }
