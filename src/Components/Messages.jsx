@@ -23,7 +23,7 @@ class Messages extends Component {
   }
 
   findUsername = (userId) => {
-    const senderUsername = this.props.allUsers.filter(sender => {
+    const senderUsername = this.props.allUsers.find(sender => {
       return sender.id === userId
     })
     console.log("sender findUsername ", senderUsername)
