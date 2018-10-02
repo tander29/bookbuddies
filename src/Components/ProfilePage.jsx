@@ -114,7 +114,7 @@ class ProfilePage extends React.Component {
                 <Card.Content>
                   <Card.Header>{username}</Card.Header>
                   <Card.Meta>
-                    <span className="date">Joined in 2015</span>
+                    <span className="date">Joined in 2018</span>
                   </Card.Meta>
                   <Card.Description>{about}</Card.Description>
                 </Card.Content>
@@ -135,6 +135,7 @@ class ProfilePage extends React.Component {
                     onClick={this.handleItemClick}
                   >
                     <Link to="/bookbuddy/profile/">Owned</Link>
+
                   </Menu.Item>
 
                   <Menu.Item
@@ -227,7 +228,7 @@ class ProfilePage extends React.Component {
                     </Modal.Description>
                   </Modal.Content>
                   <button onClick={this.modalSwitchStatus}>Close</button>
-                  <button onClick={this.changeInfo}>Update</button>
+                  
                 </Modal>
 
                 <Rating
