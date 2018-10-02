@@ -66,6 +66,9 @@ export default function(state = initialState, action) {
         googleBookAPI: action.payload.items
       };
 
+    case Types.RESET_GOOGLE:
+      return { ...state, googleBookAPI: initialState.googleBookAPI };
+
     case Types.NEW_MESSAGE:
       return {
         ...state,
