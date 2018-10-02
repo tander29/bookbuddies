@@ -36,6 +36,7 @@ class ProfilePage extends React.Component {
     name: "",
     username: "",
     about: "",
+    location: "",
     password: "",
     password2: ""
   };
@@ -50,7 +51,6 @@ class ProfilePage extends React.Component {
   }
 
   modalSwitchStatus = () => {
-    console.log(this.state.modalOpen);
     this.setState({ modalOpen: !this.state.modalOpen });
   };
   handleChange = event => {
@@ -67,7 +67,8 @@ class ProfilePage extends React.Component {
         this.state.username,
         this.state.password,
         this.state.about,
-        this.props.userInfo.id
+        this.props.userInfo.id,
+        this.state.location
       );
   };
 

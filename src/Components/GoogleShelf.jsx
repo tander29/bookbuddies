@@ -39,9 +39,7 @@ class GoogleShelf extends React.Component {
       return (
         <Book
           title={book.volumeInfo.title}
-          author={
-            book.volumeInfo.authors[0] ? book.volumeInfo.authors[0] : "N/A"
-          }
+          author={book.volumeInfo.authors ? book.volumeInfo.authors[0] : "N/A"}
           googleImage={book.volumeInfo.imageLinks.smallThumbnail}
           rating={book.volumeInfo.averageRating}
           ratingsCount={book.volumeInfo.ratingsCount}
@@ -80,7 +78,7 @@ class GoogleShelf extends React.Component {
           </div>
         </Container>
 
-        <Grid container textAlign='center'>
+        <Grid container textAlign="center">
           <Grid.Row>{this.defaultBooks()}</Grid.Row>
         </Grid>
       </React.Fragment>
