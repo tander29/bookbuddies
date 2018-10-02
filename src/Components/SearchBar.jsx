@@ -25,7 +25,7 @@ export class SearchBar extends Component {
 
     handleSubmit = (event) => {
         if (event.key === 'Enter') {
-            this.updateState()
+            this.updateState(event)
         }
     }
 
