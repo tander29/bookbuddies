@@ -43,7 +43,7 @@ class AddBook extends React.Component {
       <React.Fragment>
         <GoogleShelf data={this.props.googleBook} />
 
-        <Form style={{ padding: "1vh", margin: "auto" }}>
+        <Form style={{ padding: "2vh", margin: "auto" }}>
           <p
             className="profileHeader"
             style={{ color: "#61892F", textAlign: "center" }}
@@ -74,14 +74,14 @@ class AddBook extends React.Component {
           />
           <Form.Input
             className=""
-            placeholder="*optional isbn10"
+            placeholder="*optional isbn10*"
             type="text"
             name="isbn10"
             onChange={this.updateBookState}
           />
           <Form.Input
             className=""
-            placeholder="*optional isbn13"
+            placeholder="*optional isbn13*"
             type="text"
             name="isbn13"
             onChange={this.updateBookState}
