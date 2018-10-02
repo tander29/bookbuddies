@@ -44,7 +44,8 @@ class Book extends React.Component {
   };
 
   updateMessageContent = event => {
-    console.log(this.state);
+    console.log("this.state", this.state);
+    console.log("this.props", this.props);
     this.setState({
       messageContent: {
         text: event.target.value,
@@ -55,6 +56,9 @@ class Book extends React.Component {
   };
 
   sendMessage = ownerId => {
+    console.log("this.state", this.state);
+    console.log("this.props", this.props);
+    console.log(this.state.messageContent);
     if (this.state.messageContent) {
       this.modalSwitchStatus();
 
