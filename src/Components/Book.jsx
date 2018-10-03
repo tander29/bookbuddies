@@ -57,7 +57,7 @@ class Book extends React.Component {
   };
 
   sendMessage = () => {
-    if (this.state.messageContent) {
+    if (this.state.messageContent.text) {
       this.modalSwitchStatus();
 
       this.props.sendMessage(this.state.messageContent);
@@ -150,12 +150,10 @@ class Book extends React.Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-          
-          {
-            this.props.userInfo.id === ownerId ? (
-              <div>You own this book, buddy</div>
-            ) : 
-            this.props.google === "true" ? (
+
+          {this.props.userInfo.id === ownerId ? (
+            <div>You own this book, buddy</div>
+          ) : this.props.google === "true" ? (
             <Button
               onClick={() =>
                 this.addBook({

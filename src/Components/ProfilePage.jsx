@@ -48,16 +48,12 @@ class ProfilePage extends React.Component {
       this.props.logout();
     }
   }
-  
+
   modalSwitchStatus = () => {
     this.setState({ modalOpen: !this.state.modalOpen });
   };
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
-  };
-
-  handleItemClick = () => {
-    window.location.reload(true);
   };
 
   changeInfo = () => {
@@ -100,27 +96,15 @@ class ProfilePage extends React.Component {
             </Grid.Column>
             <Grid.Column width={10}>
               <div id="menubar">
-                <Menu id="Switchbar" style={{ marginBottom:'3vh' }}>
-                  <Menu.Item
-                    name="Owned"
-                    onClick={this.handleItemClick}
-                  >
-                  </Menu.Item>
+                <Menu id="Switchbar" style={{ marginBottom: "3vh" }}>
+                  <Menu.Item name="Owned" />
 
-                  <Menu.Item
-                    name="Currently Have"
-                    onClick={this.handleItemClick}
-                  >
-                  </Menu.Item>
+                  <Menu.Item name="Currently Have" />
 
-                  <Menu.Item
-                    name="Messages"
-                    onClick={this.handleItemClick}
-                  >
-                  </Menu.Item>
+                  <Menu.Item name="Messages" />
                 </Menu>
               </div>
-              <BookShelf location={this.props.location}/>
+              <BookShelf location={this.props.location} />
             </Grid.Column>
           </Grid.Row>
 
@@ -177,7 +161,6 @@ class ProfilePage extends React.Component {
                     </Modal.Description>
                   </Modal.Content>
                   <button onClick={this.modalSwitchStatus}>Close</button>
-                  
                 </Modal>
 
                 <Rating
