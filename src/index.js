@@ -25,7 +25,7 @@ ReactDOM.render(
         <Route
           exact
           path="/bookbuddy/profile"
-          render={props => <ProfilePage />}
+          render={props => <ProfilePage location={props.location.pathname} />}
         />
         <Route render={props => <ErrorPage />} />
       </Switch>

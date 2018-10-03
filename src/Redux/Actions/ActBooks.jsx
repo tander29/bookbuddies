@@ -1,5 +1,4 @@
 import { Types, heroku } from "../Types";
-import { push } from "connected-react-router";
 
 export const getSingleBook = bookId => dispatch => {
   fetch(heroku + "/getSingleBook/" + bookId)
@@ -13,7 +12,6 @@ export const getSingleBook = bookId => dispatch => {
 };
 
 export const addNewBook = (bookData, id) => dispatch => {
-  console.log("id in action", id);
   if (!id) {
     alert("error, try loggng out then logging in");
     return;
@@ -27,8 +25,6 @@ export const addNewBook = (bookData, id) => dispatch => {
   fetch(heroku + "/books", requestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log("success added new book", data);
-
       alert(`Thanks for adding ${data.title} by ${data.author} as a listing! `);
       dispatch({ type: Types.RESET_GOOGLE });
     });
@@ -39,7 +35,6 @@ export const getAllBooks = book => dispatch => {
   fetch(heroku + "/books")
     .then(res => res.json())
     .then(data => {
-      console.log(" all books", data);
       dispatch({
         type: Types.GETBOOKS,
         payload: data.book
@@ -77,6 +72,6 @@ export const filterBooks = search => dispatch => {
   });
 };
 
-export const stuff = () => dispatch => {
-  console.log("works");
+export const clearBooks = () => dispatch => {
+  dispatch({ type: Types.CLEAR_BOOKS });
 };
