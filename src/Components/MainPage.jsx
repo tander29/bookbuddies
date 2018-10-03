@@ -15,8 +15,9 @@ class MainPage extends React.Component {
       this.props.logout();
     }
   }
+  
   render() {
-    const { username, displayname, about } = this.props.userInfo;
+    const { username, about } = this.props.userInfo;
     return (
       <React.Fragment>
         <Header />
@@ -68,7 +69,7 @@ function mapDispatchToProps(dispatch) {
   return {
     logout: () => {
       dispatch(logout());
-    }
+    },
   };
 }
 

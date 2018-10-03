@@ -42,9 +42,6 @@ class Book extends React.Component {
     ...initialState
   };
 
-  componentDidMount() {}
-
-  // open or close modal based on current state
   modalSwitchStatus = () => {
     this.setState({ modalOpen: !this.state.modalOpen });
   };

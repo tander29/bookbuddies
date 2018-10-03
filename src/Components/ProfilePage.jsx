@@ -19,7 +19,6 @@ import NavBar from "./NavBar.jsx";
 import BookShelf from "./BookShelf.jsx";
 import "../App.css";
 import MessageBoard from "./MessageBoard.jsx";
-import { Switch, Route, Link } from "react-router-dom";
 import { getAllMessages } from "../Redux/Actions/ActSendMessage";
 import { getAllBooks } from "../Redux/Actions/ActBooks";
 import {
@@ -49,7 +48,7 @@ class ProfilePage extends React.Component {
       this.props.logout();
     }
   }
-
+  
   modalSwitchStatus = () => {
     this.setState({ modalOpen: !this.state.modalOpen });
   };
@@ -72,36 +71,9 @@ class ProfilePage extends React.Component {
       );
   };
 
-  Owned = () => {
-    return (
-      <p style={{textAlign:'center'}}>
-        Books Owned
-        <BookShelf />
-      </p>
-    );
-  };
-
-  Available = () => {
-    return (
-      <p style={{textAlign:'center'}}>
-        Books Available
-        <BookShelf />
-        </p>
-    );
-  };
-
-  Onloan = () => {
-    return (
-      <p style={{textAlign:'center'}}>
-        Books On Loan
-        <BookShelf />
-        </p>
-    );
-  };
-
   render() {
     const { modalOpen } = this.state;
-    const { username, displayname, about } = this.props.userInfo;
+    const { username, about } = this.props.userInfo;
     return (
       <div id="profilepage">
         <Header />
@@ -131,46 +103,24 @@ class ProfilePage extends React.Component {
                 <Menu id="Switchbar" style={{ marginBottom:'3vh' }}>
                   <Menu.Item
                     name="Owned"
-                    // active={activeItem === 'editorials'}
                     onClick={this.handleItemClick}
                   >
-                    {/* <Link to="/bookbuddy/profile/">Owned</Link> */}
                   </Menu.Item>
 
                   <Menu.Item
                     name="Currently Have"
-                    //  active={activeItem === 'reviews'}
                     onClick={this.handleItemClick}
                   >
-                    {/* <Link to="/bookbuddy/profile/available">Available</Link> */}
                   </Menu.Item>
 
                   <Menu.Item
                     name="Messages"
-                    // active={activeItem === 'upcomingEvents'}
                     onClick={this.handleItemClick}
                   >
-                    {/* <Link to="/bookbuddy/profile/onloan">On Loan</Link> */}
                   </Menu.Item>
                 </Menu>
               </div>
-              {/* <Switch>
-                <Route
-                  exact
-                  path="/bookbuddy/profile/"
-                  component={this.Owned}
-                />
-                <Route
-                  exact
-                  path="/bookbuddy/profile/available"
-                  component={this.Available}
-                />
-                <Route
-                  exact
-                  path="/bookbuddy/profile/onloan"
-                  component={this.Onloan}
-                />
-              </Switch> */}
+              <BookShelf location={this.props.location}/>
             </Grid.Column>
           </Grid.Row>
 
