@@ -153,8 +153,12 @@ class Book extends React.Component {
               </Grid.Column>
             </Grid.Row>
           </Grid>
-
-          {this.props.google === "true" ? (
+          
+          {
+            this.props.userInfo.id === ownerId ? (
+              <div>You own this book, buddy</div>
+            ) : 
+            this.props.google === "true" ? (
             <Button
               onClick={() =>
                 this.addBook({
