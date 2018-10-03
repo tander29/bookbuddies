@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import {filterBooks, stuff} from '../Redux/Actions/ActBooks'
+import { filterBooks } from '../Redux/Actions/ActBooks'
 import "../App.css";
 
 import {} from "semantic-ui-react";

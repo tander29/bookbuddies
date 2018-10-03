@@ -1,10 +1,8 @@
-import { Types, heroku, local } from "../Types";
+import { Types, heroku } from "../Types";
 import { push } from "connected-react-router";
 import { getAllBooks } from "./ActBooks";
 import { getAllMessages } from "./ActSendMessage";
 
-//login right now is getting lots of info, could make an action called initiate
-//initiate could run all of the dispatches
 export const login = (username, password) => dispatch => {
   const requestOptions = {
     method: "POST",
@@ -35,7 +33,6 @@ export const login = (username, password) => dispatch => {
     });
 };
 
-//on register component, register component compares existing users to desired username
 export const register = (displayname, username, password) => dispatch => {
   const requestOptions = {
     method: "POST",
@@ -65,7 +62,6 @@ export const getAllUsers = () => dispatch => {
   fetch(heroku + "/User")
     .then(res => res.json())
     .then(data => {
-      console.log("all user", data);
       dispatch({ type: Types.GETALLUSERS, payload: data });
     });
 };
@@ -97,12 +93,9 @@ export const patchInfo = (
       location: location
     })
   };
-
-  console.log("request options:", requestOptions);
   fetch(heroku + "/User", requestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log("data received from backend:", data);
       dispatch({
         type: Types.PATCHINFO,
         payload: data

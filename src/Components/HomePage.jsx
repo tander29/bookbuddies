@@ -17,7 +17,6 @@ class HomePage extends React.Component {
         style={{ backgroundColor: "#474B4F" }}
         fluid
         id="homepagecontainer"
-        
       >
         <Header />
 
@@ -43,7 +42,6 @@ class HomePage extends React.Component {
                         color: "white",
                         marginBottom: "5vh",
                         marginTop: "1vh"
-                        
                       }}
                     >
                       Login

@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import Book from "./Book.jsx";
-import { Container, Grid, Button } from "semantic-ui-react";
-import { clearBooks, stuff } from '../Redux/Actions/ActBooks'
+import { Grid, Button } from "semantic-ui-react";
+import { clearBooks } from '../Redux/Actions/ActBooks'
 class BookShelf extends React.Component {
   state = { booksToDisplay: [] };
   componentDidMount() {
@@ -10,6 +10,9 @@ class BookShelf extends React.Component {
       this.setState({ booksToDisplay: this.props.allBooks });
     }else{
       this.setState({booksToDisplay: this.props.filterBooksArray})
+    }
+    if(this.props.location === '/bookbuddy/profile') {
+      this.filterMyBooks()
     }
   }
 
@@ -20,7 +23,6 @@ class BookShelf extends React.Component {
   }
 
   defaultBooks=()=> {
-    console.log("props search",this.props.search)
     return this.state.booksToDisplay.map(book => {
       return (
         <Book
@@ -35,25 +37,33 @@ class BookShelf extends React.Component {
         />
       );
     });
-    this.props.clearBooks()
   }
   filterBooks = () =>{
     this.setState({booksToDisplay:this.props.allBooks})
     const filterBooksArray = this.state.booksToDisplay.filter(book =>{
       const title = book.title.toLowerCase();
-      console.log(title)
       const search = this.props.search.toLowerCase();
-      console.log(search)
       return title.includes(search)  
       
     })
     this.setState({booksToDisplay: filterBooksArray})
   }
+
+  filterMyBooks = () => {
+    const filterMyBooksArray = this.props.allBooks.filter(book => {
+      return this.props.userInfo.id === book.userId
+    })
+    this.setState({booksToDisplay: filterMyBooksArray})
+  }
+
   render() {
     return (
       <React.Fragment>
-      <Button onClick={this.filterBooks}>search</Button>
-      <Button onClick={this.resetBooks}>All Books</Button>
+      {this.props.location ? "" : 
+      <React.Fragment>
+        <Button onClick={this.filterBooks}>search</Button>
+        <Button onClick={this.resetBooks}>All Books</Button>
+      </React.Fragment>}
         <Grid container style={{ paddingTop: "3vh" }}>
           {this.defaultBooks()}
         </Grid>
@@ -65,13 +75,11 @@ class BookShelf extends React.Component {
 const mapStateToProps = state => {
   return { allBooks: state.books,
           ...state };
-    
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    clearBooks:() => {dispatch(clearBooks())},
-    stuff:() => {dispatch(stuff())}
+    clearBooks:() => {dispatch(clearBooks())}
   };
 }
 
