@@ -3,6 +3,7 @@ import { Button, Menu, Icon, Modal } from "semantic-ui-react";
 import AddBook from "./AddBook";
 import { logout } from "../Redux/Actions/ActLogout";
 import { to_main, to_profile } from "../Redux/Actions/ActNavBar";
+import { getAllBooks } from '../Redux/Actions/ActBooks';
 import { connect } from "react-redux";
 
 export class NavBar extends Component {
@@ -36,6 +37,7 @@ export class NavBar extends Component {
         <Menu.Menu>
           <Menu.Item>
             <Modal
+              onClose={() => this.props.getAllBooks()}
               trigger={
                 <Button style={{ backgroundColor: "#86C232", color: "white" }}>
                   <Icon name="plus" corner />
@@ -79,6 +81,9 @@ function mapDispatchToProps(dispatch) {
     },
     to_main: () => {
       dispatch(to_main());
+    },
+    getAllBooks: () => {
+      dispatch(getAllBooks());
     }
   };
 }

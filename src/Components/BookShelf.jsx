@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Book from "./Book.jsx";
 import { Container, Grid, Button } from "semantic-ui-react";
-
+import { clearBooks, stuff } from '../Redux/Actions/ActBooks'
 class BookShelf extends React.Component {
   state = { booksToDisplay: [] };
   componentDidMount() {
@@ -13,9 +13,15 @@ class BookShelf extends React.Component {
     }
   }
 
-  defaultBooks() {
+  resetBooks =()=>{
+      this.setState({booksToDisplay:this.props.allBooks})
+      this.props.clearBooks()
+      
+  }
+
+  defaultBooks=()=> {
+    console.log("props search",this.props.search)
     return this.state.booksToDisplay.map(book => {
-      console.log("book.userId", book.userId);
       return (
         <Book
           title={book.title}
@@ -29,34 +35,25 @@ class BookShelf extends React.Component {
         />
       );
     });
+    this.props.clearBooks()
   }
   filterBooks = () =>{
+    this.setState({booksToDisplay:this.props.allBooks})
     const filterBooksArray = this.state.booksToDisplay.filter(book =>{
-     return book.title.includes(this.props.search)  
-
-    })
-      console.log(filterBooksArray)
-      return filterBooksArray.map(book =>{
-        console.log(filterBooksArray)
-        return (
-          <Book
-          title={book.title}
-          author={book.author}
-          bookId={book.id}
-          ownerId={book.userId}
-          image={book.image}
-          rating={book.rating}
-          key={book.id}
-          google={"false"}
-        />
-        )
-      })
+      const title = book.title.toLowerCase();
+      console.log(title)
+      const search = this.props.search.toLowerCase();
+      console.log(search)
+      return title.includes(search)  
       
+    })
+    this.setState({booksToDisplay: filterBooksArray})
   }
   render() {
     return (
       <React.Fragment>
       <Button onClick={this.filterBooks}>search</Button>
+      <Button onClick={this.resetBooks}>All Books</Button>
         <Grid container style={{ paddingTop: "3vh" }}>
           {this.defaultBooks()}
         </Grid>
@@ -68,10 +65,14 @@ class BookShelf extends React.Component {
 const mapStateToProps = state => {
   return { allBooks: state.books,
           ...state };
+    
 };
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    clearBooks:() => {dispatch(clearBooks())},
+    stuff:() => {dispatch(stuff())}
+  };
 }
 
 const Connect = connect(

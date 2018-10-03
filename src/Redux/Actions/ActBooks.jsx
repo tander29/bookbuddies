@@ -1,4 +1,5 @@
 import { Types, heroku } from "../Types";
+import { push } from 'connected-react-router'
 
 export const getSingleBook = bookId => dispatch => {
   fetch(heroku + "/getSingleBook/" + bookId)
@@ -27,10 +28,11 @@ export const addNewBook = (bookData, id) => dispatch => {
     .then(res => res.json())
     .then(data => {
       console.log("success added new book", data);
-      dispatch(getAllBooks());
+      
       alert(`Thanks for adding ${data.title} by ${data.author} as a listing! `);
       dispatch({ type: Types.RESET_GOOGLE });
     });
+    dispatch(getAllBooks());
 };
 
 export const getAllBooks = book => dispatch => {
@@ -57,6 +59,7 @@ export const googleBook = bookTitle => dispatch => {
           type: Types.GOOGLE_BOOK,
           payload: data
         });
+        
       } else {
         alert("We couldn't find that one, try to adjust your spelling!");
       }
@@ -73,6 +76,10 @@ export const filterBooks = (search) => dispatch =>{
             search: search})
 }
 
-export const stuff = () => dispatch =>{
-  console.log("works")
+export const clearBooks = () => dispatch => {
+  dispatch({type: Types.CLEAR_BOOKS})
+}
+
+export const stuff = (search) => dispatch =>{
+  console.log("stuff!!!!!!!")
 }
