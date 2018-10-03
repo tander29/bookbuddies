@@ -8,6 +8,8 @@ class BookShelf extends React.Component {
   componentDidMount() {
     if (this.props.allBooks) {
       this.setState({ booksToDisplay: this.props.allBooks });
+    }else{
+      this.setState({booksToDisplay: this.props.filterBooksArray})
     }
   }
 
@@ -30,11 +32,27 @@ class BookShelf extends React.Component {
   }
   filterBooks = () =>{
     const filterBooksArray = this.state.booksToDisplay.filter(book =>{
-     return book.title.includes(this.props.search)      
+     return book.title.includes(this.props.search)  
+
     })
+      console.log(filterBooksArray)
+      return filterBooksArray.map(book =>{
+        console.log(filterBooksArray)
+        return (
+          <Book
+          title={book.title}
+          author={book.author}
+          bookId={book.id}
+          ownerId={book.userId}
+          image={book.image}
+          rating={book.rating}
+          key={book.id}
+          google={"false"}
+        />
+        )
+      })
       
   }
-
   render() {
     return (
       <React.Fragment>
