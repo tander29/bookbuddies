@@ -22,13 +22,13 @@ export class SearchBar extends Component {
 
     updateState = event => {
         this.setState({search: event.target.value})
+        this.updateSearch()
        
         
         };
 
     handleSubmit = (event) => {
         if (event.key === 'Enter') {
-            this.updateSearch()
             this.setState({search:''})
         
         }

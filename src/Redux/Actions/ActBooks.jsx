@@ -76,6 +76,10 @@ export const filterBooks = (search) => dispatch =>{
             search: search})
 }
 
-export const stuff = () => dispatch =>{
-  console.log("works")
+export const clearBooks = () => dispatch => {
+  dispatch({type: Types.CLEAR_BOOKS})
+}
+
+export const stuff = (search) => dispatch =>{
+  console.log("stuff!!!!!!!")
 }
