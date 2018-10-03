@@ -98,6 +98,11 @@ export default function(state = initialState, action) {
       search: action.search
     }
 
+    case Types.CLEAR_BOOKS: 
+      return{
+        ...state,
+        search: ''
+      }
     default:
       return state;
   }
