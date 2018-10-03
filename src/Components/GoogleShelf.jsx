@@ -49,7 +49,7 @@ class GoogleShelf extends React.Component {
           ratingsCount={book.volumeInfo.ratingsCount}
           cardSize={"tiny"}
           google={"true"}
-          key={Math.random() * 200000000}
+          key={book.id ? book.id : Math.random() * 200000000}
         />
       );
     });
