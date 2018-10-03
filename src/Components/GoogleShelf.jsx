@@ -43,13 +43,13 @@ class GoogleShelf extends React.Component {
           googleImage={
             book.volumeInfo.imageLinks
               ? book.volumeInfo.imageLinks.smallThumbnail
-              : ''
+              : ""
           }
           rating={book.volumeInfo.averageRating}
           ratingsCount={book.volumeInfo.ratingsCount}
           cardSize={"tiny"}
           google={"true"}
-          key={Math.random() * 200000000}
+          key={book.id ? book.id : Math.random() * 200000000}
         />
       );
     });

@@ -16,7 +16,7 @@ const initialState = {
   isbn10: "",
   isbn13: "",
   image: "",
-  rating: "",
+  rating: 4,
   id: null
 };
 class AddBook extends React.Component {
@@ -62,13 +62,6 @@ class AddBook extends React.Component {
             placeholder="Author"
             type="text"
             name="author"
-            onChange={this.updateBookState}
-          />
-          <Form.Input
-            className=""
-            placeholder="rating"
-            type="text"
-            name="rating"
             onChange={this.updateBookState}
           />
           <Form.Input
