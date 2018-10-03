@@ -22,20 +22,24 @@ class BookShelf extends React.Component {
   };
 
   defaultBooks = () => {
-    return this.state.booksToDisplay.map(book => {
-      return (
-        <Book
-          title={book.title}
-          author={book.author}
-          bookId={book.id}
-          ownerId={book.userId}
-          image={book.image}
-          rating={book.rating}
-          key={book.id}
-          google={"false"}
-        />
-      );
-    });
+    if (this.state.booksToDisplay.length < 1) {
+      return <div>No book buddy has added that yet</div>;
+    } else {
+      return this.state.booksToDisplay.map(book => {
+        return (
+          <Book
+            title={book.title}
+            author={book.author}
+            bookId={book.id}
+            ownerId={book.userId}
+            image={book.image}
+            rating={book.rating}
+            key={book.id}
+            google={"false"}
+          />
+        );
+      });
+    }
   };
   filterBooks = () => {
     this.setState({ booksToDisplay: this.props.allBooks });
