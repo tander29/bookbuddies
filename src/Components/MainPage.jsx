@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import NavBar from "./NavBar.jsx";
 import { Grid, Icon, Card , Image} from "semantic-ui-react";
 import BookShelf from "./BookShelf";
-import { SearchBar } from "./SearchBar";
+import  SearchBar  from "./SearchBar";
 import { logout } from "../Redux/Actions/ActLogout";
 import bookbuddyicon from "../images/bookbuddyicon.png";
 
@@ -15,7 +15,9 @@ class MainPage extends React.Component {
       this.props.logout();
     }
   }
+  
   render() {
+    const { username, about } = this.props.userInfo;
     return (
       <React.Fragment>
         <Header />
@@ -23,8 +25,7 @@ class MainPage extends React.Component {
         <Grid celled="internally">
           <Grid.Row>
           <Grid.Column width={3}>
-            <h1>Profile</h1>
-            {/* <Card>
+            <Card>
                 <Image src={bookbuddyicon} />
                 <Card.Content>
                   <Card.Header>{username}</Card.Header>
@@ -33,17 +34,22 @@ class MainPage extends React.Component {
                   </Card.Meta>
                   <Card.Description>{about}</Card.Description>
                 </Card.Content>
-            </Card> */}
-            <div>Name: Sloth</div>
-            <div>Rating: 5 Stars!</div>
-            <div>Bio: I am a sloth</div>
+                <Card.Content extra>
+                  <a>
+                    <Icon name="user" />
+                    22 Friends
+                  </a>
+                </Card.Content>
+              </Card>
           </Grid.Column>
-          <Grid.Column width={10} >
+          <Grid.Column width={10} textAlign='center'>
             <div>
               <SearchBar />
               <Icon name="search" />
             </div>
+            <div>
             <BookShelf />
+            </div>
           </Grid.Column>
           <Grid.Column width={3}>
             <Footer />
@@ -63,7 +69,7 @@ function mapDispatchToProps(dispatch) {
   return {
     logout: () => {
       dispatch(logout());
-    }
+    },
   };
 }
 

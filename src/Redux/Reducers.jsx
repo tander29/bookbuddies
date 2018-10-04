@@ -18,7 +18,9 @@ const initialState = {
 
   books: [],
 
-  allMessages: []
+  allMessages: [],
+
+  search: '',
 };
 
 export default function(state = initialState, action) {
@@ -90,6 +92,17 @@ export default function(state = initialState, action) {
         allUsers: action.payload.users
       };
 
+    case Types.FILTER_BOOKS:
+    return {
+      ...state,
+      search: action.search
+    }
+
+    case Types.CLEAR_BOOKS: 
+      return{
+        ...state,
+        search: ''
+      }
     default:
       return state;
   }

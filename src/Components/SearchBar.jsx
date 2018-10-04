@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
+import { filterBooks } from "../Redux/Actions/ActBooks";
 import "../App.css";
+
 import {} from "semantic-ui-react";
 
 export class SearchBar extends Component {
@@ -16,10 +18,21 @@ export class SearchBar extends Component {
     }
   };
 
+  updateState = event => {
+    this.setState({ search: event.target.value });
+    this.updateSearch();
+  };
+
+  handleSubmit = event => {
+    if (event.key === "Enter") {
+      this.setState({ search: "" });
+    }
+  };
+
   updateSearch = event => {
-    this.setState({
-      search: event.target.value
-    });
+    if (this.state.search.length > 1) {
+      this.props.filterBooks(this.state.search);
+    }
   };
 
   render() {
@@ -29,11 +42,30 @@ export class SearchBar extends Component {
         type="text"
         placeholder="Search for books"
         value={this.state.search}
+        onChange={this.updateState}
         onKeyPress={this.handleSubmit}
-        onChange={this.updateSearch}
       />
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    ...state,
+    search: state.search
+  };
+};
 
-export default SearchBar;
+function mapDispatchToProps(dispatch) {
+  return {
+    filterBooks: search => {
+      dispatch(filterBooks(search));
+    }
+  };
+}
+
+const Connect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SearchBar);
+
+export default Connect;

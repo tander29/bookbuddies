@@ -1,7 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import {Image} from "semantic-ui-react";
 import Nav from './NavBar.jsx'
 
 class ErrorPage extends React.Component {
@@ -9,8 +7,8 @@ class ErrorPage extends React.Component {
         return (
           
                 <div id="ErrorPage" >
-                
-                 <Nav/>
+        
+                 <Nav />
                  
                 </div>
                 

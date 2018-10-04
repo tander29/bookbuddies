@@ -12,7 +12,6 @@ export const getSingleBook = bookId => dispatch => {
 };
 
 export const addNewBook = (bookData, id) => dispatch => {
-  console.log("id in action", id);
   if (!id) {
     alert("error, try loggng out then logging in");
     return;
@@ -26,18 +25,16 @@ export const addNewBook = (bookData, id) => dispatch => {
   fetch(heroku + "/books", requestOptions)
     .then(res => res.json())
     .then(data => {
-      console.log("success added new book", data);
-      dispatch(getAllBooks());
       alert(`Thanks for adding ${data.title} by ${data.author} as a listing! `);
       dispatch({ type: Types.RESET_GOOGLE });
     });
+  dispatch(getAllBooks());
 };
 
 export const getAllBooks = book => dispatch => {
   fetch(heroku + "/books")
     .then(res => res.json())
     .then(data => {
-      console.log(" all books", data);
       dispatch({
         type: Types.GETBOOKS,
         payload: data.book
@@ -53,6 +50,7 @@ export const googleBook = bookTitle => dispatch => {
     .then(res => res.json())
     .then(data => {
       if (data.totalItems > 0) {
+        console.log(data);
         dispatch({
           type: Types.GOOGLE_BOOK,
           payload: data
@@ -65,4 +63,15 @@ export const googleBook = bookTitle => dispatch => {
 
 export const clearGoogle = () => dispatch => {
   dispatch({ type: Types.RESET_GOOGLE });
+};
+
+export const filterBooks = search => dispatch => {
+  dispatch({
+    type: Types.FILTER_BOOKS,
+    search: search
+  });
+};
+
+export const clearBooks = () => dispatch => {
+  dispatch({ type: Types.CLEAR_BOOKS });
 };

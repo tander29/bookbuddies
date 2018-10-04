@@ -19,7 +19,6 @@ import NavBar from "./NavBar.jsx";
 import BookShelf from "./BookShelf.jsx";
 import "../App.css";
 import MessageBoard from "./MessageBoard.jsx";
-import { Switch, Route, Link } from "react-router-dom";
 import { getAllMessages } from "../Redux/Actions/ActSendMessage";
 import { getAllBooks } from "../Redux/Actions/ActBooks";
 import {
@@ -57,10 +56,6 @@ class ProfilePage extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   };
 
-  handleItemClick = () => {
-    window.location.reload(true);
-  };
-
   changeInfo = () => {
     if (this.state.password === this.state.password2)
       this.props.patchInfo(
@@ -72,36 +67,9 @@ class ProfilePage extends React.Component {
       );
   };
 
-  Owned = () => {
-    return (
-      <div>
-        This is the books you own.
-        <BookShelf />
-      </div>
-    );
-  };
-
-  Available = () => {
-    return (
-      <div>
-        These are the books you have available.
-        <BookShelf />
-      </div>
-    );
-  };
-
-  Onloan = () => {
-    return (
-      <div>
-        And these are your books other users are reading.
-        <BookShelf />
-      </div>
-    );
-  };
-
   render() {
     const { modalOpen } = this.state;
-    const { username, displayname, about } = this.props.userInfo;
+    const { username, about } = this.props.userInfo;
     return (
       <div id="profilepage">
         <Header />
@@ -128,54 +96,19 @@ class ProfilePage extends React.Component {
             </Grid.Column>
             <Grid.Column width={10}>
               <div id="menubar">
-                <Menu id="Switchbar">
-                  <Menu.Item
-                    name="Owned"
-                    // active={activeItem === 'editorials'}
-                    onClick={this.handleItemClick}
-                  >
-                    <Link to="/bookbuddy/profile/">Owned</Link>
+                <Menu id="Switchbar" style={{ marginBottom: "3vh" }}>
+                  <Menu.Item name="Owned" />
 
-                  </Menu.Item>
+                  <Menu.Item name="Currently Have" />
 
-                  <Menu.Item
-                    name="Currently Have"
-                    //  active={activeItem === 'reviews'}
-                    onClick={this.handleItemClick}
-                  >
-                    <Link to="/bookbuddy/profile/available">Available</Link>
-                  </Menu.Item>
-
-                  <Menu.Item
-                    name="Messages"
-                    // active={activeItem === 'upcomingEvents'}
-                    onClick={this.handleItemClick}
-                  >
-                    <Link to="/bookbuddy/profile/onloan">On Loan</Link>
-                  </Menu.Item>
+                  <Menu.Item name="Messages" />
                 </Menu>
               </div>
-              <Switch>
-                <Route
-                  exact
-                  path="/bookbuddy/profile/"
-                  component={this.Owned}
-                />
-                <Route
-                  exact
-                  path="/bookbuddy/profile/available"
-                  component={this.Available}
-                />
-                <Route
-                  exact
-                  path="/bookbuddy/profile/onloan"
-                  component={this.Onloan}
-                />
-              </Switch>
+              <BookShelf location={this.props.location} />
             </Grid.Column>
           </Grid.Row>
 
-          <Grid.Row>
+          <Grid.Row columns={2}>
             <Grid.Column width={3}>
               <Segment vertical>Username: {username}</Segment>
               <Segment vertical>Location: USA</Segment>
@@ -228,7 +161,6 @@ class ProfilePage extends React.Component {
                     </Modal.Description>
                   </Modal.Content>
                   <button onClick={this.modalSwitchStatus}>Close</button>
-                  
                 </Modal>
 
                 <Rating
