@@ -11,7 +11,7 @@ class BookShelf extends React.Component {
     } else {
       this.setState({ booksToDisplay: this.props.filterBooksArray });
     }
-    if (this.props.location === "/bookbuddy/profile") {
+    if (this.props.location === "/bookbuddies/profile") {
       this.filterMyBooks();
     }
   }
