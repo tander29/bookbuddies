@@ -2,7 +2,7 @@
   "name": "bookbuddies",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tander29.github.io/bookbuddy",
+  "homepage": "https://tander29.github.io/bookbuddies",
   "dependencies": {
     "connected-react-router": "^4.4.1",
     "gh-pages": "^2.0.0",

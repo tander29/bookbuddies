@@ -17,14 +17,14 @@ ReactDOM.render(
       <Switch>
         <Route
           exact
-          path="/"
+          path="/bookbuddies"
           render={props => <HomePage location={props.location.pathname} />}
         />
-        <Route exact path="/bookbuddy/home" render={props => <HomePage />} />
-        <Route exact path="/bookbuddy/main" render={props => <MainPage />} />
+        <Route exact path="/bookbuddies/home" render={props => <HomePage />} />
+        <Route exact path="/bookbuddies/main" render={props => <MainPage />} />
         <Route
           exact
-          path="/bookbuddy/profile"
+          path="/bookbuddies/profile"
           render={props => <ProfilePage location={props.location.pathname} />}
         />
         <Route render={props => <ErrorPage />} />
