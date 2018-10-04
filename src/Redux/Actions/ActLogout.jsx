@@ -3,5 +3,5 @@ import { push } from "connected-react-router";
 
 export const logout = () => dispatch => {
   dispatch({ type: Types.LOGOUT });
-  dispatch(push("/bookbuddy/home"));
+  dispatch(push("/bookbuddies/home"));
 };

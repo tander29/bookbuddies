@@ -22,10 +22,10 @@ export const login = (username, password) => dispatch => {
           success: data.success,
           displayname: data.displayname
         });
-         dispatch(getAllBooks());
-         dispatch(getAllMessages());
-         dispatch(getAllUsers());
-        dispatch(push("/bookbuddy/main"));
+        dispatch(getAllBooks());
+        dispatch(getAllMessages());
+        dispatch(getAllUsers());
+        dispatch(push("/bookbuddies/main"));
       }
       if (!data.success) {
         alert("Error, log in failed");
@@ -54,7 +54,7 @@ export const register = (displayname, username, password) => dispatch => {
       alert("Let's find you a Book, Buddy!");
       dispatch(login(username, password));
     });
-    dispatch(login(username,password))
+  dispatch(login(username, password));
 };
 
 //get's all users on log in page, front end compares new users on register component, only 1 username unique allowed
