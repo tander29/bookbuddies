@@ -18,7 +18,9 @@ export const Types = {
   FILTER_BOOKS: "FILTER_BOOKS",
   CLEAR_BOOKS: "CLEAR_BOOKS"
 };
-
-export const herokuStandard = "https://warm-bastion-90430.herokuapp.com";
+// kyle is warm bastion
+// export const herokuStandard = "https://warm-bastion-90430.herokuapp.com";
+//trying my own heroku account
+export const herokuStandard = "https://book-buddy-api.herokuapp.com";
 export const local = "http://127.0.0.1:8000";
 export const heroku = herokuStandard;
